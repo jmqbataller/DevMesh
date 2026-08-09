@@ -1,6 +1,6 @@
 {
   "name": "devmesh",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A provider-ready software development agent framework for routing, requirements, codebase analysis, planning, implementation, debugging, UI/UX review, QA, code review, and Git delivery. Codex is the first supported adapter.",
   "author": {
     "name": "jmqbataller",
@@ -23,14 +23,17 @@
     "git"
   ],
   "skills": "./skills/",
-  "hooks": {},
   "interface": {
     "displayName": "DevMesh",
     "shortDescription": "Engineering workflow mesh for AI coding agents",
     "longDescription": "DevMesh routes software tasks through requirements, codebase intelligence, planning, implementation, systematic debugging, UI/UX review, QA, code review, and Git delivery. Codex is the first supported adapter; the core workflows are designed for future multi-platform support.",
     "developerName": "jmqbataller",
     "category": "Developer Tools",
-    "capabilities": ["Interactive", "Read", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
     "defaultPrompt": [
       "Build this feature safely and verify it before completion.",
       "Fix this bug by finding the root cause first.",

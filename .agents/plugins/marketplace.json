@@ -1,0 +1,20 @@
+{
+  "name": "devmesh-marketplace",
+  "interface": {
+    "displayName": "DevMesh"
+  },
+  "plugins": [
+    {
+      "name": "devmesh",
+      "source": {
+        "source": "local",
+        "path": "./plugins/devmesh"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
