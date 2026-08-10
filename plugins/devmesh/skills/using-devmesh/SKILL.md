@@ -34,14 +34,30 @@ Use this routing table as a default, not a rigid checklist:
 
 | Task | Required path | Conditional path |
 |---|---|---|
-| build | codebase-intelligence → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | ui-ux-review, git-delivery |
-| fix | codebase-intelligence → implementation → qa-verification | systematic-debugging when root cause is not proven; code-review; git-delivery |
-| debug | codebase-intelligence → systematic-debugging → implementation → qa-verification → code-review | git-delivery |
-| redesign | codebase-intelligence → brainstorming-requirements → ui-ux-review → writing-plans → implementation → qa-verification → code-review | git-delivery |
-| refactor | codebase-intelligence → writing-plans → implementation → qa-verification → code-review | git-delivery |
-| review | codebase-intelligence → code-review | ui-ux-review, qa-verification |
-| deploy | codebase-intelligence → qa-verification → git-delivery | systematic-debugging |
+| build | codebase-intelligence → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | ui-ux-review; browser-qa for runnable browser-facing work; git-delivery |
+| fix | codebase-intelligence → implementation → qa-verification | systematic-debugging when root cause is not proven; browser-qa for browser/runtime defects; code-review; git-delivery |
+| debug | codebase-intelligence → systematic-debugging → implementation → qa-verification → code-review | browser-qa when the failure exists in a browser-facing surface; git-delivery |
+| redesign | codebase-intelligence → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → qa-verification → code-review | git-delivery |
+| refactor | codebase-intelligence → writing-plans → implementation → qa-verification → code-review | browser-qa when browser behavior may be affected; git-delivery |
+| review | codebase-intelligence → code-review | ui-ux-review; browser-qa for runnable web UI; qa-verification |
+| deploy | codebase-intelligence → qa-verification → git-delivery | browser-qa for web deployments; systematic-debugging |
 | research | codebase-intelligence | brainstorming-requirements, writing-plans |
+
+### Browser QA routing rule
+
+Use `browser-qa` whenever the requested outcome materially depends on what a user sees or does in a browser and a runnable application surface is available. Typical triggers include:
+
+- building or redesigning a web page/application
+- responsive or mobile fixes
+- interaction, navigation, modal, form, or state bugs
+- browser console/runtime failures
+- visual regression or release-readiness checks
+
+For browser-facing implementation work, prefer this evidence chain when capabilities are available:
+
+`implementation → browser-qa → qa-verification → code-review`
+
+`browser-qa` must not claim rendered, responsive, interaction, console, screenshot, or visual-review success when the active environment lacks the necessary browser capability. In that case, report the missing evidence explicitly and continue only with checks that are actually available.
 
 ## Step 3 — Scope the work
 
@@ -61,11 +77,12 @@ During execution, keep track of:
 - root cause or design rationale
 - files changed
 - validation commands and outcomes
+- browser routes, interactions, viewports, console findings, and screenshots when browser QA runs
 - unresolved risks or blockers
 
 ## Platform adaptation
 
-DevMesh skills describe workflow behavior, not one provider's exact tool names. Use the native tools available in the active coding-agent environment while preserving the same workflow guarantees. Platform-specific references may refine how Git, subagents, sandboxes, or plugin lifecycle behavior works.
+DevMesh skills describe workflow behavior, not one provider's exact tool names. Use the native tools available in the active coding-agent environment while preserving the same workflow guarantees. Platform-specific references may refine how Git, subagents, browsers, sandboxes, or plugin lifecycle behavior works.
 
 ## Non-negotiable behavior
 
@@ -73,6 +90,7 @@ Never:
 
 - guess a root cause and present it as proven
 - claim a fix without verification evidence
+- claim browser/visual QA without browser evidence
 - rewrite working architecture without a reason tied to the task
 - expose secrets or move server-only credentials to client code
 - silently modify unrelated files
