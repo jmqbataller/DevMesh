@@ -6,7 +6,7 @@ EXPECTED={
 'build':['codebase-intelligence','brainstorming-requirements','writing-plans','implementation','qa-verification','code-review'],
 'fix':['codebase-intelligence','implementation','qa-verification'],
 'debug':['codebase-intelligence','systematic-debugging','implementation','qa-verification','code-review'],
-'redesign':['codebase-intelligence','brainstorming-requirements','ui-ux-review','writing-plans','implementation','qa-verification','code-review'],
+'redesign':['codebase-intelligence','brainstorming-requirements','ui-ux-review','writing-plans','implementation','browser-qa','qa-verification','code-review'],
 'refactor':['codebase-intelligence','writing-plans','implementation','qa-verification','code-review'],
 'review':['codebase-intelligence','code-review'],
 'deploy':['codebase-intelligence','qa-verification','git-delivery'],
@@ -26,4 +26,7 @@ for task,skills in EXPECTED.items():
         assert nxt>=0, f'{task}: missing {skill}'
         assert nxt>pos, f'{task}: wrong order for {skill}'
         pos=nxt
-print('OK: routing contract validated for 8 task types')
+assert 'browser-qa for runnable browser-facing work' in ROUTER, 'build must conditionally route browser-facing work to browser-qa'
+assert 'browser-qa for browser/runtime defects' in ROUTER, 'fix must conditionally route browser defects to browser-qa'
+assert 'browser-qa for web deployments' in ROUTER, 'deploy must conditionally route web deployments to browser-qa'
+print('OK: routing contract validated for 8 task types including Browser QA conditions')
