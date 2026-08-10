@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "0.1.1",
-  "description": "A provider-ready software development agent framework for routing, requirements, codebase analysis, planning, implementation, debugging, UI/UX review, QA, code review, and Git delivery. Codex is the first supported adapter.",
+  "version": "0.2.0",
+  "description": "A provider-ready software development agent framework for routing, requirements, codebase analysis, planning, implementation, debugging, UI/UX review, Browser QA, QA, code review, and Git delivery. Codex is the first supported adapter.",
   "author": {
     "name": "jmqbataller",
     "url": "https://github.com/jmqbataller"
@@ -18,6 +18,7 @@
     "debugging",
     "planning",
     "ui-ux",
+    "browser-qa",
     "qa",
     "code-review",
     "git"
@@ -26,7 +27,7 @@
   "interface": {
     "displayName": "DevMesh",
     "shortDescription": "Engineering workflow mesh for AI coding agents",
-    "longDescription": "DevMesh routes software tasks through requirements, codebase intelligence, planning, implementation, systematic debugging, UI/UX review, QA, code review, and Git delivery. Codex is the first supported adapter; the core workflows are designed for future multi-platform support.",
+    "longDescription": "DevMesh routes software tasks through requirements, codebase intelligence, planning, implementation, systematic debugging, UI/UX review, rendered Browser QA, verification, code review, and Git delivery. Codex is the first supported adapter; the core workflows are designed for future multi-platform support.",
     "developerName": "jmqbataller",
     "category": "Developer Tools",
     "capabilities": [
@@ -37,6 +38,7 @@
     "defaultPrompt": [
       "Build this feature safely and verify it before completion.",
       "Fix this bug by finding the root cause first.",
+      "Launch this web app and perform Browser QA before completion.",
       "Review and improve the UI/UX of this project."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh"
