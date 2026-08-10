@@ -8,7 +8,7 @@ MANIFEST=PLUGIN/'.codex-plugin'/'plugin.json'
 MARKETPLACE=ROOT/'.agents'/'plugins'/'marketplace.json'
 REQUIRED={
 'using-devmesh','brainstorming-requirements','codebase-intelligence','writing-plans','implementation',
-'systematic-debugging','ui-ux-review','qa-verification','code-review','git-delivery'}
+'systematic-debugging','ui-ux-review','browser-qa','qa-verification','code-review','git-delivery'}
 FM=re.compile(r'^---\n(.*?)\n---\n', re.S)
 
 def fail(msg):
@@ -50,8 +50,12 @@ def main():
         if f'`{task}`' not in router: fail(f'router missing task type: {task}')
     for skill in REQUIRED-{'using-devmesh'}:
         if skill not in router: fail(f'router does not reference skill: {skill}')
+    browser=(PLUGIN/'skills/browser-qa/SKILL.md').read_text()
+    for phrase in ['Launch the application','Check browser runtime errors','Test desktop and mobile layouts','Exercise interactions','Test forms and inputs','Detect overflow and visual defects','Capture screenshots','Visual review','Report and fix real issues','Evidence boundary']:
+        if phrase not in browser: fail(f'browser-qa missing required section: {phrase}')
     print(f"OK: marketplace {market['name']}")
     print(f"OK: manifest {manifest['name']} v{manifest['version']}")
     print(f"OK: {len(found)} required skills and 8 task types validated")
+    print('OK: Browser QA workflow contract validated')
     return 0
 if __name__=='__main__': sys.exit(main())
