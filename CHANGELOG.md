@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0 - 2026-08-11
+
+- Added `browser-qa` as an eleventh first-class DevMesh skill.
+- Added browser launch and rendered-page inspection workflow.
+- Added browser console/runtime error inspection.
+- Added desktop, phone, and conditional tablet responsive QA.
+- Added interaction and form journey testing.
+- Added overflow, clipping, z-index, spacing, focus, and responsive visual defect checks.
+- Added screenshot-based QA evidence and visual review guidance.
+- Added evidence-based report/fix/retest loops for browser defects.
+- Added a strict evidence boundary: DevMesh must not claim browser, visual, responsive, interaction, console, or screenshot QA when browser capabilities are unavailable.
+- Updated routing so redesigns require Browser QA and other browser-facing build/fix/debug/review/deploy work invokes it when relevant.
+- Updated validation and routing contract tests for Browser QA.
+
 ## 0.1.1 - 2026-08-09
 
 - Converted the repository into a Codex-installable marketplace layout.
