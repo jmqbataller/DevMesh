@@ -6,7 +6,7 @@
 
 ## What DevMesh does
 
-DevMesh v0.1.1 contains 10 core workflows:
+DevMesh v0.2.0 contains 11 core workflows:
 
 1. **Bootstrap / Agent Router** — classify `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy`, or `research` requests and select the minimum safe workflow.
 2. **Brainstorm / Requirements** — turn larger or ambiguous requests into goals, constraints, acceptance criteria, and frozen scope.
@@ -15,9 +15,32 @@ DevMesh v0.1.1 contains 10 core workflows:
 5. **Implementation Agent** — make intentional changes in logical, reviewable units.
 6. **Debug Agent** — reproduce → trace → hypothesize → prove root cause → fix → regression verify.
 7. **UI/UX Agent** — review hierarchy, responsiveness, spacing, accessibility, states, motion, overflow, and consistency.
-8. **QA / Verification Agent** — run targeted tests, lint/type/build checks, runtime scenarios, UI checks, and final diff inspection.
-9. **Code Review Agent** — second-pass review for correctness, security, regressions, complexity, maintainability, and test gaps.
-10. **Git / Delivery Agent** — protect working-tree scope and prepare intentional branches, commits, PRs, or handoffs.
+8. **Browser QA Agent** — launch the app → inspect the rendered page → check console/runtime errors → test desktop/mobile → click interactions → detect overflow → test forms/buttons → capture screenshots → perform visual review → report/fix/retest real issues.
+9. **QA / Verification Agent** — run targeted tests, lint/type/build checks, runtime scenarios, UI checks, and final diff inspection.
+10. **Code Review Agent** — second-pass review for correctness, security, regressions, complexity, maintainability, and test gaps.
+11. **Git / Delivery Agent** — protect working-tree scope and prepare intentional branches, commits, PRs, or handoffs.
+
+## Browser QA evidence rule
+
+DevMesh does not treat source-code inspection as browser verification.
+
+When browser capability is available, `browser-qa` should gather rendered evidence from the actual app. When the active agent cannot launch or control a browser, it must say so explicitly and must **not** claim that responsive layout, interactions, console state, screenshots, or visual QA passed.
+
+The Browser QA flow is:
+
+```text
+launch app
+→ inspect rendered page
+→ check console errors
+→ test desktop/mobile
+→ click interactions
+→ detect overflow
+→ test forms/buttons
+→ take screenshots
+→ visual review
+→ report/fix issues
+→ retest affected scenarios
+```
 
 ## Core philosophy
 
@@ -26,6 +49,7 @@ Inspect before editing.
 Prove root cause before fixing.
 Use the minimum safe workflow.
 Preserve unrelated working behavior.
+Rendered browser claims require browser evidence.
 Verify before claiming completion.
 ```
 
@@ -42,7 +66,9 @@ Requirements / Planning (when needed)
     ↓
 Implementation or Systematic Debugging
     ↓
-UI/UX Review (frontend work)
+UI/UX Review (frontend/design work)
+    ↓
+Browser QA (runnable browser-facing work)
     ↓
 QA Verification
     ↓
@@ -51,7 +77,7 @@ Code Review
 Git Delivery (when requested/available)
 ```
 
-The router deliberately does **not** run all ten workflows for every request.
+The router deliberately does **not** run all workflows for every request. Browser QA is required for redesigns with a runnable browser surface and is conditionally selected for other browser-facing build, fix, debug, review, refactor, and deployment work.
 
 ## Repository structure
 
@@ -65,6 +91,8 @@ DevMesh/
 │       ├── .codex-plugin/
 │       │   └── plugin.json
 │       ├── skills/
+│       │   ├── browser-qa/
+│       │   └── ...
 │       ├── references/
 │       └── scripts/
 ├── tests/
@@ -101,7 +129,7 @@ After installing or updating DevMesh, **start a new Codex thread/session** befor
 
 ### Updating DevMesh
 
-Refresh the marketplace, then reinstall DevMesh. If your Codex version exposes marketplace upgrade, use its marketplace upgrade flow; reinstalling `devmesh@devmesh-marketplace` is safe for picking up a changed plugin package.
+Refresh/re-add the marketplace if needed, then reinstall DevMesh. The exact update command can vary by Codex CLI version; `codex plugin list` should show the installed DevMesh version after refresh/reinstall.
 
 ## Smoke tests
 
@@ -109,32 +137,19 @@ Use a small disposable code repository for these tests.
 
 ### 1. Build routing
 
-Prompt:
-
 ```text
 Build a small settings page with a theme toggle. Inspect the repository first and tell me which DevMesh workflow you are using before editing.
 ```
 
-Expected routing:
-
-```text
-codebase-intelligence
-→ brainstorming-requirements
-→ writing-plans
-→ implementation
-→ qa-verification
-→ code-review
-```
+For browser-facing implementations, Browser QA should be included when the environment can actually launch and inspect the app.
 
 ### 2. Debug routing
-
-Prompt:
 
 ```text
 The save button sometimes does nothing. Do not guess the fix. Find and prove the root cause, fix it, and verify the regression.
 ```
 
-Expected routing:
+Expected core path:
 
 ```text
 codebase-intelligence
@@ -144,15 +159,15 @@ codebase-intelligence
 → code-review
 ```
 
-### 3. UI/UX routing
+Add `browser-qa` when the failure is browser-facing and a runnable browser surface exists.
 
-Prompt:
+### 3. UI/UX + Browser QA routing
 
 ```text
-Redesign this page for a modern professional UI and fix mobile overflow and keyboard accessibility. Preserve existing functionality.
+Redesign this page for a modern professional UI and fix mobile overflow and keyboard accessibility. Preserve existing functionality. Launch the app and verify the result in the browser before completion.
 ```
 
-Expected routing:
+Expected path:
 
 ```text
 codebase-intelligence
@@ -160,6 +175,7 @@ codebase-intelligence
 → ui-ux-review
 → writing-plans
 → implementation
+→ browser-qa
 → qa-verification
 → code-review
 ```
@@ -173,32 +189,19 @@ python tests/validate_devmesh.py
 python tests/test_routing_contract.py
 ```
 
-Expected:
+Expected for v0.2.0:
 
 ```text
 OK: marketplace devmesh-marketplace
-OK: manifest devmesh v0.1.1
-OK: 10 required skills and 8 task types validated
-OK: routing contract validated for 8 task types
+OK: manifest devmesh v0.2.0
+OK: 11 required skills and 8 task types validated
+OK: Browser QA workflow contract validated
+OK: routing contract validated for 8 task types including Browser QA conditions
 ```
 
 ## Project helper scripts
 
-The installed Codex plugin includes optional helpers under `plugins/devmesh/scripts/`:
-
-Linux/macOS:
-
-```bash
-./plugins/devmesh/scripts/inspect-project.sh
-./plugins/devmesh/scripts/verify-project.sh
-```
-
-PowerShell:
-
-```powershell
-./plugins/devmesh/scripts/inspect-project.ps1
-./plugins/devmesh/scripts/verify-project.ps1
-```
+The installed Codex plugin includes optional helpers under `plugins/devmesh/scripts/`.
 
 The DevMesh skills do not depend on these helpers.
 
@@ -206,15 +209,15 @@ The DevMesh skills do not depend on these helpers.
 
 | Platform | Status |
 |---|---|
-| Codex | **v0.1 supported** |
+| Codex | **v0.2 supported** |
 | Claude Code | Planned |
 | Gemini CLI | Planned |
 | Cursor | Planned |
 | GitHub Copilot | Planned |
 
-## V1 scope
+## Current scope
 
-DevMesh intentionally has no custom LLM, backend, database, required API key, or framework dependency. The active coding agent remains the execution engine; DevMesh supplies the engineering methodology.
+DevMesh intentionally has no custom LLM, backend, database, required API key, or framework dependency. The active coding agent remains the execution engine; DevMesh supplies the engineering methodology and evidence requirements.
 
 ## License
 
