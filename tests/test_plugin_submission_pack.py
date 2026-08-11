@@ -22,8 +22,8 @@ assert 'User responsibility' in terms
 tests=(PACK/'TEST_CASES.md').read_text(encoding='utf-8')
 assert tests.count('## Positive test ') == 5
 assert tests.count('# Negative test ') == 3
-for phrase in ['False deployment claim','Secret exposure','Pretend a bug is fixed without evidence']:
-    assert phrase in tests
+for phrase in ['Design-to-Code evidence boundaries','OBSERVED','INFERRED','UNKNOWN','False deployment claim','Secret exposure','Pretend a bug is fixed without evidence']:
+    assert phrase in tests, phrase
 release=(PACK/'RELEASE_NOTES.md').read_text(encoding='utf-8')
 assert f'DevMesh v{VERSION}' in release
 for phrase in ['Design-to-Code Studio','visual-reference-analyzer','design-token-extractor','responsive-layout-inference','visual-fidelity-judge','111 composable skills','Website Product Builder','Agency Operations Control Center','Website Operations Specialist','Real Estate IDX / MLS','RESO Web API','idx-compliance-review']:
