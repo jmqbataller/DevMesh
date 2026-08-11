@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "1.2.0",
-  "description": "An evidence-based AI software engineering, greenfield website product building, website-operations, and agency-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, full-stack development, WordPress, IDX/MLS/RESO, multi-site operations, QA, and delivery.",
+  "version": "1.3.0",
+  "description": "An evidence-based AI software engineering and website-delivery orchestration framework with Design-to-Code Studio, Website Product Builder, Codex and ChatGPT adapters, Mission Control, full-stack development, website/agency operations, WordPress, IDX/MLS/RESO, QA, and delivery.",
   "author": {
     "name": "John Mark Bataller",
     "url": "https://github.com/jmqbataller"
@@ -11,6 +11,7 @@
   "license": "MIT",
   "keywords": [
     "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
+    "design-to-code", "screenshot-to-code", "figma-to-code", "visual-reference", "visual-fidelity", "responsive-inference",
     "website-product-builder", "greenfield-website", "design-system", "sitemap", "information-architecture", "ui-components",
     "full-stack", "frontend", "backend", "api", "database", "seo", "mission-control", "agency-operations",
     "multi-site", "website-operations", "website-specialist", "wordpress", "hosting", "dns", "ssl", "monitoring",
@@ -20,14 +21,14 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
-    "shortDescription": "AI Website Product Builder + Engineering Mission Control",
-    "longDescription": "DevMesh v1.2 adds Website Product Builder for explicit greenfield website delivery from requirements through design system, sitemap/information architecture, UI component architecture, frontend, conditional backend/API/database, SEO, QA and deployment. It builds on full-stack engineering, Mission Control, v1.1 Agency Operations, v1.0 Website Operations, WordPress Real Estate, IDX/MLS/RESO, Browser QA, security, accessibility, performance, CI, deployment, incident response, review, memory, reporting, and Git delivery.",
+    "shortDescription": "AI Design-to-Code + Website Product Builder Mission Control",
+    "longDescription": "DevMesh v1.3 adds Design-to-Code Studio for screenshot, mockup, Figma/export, and visual-reference implementation with observed/inferred/unknown evidence labels, design-token extraction, responsive-layout inference, component architecture, Browser QA, visual fidelity judging, and bounded repair. It builds on v1.2 Website Product Builder, full-stack engineering, Mission Control, Agency Operations, Website Operations, WordPress Real Estate, IDX/MLS/RESO, security, accessibility, performance, CI, deployment, incident response, review, memory, reporting, and Git delivery.",
     "developerName": "John Mark Bataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
+      "DevMesh Design-to-Code: recreate this supplied design as a maintainable responsive website, separate observed from inferred behavior, and verify rendered fidelity when tools allow.",
       "DevMesh Website Product Builder: build this website from scratch from product contract through design system, sitemap, UI architecture, implementation, SEO, QA, and production delivery.",
-      "DevMesh Deep: build a complete working website with professional UI/UX plus backend, API, database and integrations only where the product actually requires them.",
       "DevMesh Agency Deep: audit all client websites, prioritize incidents and maintenance, and create a site-specific action queue with evidence."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
