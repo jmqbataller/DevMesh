@@ -19,15 +19,14 @@ assert 'Agent Skills format' in skill
 assert f'v{VERSION}' in skill
 assert 'Do not assume a local shell' in skill
 assert 'Public web browsing is not Browser QA' in skill
-assert 'mission-control' in skill
-assert 'real-estate-idx-mls' in skill
-assert 'wordpress-real-estate-specialist' in skill
-assert 'wordpress-site-doctor' in skill
-assert 'idx-provider-detector' in skill
-assert 'idx-search-qa' in skill
-assert 'wordpress-lead-flow-qa' in skill
-assert 'parallel execution: BLOCKED' in skill
-assert 'judge independence: unavailable' in skill
+for phrase in [
+    'mission-control','real-estate-idx-mls','wordpress-real-estate-specialist',
+    'website-operations-specialist','hosting-dns-ssl-doctor','wordpress-migration-specialist',
+    'backup-restore-drill','seo-search-console-specialist','core-web-vitals-diagnoser',
+    'analytics-conversion-qa','email-deliverability-doctor','wp-cron-reliability-doctor',
+    'reso-schema-drift-detector','client-monthly-website-report','website-emergency-recovery',
+    'parallel execution: BLOCKED','judge independence: unavailable']:
+    assert phrase in skill, phrase
 assert '`PASS`' in skill and '`BLOCKED`' in skill and '`NOT RUN`' in skill
 
 for name in ['tool-adaptation.md', 'evidence-boundaries.md', 'invocation-examples.md']:
@@ -51,7 +50,13 @@ with tempfile.TemporaryDirectory(prefix='devmesh-adapter-test-') as tmp:
             'wordpress-safe-update-manager','wp-cli-operator','wordpress-rest-api-integrator',
             'idx-provider-detector','wordpress-idx-bridge','idx-search-qa','listing-freshness-monitor',
             'idx-compliance-monitor','idx-vow-mode-detector','wordpress-performance-doctor',
-            'wordpress-security-specialist','wordpress-lead-flow-qa','wordpress-client-handover']:
+            'wordpress-security-specialist','wordpress-lead-flow-qa','wordpress-client-handover',
+            'website-operations-specialist','hosting-dns-ssl-doctor','wordpress-migration-specialist',
+            'backup-restore-drill','seo-search-console-specialist','real-estate-seo-specialist',
+            'core-web-vitals-diagnoser','analytics-conversion-qa','email-deliverability-doctor',
+            'broken-link-redirect-manager','plugin-theme-risk-intelligence','wp-cron-reliability-doctor',
+            'reso-schema-drift-detector','reso-provider-capability-inspector',
+            'client-monthly-website-report','website-emergency-recovery']:
             assert f'playbooks/{playbook}.md' in names
 
-print(f'OK: ChatGPT adapter v{VERSION} source and portable WordPress real-estate upload bundle validated')
+print(f'OK: ChatGPT adapter v{VERSION} source and portable Website Operations bundle validated')
