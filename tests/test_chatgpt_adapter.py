@@ -21,10 +21,16 @@ assert 'Do not assume a local shell' in skill
 assert 'Public web browsing is not Browser QA' in skill
 for phrase in [
     'mission-control','real-estate-idx-mls','wordpress-real-estate-specialist',
-    'website-operations-specialist','hosting-dns-ssl-doctor','wordpress-migration-specialist',
-    'backup-restore-drill','seo-search-console-specialist','core-web-vitals-diagnoser',
-    'analytics-conversion-qa','email-deliverability-doctor','wp-cron-reliability-doctor',
-    'reso-schema-drift-detector','client-monthly-website-report','website-emergency-recovery',
+    'website-operations-specialist','agency-operations-control-center','multi-site-fleet-manager',
+    'scheduled-site-health-monitor','domain-ssl-expiry-monitor','wordpress-update-wave-manager',
+    'staging-production-manager','website-change-timeline','visual-history-screenshot-timeline',
+    'plugin-vulnerability-maintenance-watch','license-subscription-tracker','client-access-inventory',
+    'ticket-request-intake-agent','sla-priority-engine','lead-sla-monitor',
+    'real-estate-crm-integration-specialist','mls-provider-health-monitor',
+    'consent-privacy-cookie-auditor','accessibility-continuous-monitor','content-qa-agent',
+    'client-onboarding-agent','client-offboarding-agent',
+    'hosting-dns-ssl-doctor','backup-restore-drill','seo-search-console-specialist',
+    'analytics-conversion-qa','email-deliverability-doctor','website-emergency-recovery',
     'parallel execution: BLOCKED','judge independence: unavailable']:
     assert phrase in skill, phrase
 assert '`PASS`' in skill and '`BLOCKED`' in skill and '`NOT RUN`' in skill
@@ -56,7 +62,15 @@ with tempfile.TemporaryDirectory(prefix='devmesh-adapter-test-') as tmp:
             'core-web-vitals-diagnoser','analytics-conversion-qa','email-deliverability-doctor',
             'broken-link-redirect-manager','plugin-theme-risk-intelligence','wp-cron-reliability-doctor',
             'reso-schema-drift-detector','reso-provider-capability-inspector',
-            'client-monthly-website-report','website-emergency-recovery']:
+            'client-monthly-website-report','website-emergency-recovery',
+            'agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor',
+            'domain-ssl-expiry-monitor','wordpress-update-wave-manager','staging-production-manager',
+            'website-change-timeline','visual-history-screenshot-timeline',
+            'plugin-vulnerability-maintenance-watch','license-subscription-tracker','client-access-inventory',
+            'ticket-request-intake-agent','sla-priority-engine','lead-sla-monitor',
+            'real-estate-crm-integration-specialist','mls-provider-health-monitor',
+            'consent-privacy-cookie-auditor','accessibility-continuous-monitor','content-qa-agent',
+            'client-onboarding-agent','client-offboarding-agent']:
             assert f'playbooks/{playbook}.md' in names
 
-print(f'OK: ChatGPT adapter v{VERSION} source and portable Website Operations bundle validated')
+print(f'OK: ChatGPT adapter v{VERSION} source and portable Agency Operations bundle validated')
