@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.9.0 - 2026-08-11
+
+DevMesh v0.9 adds **WordPress Real Estate Specialist** workflows for day-to-day Website Specialist operations.
+
+- Added `wordpress-real-estate-specialist` as the WordPress + real-estate orchestrator.
+- Added `wordpress-site-doctor` for Site Health, WordPress/PHP/server/database, themes/plugins, cron, REST, permalinks and configuration evidence.
+- Added `wordpress-plugin-conflict-detective` for staged, evidence-based plugin/theme conflict isolation.
+- Added `wordpress-safe-update-manager` for backup/staging/update/rollback and post-update regression checks.
+- Added `wp-cli-operator` for risk-aware local/remote WP-CLI inspection and authorized operations.
+- Added `wordpress-rest-api-integrator` for custom content/routes, permission callbacks, Application Password-aware clients, and server-side secret boundaries.
+- Added `idx-provider-detector` and `wordpress-idx-bridge` for detecting and integrating WordPress/IDX/MLS/RESO architectures.
+- Added `idx-search-qa` for browser-level property filters, sorting, pagination, maps, cards, details, media and mobile behavior.
+- Added `listing-freshness-monitor` and `idx-compliance-monitor` for sync age, scheduler/provider/cache failures and ongoing public-display restrictions.
+- Added `idx-vow-mode-detector` for evidence-based IDX/VOW/hybrid classification.
+- Added `wordpress-performance-doctor` and `wordpress-security-specialist`.
+- Added `wordpress-lead-flow-qa` for downstream inquiry/showing/contact delivery verification using synthetic data.
+- Added `wordpress-client-handover` for secret-free operational documentation.
+- Updated routing, ChatGPT packaging, README/docs, Plugin Directory materials and validation for **65 composable skills**.
+
 ## 0.8.0 - 2026-08-11
 
 DevMesh v0.8 adds a **Real Estate IDX / MLS specialization**.
