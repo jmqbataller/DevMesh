@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.8.0 - 2026-08-11
+
+DevMesh v0.8 adds a **Real Estate IDX / MLS specialization**.
+
+- Added `real-estate-idx-mls` for IDX/MLS website and app orchestration, including IDX vs VOW classification, provider/license discovery, display restrictions, attribution/disclaimer boundaries, server-side MLS credential handling, and evidence-aware completion.
+- Added `reso-web-api` for RESO Web API/OData service discovery, `$metadata`, Data Dictionary mapping, provider extensions, auth, filtering, pagination, incremental-query verification, and RETS-as-legacy guidance.
+- Added `listing-sync-search` for licensed listing replication, idempotent incremental sync, reconciliation, media, local search/maps, freshness, retry/recovery, and sync observability.
+- Added `idx-compliance-review` for evidence-based public IDX review against confirmed local MLS/provider rules plus current general NAR IDX safeguards, including seller Internet/address opt-outs, delayed marketing, confidential fields, retrieval limits, attribution, disclaimers, and VOW distinctions.
+- Updated the DevMesh router so build/fix/debug/redesign/refactor/review/deploy/research tasks can automatically invoke the real-estate specialization when relevant.
+- Updated the ChatGPT adapter to route IDX/MLS, RESO, listing-sync, and compliance tasks without assuming MLS credentials or local-rule access.
+- Expanded validation to **49 composable skills** and added IDX/MLS feature contracts.
+- Updated README, real-estate documentation, release notes, manifest metadata, and automated ChatGPT release packaging for v0.8.0.
+
 ## 0.7.0 - 2026-08-11
 
 DevMesh v0.7 introduces **Mission Control** and an evidence-aware orchestration/evaluation layer.
