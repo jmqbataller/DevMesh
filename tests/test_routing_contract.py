@@ -36,7 +36,7 @@ for phrase in [
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
 for phrase in [
 '3 fix/retest rounds','3 visual repair rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization',
-'visual fidelity requires an authoritative reference plus a real rendered implementation comparison',
+'requires an authoritative reference plus real rendered comparison evidence',
 'never invent a numeric fidelity percentage','source review alone is not visual-fidelity proof',
 'full-stack product working while required layers are mocked/disconnected','fall back sequentially','same-context fallback',
 'frontend-only marketing/static sites must not get an unnecessary database or api','production completion requires real target evidence',
