@@ -6,9 +6,9 @@ DevMesh must adapt to capabilities actually exposed in the current ChatGPT surfa
 
 | DevMesh need | ChatGPT-capable path | If unavailable |
 |---|---|---|
-| Read private repository | Connected GitHub/app | Ask for repo/file access or work from supplied files only |
-| Edit repository | Connected GitHub write action or writable project/artifact workspace | Generate patch/files; mark repository write `BLOCKED` |
-| Read issue/PR/CI | Connected GitHub/app | Do not infer private state from memory or prompt summaries |
+| Read private repository | Connected GitHub/app with read access | Ask for repo/file access or work from supplied files only |
+| Edit repository | Explicitly exposed GitHub write action or writable project/artifact workspace | Generate patch/files; mark repository write `BLOCKED` |
+| Read issue/PR/CI | Connected GitHub/app when that data is exposed | Do not infer private state from memory or prompt summaries |
 | Run commands/tests/build | Code execution/project runtime tool | Provide exact commands and mark `NOT RUN` |
 | Local dev server | Runtime/project workspace capable of starting it | Do not claim localhost execution |
 | Browser QA | Browser-control/browser-automation tool that can exercise the app | Source review only; mark rendered QA `BLOCKED`/`NOT RUN` |
@@ -19,13 +19,18 @@ DevMesh must adapt to capabilities actually exposed in the current ChatGPT surfa
 
 ## GitHub adaptation
 
+Treat GitHub access as capability-detected, not automatically read/write.
+
+In standard ChatGPT, the built-in GitHub app may expose repository reading without exposing push, commit, branch, or PR-write actions. Do not assume repository write capability merely because GitHub is connected. When a write-capable GitHub action is actually exposed in the current surface, use it only within authorization and risk boundaries. Otherwise generate the patch/files and mark repository delivery `BLOCKED` or direct the user to Codex for write/push workflows.
+
 When GitHub tools are available:
 
 1. Fetch the actual repository/issue/PR/check state first.
 2. Preserve repository instructions and current architecture.
-3. Use write actions only within authorization and risk boundaries.
-4. Verify the resulting ref/file/PR/check state after writes when possible.
-5. Never claim a commit/PR/CI result from an intended action alone.
+3. Distinguish read capability from write capability.
+4. Use write actions only when they are explicitly exposed and authorized.
+5. Verify the resulting ref/file/PR/check state after writes when possible.
+6. Never claim a commit/PR/CI result from an intended action alone.
 
 ## Browser adaptation
 

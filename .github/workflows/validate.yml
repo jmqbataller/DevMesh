@@ -24,3 +24,11 @@ jobs:
           python tests/test_routing_contract.py
           python tests/test_feature_contracts.py
           python tests/test_chatgpt_adapter.py
+      - name: Build ChatGPT distribution bundle
+        run: python scripts/build_chatgpt_adapter.py --output dist/devmesh-chatgpt-v0.6.0.zip
+      - name: Upload ChatGPT distribution bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: devmesh-chatgpt-v0.6.0
+          path: dist/devmesh-chatgpt-v0.6.0.zip
+          if-no-files-found: error
