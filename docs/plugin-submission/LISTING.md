@@ -46,7 +46,9 @@ Use `plugins/devmesh/assets/devmesh-icon.png`.
 
 ## Developer identity
 
-Select the verified individual or business identity in the OpenAI Platform that owns the submission. The public publisher name must match that verified identity and listing materials.
+**John Mark Bataller**
+
+Use the verified OpenAI Platform individual/business identity belonging to John Mark Bataller for the public submission. The public publisher name should match that verified identity and these listing materials.
 
 ## Starter prompts
 
