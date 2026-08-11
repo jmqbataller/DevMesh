@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "0.7.0",
-  "description": "A provider-ready AI software engineering orchestration framework with Codex and ChatGPT adapters, Mission Control task graphs, parallel-agent orchestration, independent judging, confidence-aware diagnosis, adversarial review, impact mapping, failure memory, eval/replay benchmarking, architecture simulation, resource budgets, incident command, one-prompt full-stack builds, Browser QA, security, CI repair, deployment, and Git delivery.",
+  "version": "0.8.0",
+  "description": "A provider-ready AI software engineering orchestration framework with Codex and ChatGPT adapters, Mission Control, one-prompt full-stack builds, Browser QA, security, CI/deployment, and a real-estate IDX/MLS specialization covering RESO Web API, listing sync/search, and display compliance review.",
   "author": {
     "name": "jmqbataller",
     "url": "https://github.com/jmqbataller"
@@ -13,20 +13,20 @@
     "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
     "mission-control", "task-graph", "multi-agent", "evals", "incident-response", "full-stack",
     "database", "api", "playwright", "browser-automation", "ci-cd", "github", "security",
-    "accessibility", "performance", "observability", "deployment", "qa"
+    "accessibility", "performance", "observability", "deployment", "qa", "real-estate", "idx", "mls", "reso", "odata"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
     "shortDescription": "Mission Control for evidence-based AI software engineering",
-    "longDescription": "DevMesh v0.7 adds Mission Control: dynamic dependency graphs, real parallel delegation when available, independent judging, confidence-aware routing, adversarial design review, change-impact mapping, verified failure memory, eval/replay benchmarking, architecture simulation, resource budgets, and incident command on top of the existing full-stack, Browser QA, security, CI, production, review, reporting, and Git workflows. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
+    "longDescription": "DevMesh v0.8 adds a real-estate IDX/MLS specialization with RESO Web API/OData integration, Data Dictionary-aware mapping, listing synchronization/search architecture, and evidence-based IDX compliance review on top of Mission Control, full-stack builds, Browser QA, security, accessibility, performance, CI, production deployment, review, memory, reporting, and Git delivery. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
     "developerName": "jmqbataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
       "DevMesh Mission Control: build this product end-to-end and judge the integrated result against evidence.",
-      "DevMesh Deep + Balanced: prepare this application for production.",
+      "Use DevMesh to build or audit this real-estate IDX/MLS website using the actual MLS provider rules and RESO data contract.",
       "DevMesh Incident Commander: investigate this production failure, stabilize it, prove the root cause, and verify recovery."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
