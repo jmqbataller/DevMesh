@@ -25,7 +25,8 @@ assert 'Database / persistence' in full_stack
 assert 'Mandatory integration checks' in full_stack
 assert 'create data → server validates → persist → read it back → update it → reload page → confirm persistence' in full_stack
 assert 'payments' in full_stack
-assert 'Do not silently invent' in full_stack
+assert 'CRM' in full_stack
+assert 'PDF generation' in full_stack
 assert 'fake APIs' in full_stack
 
 assert 'Playwright MCP' in text('browser-engine')
