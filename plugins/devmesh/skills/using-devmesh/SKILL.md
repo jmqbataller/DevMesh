@@ -33,6 +33,10 @@ Special intents:
 - active production outage/degradation → `incident-commander`
 - substantial cross-layer/high-risk/explicit mission → `mission-control`
 - DevMesh regression/benchmark comparison → `eval-replay-lab`
+- real-estate IDX/MLS website, feed, search, or audit → `real-estate-idx-mls`
+- RESO Web API/OData integration → `reso-web-api`
+- MLS replication/search/indexing → `listing-sync-search`
+- IDX display/compliance audit → `idx-compliance-review`
 
 ## 2 — Select depth and resource budget
 
@@ -66,14 +70,14 @@ Use `confidence-engine` whenever root cause/architecture assumptions are not str
 
 | Task | Required path | Conditional gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; architecture-simulator; adversarial-review; test-data-personas; architecture-guard; change-impact-map; parallel-agent-orchestration; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; confidence-engine; devmesh-judge; failure-memory; eval-replay-lab; multi-agent-review; qa-reporting |
-| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | resource-budget; mission-control; change-impact-map; confidence-engine; systematic-debugging when root cause is unproven; environment-doctor; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; devmesh-judge; failure-memory; qa-reporting |
-| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; confidence-engine; environment-doctor; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; parallel-agent-orchestration; devmesh-judge; failure-memory; multi-agent-review; qa-reporting |
-| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; adversarial-review; parallel-agent-orchestration; visual-regression; performance-review; network-failure-qa; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
-| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; architecture-guard; confidence-engine; parallel-agent-orchestration; regression-testing; browser-qa; security-review; performance-review; devmesh-judge; multi-agent-review; qa-reporting |
-| review | codebase-intelligence → code-review | execution-modes; resource-budget; mission-control; change-impact-map; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
-| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | resource-budget; mission-control; dynamic-task-graph; change-impact-map; environment-doctor; database-architect; architecture-simulator; browser-qa; network-failure-qa; accessibility-review; performance-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; multi-agent-review; qa-reporting |
-| research | codebase-intelligence | resource-budget; mission-control when broad; dynamic-task-graph; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; environment-doctor; brainstorming-requirements; writing-plans; eval-replay-lab |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; architecture-simulator; adversarial-review; test-data-personas; architecture-guard; change-impact-map; parallel-agent-orchestration; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; confidence-engine; devmesh-judge; failure-memory; eval-replay-lab; multi-agent-review; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | resource-budget; mission-control; change-impact-map; confidence-engine; systematic-debugging when root cause is unproven; environment-doctor; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; devmesh-judge; failure-memory; qa-reporting |
+| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; confidence-engine; environment-doctor; real-estate-idx-mls; reso-web-api; listing-sync-search; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; parallel-agent-orchestration; devmesh-judge; failure-memory; multi-agent-review; qa-reporting |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; real-estate-idx-mls; idx-compliance-review; adversarial-review; parallel-agent-orchestration; visual-regression; performance-review; network-failure-qa; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
+| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; real-estate-idx-mls; reso-web-api; listing-sync-search; architecture-guard; confidence-engine; parallel-agent-orchestration; regression-testing; browser-qa; security-review; performance-review; devmesh-judge; multi-agent-review; qa-reporting |
+| review | codebase-intelligence → code-review | execution-modes; resource-budget; mission-control; change-impact-map; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | resource-budget; mission-control; dynamic-task-graph; change-impact-map; environment-doctor; database-architect; real-estate-idx-mls; idx-compliance-review; architecture-simulator; browser-qa; network-failure-qa; accessibility-review; performance-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; multi-agent-review; qa-reporting |
+| research | codebase-intelligence | resource-budget; mission-control when broad; dynamic-task-graph; confidence-engine; adversarial-review; architecture-simulator; real-estate-idx-mls; reso-web-api; idx-compliance-review; project-memory; failure-memory; environment-doctor; brainstorming-requirements; writing-plans; eval-replay-lab |
 
 ## 6 — Mission Control
 
@@ -93,7 +97,22 @@ Typical flow:
 
 “Working” must not degrade into a static frontend mock when backend/API/persistence is required.
 
-## 8 — Incidents, GitHub, CI, deployment
+## 8 — Real-estate IDX / MLS specialization
+
+Trigger `real-estate-idx-mls` whenever a website/app consumes or displays MLS listing data, implements IDX/VOW behavior, or needs an MLS/RESO audit.
+
+Use `reso-web-api` for RESO Web API/OData transport, metadata discovery, Data Dictionary mapping, authentication, queries, pagination, and provider extensions.
+
+Use `listing-sync-search` when authorized listing data is replicated into a local database/search index or when listing freshness, reconciliation, media, map/search performance, or incremental sync matters.
+
+Use `idx-compliance-review` for public display review. The actual MLS/provider license and local rules are authoritative; general NAR IDX policy is only a baseline. Never invent credentials, display rights, refresh requirements, disclaimer wording, or field permissions. Treat RETS as legacy compatibility for existing feeds, not the default for new integrations.
+
+A typical working IDX build is:
+`real-estate-idx-mls → provider/license discovery → reso-web-api when applicable → database-architect/api-contract → listing-sync-search when replication is allowed → full-stack implementation → security-review → idx-compliance-review → browser-qa/accessibility/performance → qa-verification`
+
+Never call an IDX implementation compliant when current local MLS/provider rules were not reviewed; mark that evidence `BLOCKED`.
+
+## 9 — Incidents, GitHub, CI, deployment
 
 ### Production incident
 Trigger `incident-commander` for an active production outage, severe degradation, data-integrity incident, or security-sensitive operational failure. Stabilize/preserve evidence before broad cleanup. Never claim resolved without production evidence.
@@ -107,7 +126,7 @@ Trigger `ci-auto-heal`; read actual failed jobs/logs, classify infra vs code/tes
 ### Production deployment
 Trigger `production-deployment`; build logs alone are not production verification. Require health/API/live Browser QA evidence when applicable and available.
 
-## 9 — Architecture/evidence intelligence
+## 10 — Architecture/evidence intelligence
 
 Use `database-architect` for durable data/schema/migrations.
 Use `api-contract` at API/server-action/service boundaries.
@@ -118,27 +137,27 @@ Use `architecture-guard` for substantial/cross-layer/Deep work or boundary drift
 Use `change-impact-map` to derive regression scope.
 Use `confidence-engine` to prevent low-evidence root-cause edits.
 
-## 10 — Browser/product/operations gates
+## 11 — Browser/product/operations gates
 
 `browser-qa` invokes `browser-engine` for real rendered evidence.
 Use `network-failure-qa` for important networked/resilience-sensitive flows.
 Use `visual-regression` only with stable approved baselines; never overwrite a baseline to hide a regression.
 Use `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
 
-## 11 — Judge, memory, evals
+## 12 — Judge, memory, evals
 
 Use `devmesh-judge` after substantial missions/Deep release work. Critical failed gates veto release regardless of average score.
 Use `failure-memory` only for verified failure/root-cause/fix lessons and only with opt-in persistent storage; never store secrets/PII.
 Use `eval-replay-lab` for DevMesh changes or mature products needing repeatable regression benchmarks. Deterministic graders take precedence over qualitative model judging when they directly test an invariant.
 
-## 12 — Automatic fix/retest
+## 13 — Automatic fix/retest
 
 When a verification/judge gate finds a real in-scope defect:
 `finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical → re-judge affected gate`
 
 Browser QA may use up to 3 fix/retest rounds. Mission Control judge loop defaults to 2 repair/rejudge rounds. Do not loop indefinitely.
 
-## 13 — Evidence
+## 14 — Evidence
 
 Track as relevant:
 - task classification + depth + resource budget
@@ -148,6 +167,7 @@ Track as relevant:
 - architecture simulation vs measured benchmark distinction
 - environment/risk/authorization
 - architecture, DB/API contracts, files changed
+- IDX/MLS provider, authorized use, local rule evidence, RESO metadata/mapping, listing freshness/sync and display restrictions when relevant
 - tests/lint/type/build/browser/network/screenshots
 - security/accessibility/performance/observability
 - CI/production/incident evidence
@@ -162,6 +182,8 @@ Never:
 - guess root cause and present it as proven
 - claim parallel agents/independent judge/benchmark/browser/production/CI evidence that did not execute
 - call a full-stack product working while required layers are mocked/disconnected
+- claim IDX/MLS compliance without reviewing the applicable provider/local MLS rules
+- expose MLS/API credentials or confidential/non-displayable listing fields
 - expose or persist secrets/PII in memory/reports/logs/evals
 - silently perform destructive actions
 - disable meaningful tests to make CI green
