@@ -19,7 +19,7 @@ description: Use before implementing a substantial website UI to map reusable la
 - dialogs/drawers/toasts and overlay behavior
 - page-specific compositions
 - stateful vs presentational responsibilities
-- server/data-fetching boundaries
+- data-fetching/server boundaries
 - loading, skeleton, empty, error and success states
 - responsive variants and breakpoint behavior
 - accessibility semantics, keyboard/focus behavior and reduced-motion needs
