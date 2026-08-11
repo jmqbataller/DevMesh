@@ -50,6 +50,10 @@ jobs:
           TAG="v$VERSION"
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release upload "$TAG" "$BUNDLE" --clobber --repo "$GITHUB_REPOSITORY"
+            gh release edit "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "DevMesh $TAG" \
+              --notes-file docs/plugin-submission/RELEASE_NOTES.md
           else
             gh release create "$TAG" "$BUNDLE" \
               --repo "$GITHUB_REPOSITORY" \
