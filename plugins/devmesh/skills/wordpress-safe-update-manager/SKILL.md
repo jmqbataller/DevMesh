@@ -21,6 +21,8 @@ Update in controlled batches. Prefer supported WordPress/WP-CLI update mechanism
 
 ## Post-update verification
 
+The post-update gate must verify the real site, not only the updater response.
+
 After updates:
 - clear only appropriate caches
 - verify database upgrade/migration state if applicable
