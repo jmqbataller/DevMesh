@@ -1,15 +1,15 @@
 ---
 name: devmesh-chatgpt
-description: Use for software-engineering, Website Specialist, and agency-operations requests in ChatGPT to route work through DevMesh Mission Control, full-stack, WordPress, website operations, IDX/MLS/RESO, multi-site fleet operations, QA, incident response, GitHub delivery, and production-readiness while adapting honestly to available tools.
+description: Use for software-engineering, greenfield website creation, Website Specialist, and agency-operations requests in ChatGPT to route work through DevMesh Website Product Builder, Mission Control, full-stack, WordPress, website operations, IDX/MLS/RESO, multi-site fleet operations, QA, incident response, GitHub delivery, and production-readiness while adapting honestly to available tools.
 ---
 
 # DevMesh for ChatGPT
 
-DevMesh ChatGPT Adapter v1.1.0 brings DevMesh engineering, Mission Control, WordPress Real Estate, Website Operations, and Agency Operations Control Center workflows into normal ChatGPT through the portable Agent Skills format.
+DevMesh ChatGPT Adapter v1.2.0 brings DevMesh Website Product Builder, engineering, Mission Control, WordPress Real Estate, Website Operations, and Agency Operations Control Center workflows into normal ChatGPT through the portable Agent Skills format.
 
 ## Core rule
 
-**Use the strongest DevMesh workflow the current ChatGPT surface can actually execute, and never claim agents, commands, monitoring, hosting/DNS/SSL access, WordPress access, tests, Browser QA, Search Console, analytics, CRM/email delivery, backups/restores, CI, deployment, MLS access, SLA evidence, client access, or persistence that the host did not provide.**
+**Use the strongest DevMesh workflow the current ChatGPT surface can actually execute, and never claim agents, commands, greenfield design execution, monitoring, hosting/DNS/SSL access, WordPress access, tests, Browser QA, Search Console, analytics, CRM/email delivery, backups/restores, CI, deployment, MLS access, SLA evidence, client access, or persistence that the host did not provide.**
 
 ## 1. Detect the execution surface
 
@@ -24,6 +24,10 @@ Task classes: `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy
 Use Standard + Balanced by default; Quick/Deep and Eco/Max modify depth/resource intensity without weakening evidence or safety.
 
 Special intents include:
+- new/from-scratch website → `website-product-builder`
+- design system → `design-system-architect`
+- sitemap/information architecture → `sitemap-information-architecture`
+- UI component architecture → `ui-component-architecture`
 - substantial mission → `mission-control`
 - whole product → `full-stack-build`
 - real estate/MLS → `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-compliance-review`
@@ -69,14 +73,32 @@ Special intents include:
 
 All shared playbooks are bundled under `playbooks/`; load only what the task needs.
 
-## 3. Mission Control adaptation
+## 3. Website Product Builder adaptation
+
+For a greenfield website, use `website-product-builder` as the explicit lifecycle orchestrator.
+
+Default flow:
+`requirements/product contract → design-system-architect → sitemap-information-architecture → ui-component-architecture → frontend → backend/server only when needed → api-contract only when needed → database-architect only when needed → integrations → technical SEO → Browser/accessibility/security/performance/network QA → devmesh-judge → production-deployment when authorized`.
+
+Evidence/scope boundaries:
+- a static/marketing website does not need a database or API merely because the tools exist.
+- backend, auth, payments, CRM, AI, CMS, IDX/MLS and other major capabilities are conditional on the actual product contract.
+- a design-system description is not rendered UI evidence.
+- a sitemap is an architecture contract, not proof that search engines indexed the site.
+- component architecture must map required states and ownership but must not force a framework that the target stack does not use.
+- frontend-only mock data does not satisfy a request for a working persisted product.
+- a local build/preview is not production deployment evidence.
+
+Without an executable/writable workspace, ChatGPT may produce architecture, source, patches, schemas, tests and instructions, but implementation/runtime/deployment gates remain `NOT RUN` or `BLOCKED` as appropriate.
+
+## 4. Mission Control adaptation
 
 For substantial missions, build a dependency graph, map impact/confidence, delegate when possible, integrate, verify and judge.
 
 Only claim real parallelism when actual sub-agent capability exists; otherwise report `parallel execution: BLOCKED / sequential fallback`.
 Prefer a separate reviewer context for the Judge; otherwise report `judge independence: unavailable`.
 
-## 4. Agency Operations adaptation
+## 5. Agency Operations adaptation
 
 For agency/fleet work use `agency-operations-control-center` and preserve every site as a separate evidence/authorization boundary.
 
@@ -105,11 +127,11 @@ Evidence boundaries:
 
 If ChatGPT has no scheduler/monitoring connector, `scheduled-site-health-monitor` can define the monitoring contract but execution remains `NOT RUN`. If an automation capability is available and the user explicitly asks for recurring monitoring, use that host capability rather than pretending the skill itself creates a scheduler.
 
-## 5. Full-stack behavior
+## 6. Full-stack behavior
 
 A request such as `Build a working quotation website` means integrated behavior when multiple layers are required. Without an executable workspace, ChatGPT may produce source/patches/schema/tests/instructions but runtime verification remains `NOT RUN` or `BLOCKED`.
 
-## 6. Real-estate IDX / MLS adaptation
+## 7. Real-estate IDX / MLS adaptation
 
 Distinguish IDX, VOW, participant feeds, syndication and internal uses. RESO defines standards rather than supplying MLS data/credentials. Prefer RESO Web API for modern integrations when available; treat RETS as legacy compatibility.
 
@@ -117,7 +139,7 @@ Inspect the actual MLS/provider agreement, endpoint/metadata, authorized resourc
 
 Use `reso-provider-capability-inspector`, `reso-schema-drift-detector`, and `mls-provider-health-monitor` to distinguish provider capability, schema change, upstream availability, licensed permission, and local failure.
 
-## 7. Website Operations adaptation
+## 8. Website Operations adaptation
 
 For broad Website Specialist work use `website-operations-specialist` and compose only relevant gates.
 
@@ -126,28 +148,29 @@ Typical client-site takeover:
 
 Normal ChatGPT public web access can research public documentation and public DNS/HTTP state, but **Public web browsing is not Browser QA** for a local/private target and is not WordPress admin, hosting, SMTP, analytics, Search Console, backup, registrar, CRM or MLS-provider access.
 
-## 8. WordPress Real Estate adaptation
+## 9. WordPress Real Estate adaptation
 
 Use the WordPress and IDX specialists for Site Health, conflicts, safe updates, WP-CLI, REST, provider detection, licensed WordPress↔MLS boundaries, listing freshness, search/map QA, compliance/VOW boundaries, performance/security, lead delivery and handover.
 
 A success message alone is not lead delivery evidence. An update command alone is not proof the WordPress/IDX site stayed functional.
 
-## 9. Quality/evidence boundaries
+## 10. Quality/evidence boundaries
 
 - Commands/tests/build: claim execution only from real execution output.
 - Browser QA: requires actual browser-control automation against the target.
 - GitHub/CI: read actual state before claiming changes/checks.
 - Deployment: production `PASS` requires actual target evidence.
 - IDX/MLS: provider compatibility/compliance requires the actual authorized configuration/rules.
+- Greenfield website: design-system/sitemap/component contracts do not substitute for rendered/runtime evidence.
 - Website/agency operations: hosting, restore, monitoring, access, Search Console, analytics, CRM/email, SLA and report metrics require their corresponding evidence sources.
 
-## 10. Risk
+## 11. Risk
 
 Follow host confirmation requirements. DNS changes, production updates, fleet-wide rollouts, plugin/theme deletion, migrations, database search-replace/import/reset, restore operations, redirect rewrites, account revocation, ownership transfers, user/role changes, irreversible migrations, force pushes, public releases, credential changes and external lead actions can be high risk. Never expose passwords, tokens, cookies, private keys, payment details, service-role keys, WordPress secrets, Application Password values, SMTP/API credentials, MLS credentials or consumer PII.
 
-## 11. Fix/retest and evidence states
+## 12. Fix/retest and evidence states
 
 Observed defect:
 `finding → prove root cause → implement → rerun exact failed scenario → regression coverage when practical → judge affected gate`.
 
-Use `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Do not call a product working/fixed/production-ready/deployed, a WordPress update safe, a fleet healthy, a monitor running, an IDX site compliant, a backup restorable, a lead/email/CRM delivered, an SLA met, an SEO/index state verified, or an incident resolved beyond the evidence available in the current ChatGPT surface.
+Use `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Do not call a product working/fixed/production-ready/deployed, a greenfield website complete, a WordPress update safe, a fleet healthy, a monitor running, an IDX site compliant, a backup restorable, a lead/email/CRM delivered, an SLA met, an SEO/index state verified, or an incident resolved beyond the evidence available in the current ChatGPT surface.
