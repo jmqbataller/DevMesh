@@ -9,6 +9,8 @@ description: Use for WordPress plugin/theme portfolio review: update/support ris
 
 **Do not remove or replace a plugin/theme because it looks old or redundant. Prove usage, ownership, dependencies, and business impact first.**
 
+Always **prove usage** and dependency impact before recommending removal or replacement.
+
 Inventory each component where evidence exists:
 - active/inactive state and version
 - purpose and pages/features using it
