@@ -27,7 +27,7 @@ for task,skills in EXPECTED.items():
         pos=nxt
 
 for phrase in [
-'Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment',
+'Quick','Standard','Deep','Eco','Balanced','Max','website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment',
 'wordpress-real-estate-specialist','website-operations-specialist','hosting-dns-ssl-doctor','wordpress-migration-specialist','backup-restore-drill','seo-search-console-specialist','real-estate-seo-specialist','core-web-vitals-diagnoser','analytics-conversion-qa','email-deliverability-doctor','broken-link-redirect-manager','plugin-theme-risk-intelligence','wp-cron-reliability-doctor','reso-schema-drift-detector','reso-provider-capability-inspector','client-monthly-website-report','website-emergency-recovery',
 'agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor','domain-ssl-expiry-monitor','wordpress-update-wave-manager','staging-production-manager','website-change-timeline','visual-history-screenshot-timeline','plugin-vulnerability-maintenance-watch','license-subscription-tracker','client-access-inventory','ticket-request-intake-agent','sla-priority-engine','lead-sla-monitor','real-estate-crm-integration-specialist','mls-provider-health-monitor','consent-privacy-cookie-auditor','accessibility-continuous-monitor','content-qa-agent','client-onboarding-agent','client-offboarding-agent',
 'read the real issue','never auto-merge','build logs alone are not production verification','never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
@@ -35,7 +35,8 @@ for phrase in [
 for phrase in [
 '3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization',
 'full-stack product working while required layers are mocked/disconnected','fall back sequentially','same-context fallback',
+'frontend-only marketing/static sites must not get an unnecessary database or api','production completion requires real target evidence',
 'backup existence is not restore proof','success ui is not inbox proof','stop rollout','technical audit is not legal certification',
 'form submission is not downstream lead delivery','revocation/deletion/ownership changes require explicit authorization']:
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
-print('OK: routing contract validated for 8 task types and v1.1 Agency Operations orchestration')
+print('OK: routing contract validated for 8 task types and v1.2 Website Product Builder + Agency Operations orchestration')
