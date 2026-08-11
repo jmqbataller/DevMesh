@@ -19,6 +19,13 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v1.3 Design-to-Code Studio
+has('design-to-code-studio','visual-reference-analyzer','design-token-extractor','responsive-layout-inference','visual-fidelity-judge','OBSERVED','INFERRED','UNKNOWN','Maximum **3 visual repair rounds**','source-code similarity is not a substitute for rendered comparison')
+has('visual-reference-analyzer','OBSERVED','INFERRED','UNKNOWN','static frame does not prove','exact assets','Do not claim the whole design was analyzed')
+has('design-token-extractor','semantic color roles','smallest useful scale','false precision','INFERRED','accessibility-review')
+has('responsive-layout-inference','implementation decision, not an observed fact','content-driven breakpoints','no horizontal overflow','touch targets','OBSERVED','INFERRED','UNKNOWN')
+has('visual-fidelity-judge','authoritative visual reference','Never invent a fidelity score','Maximum **3 visual repair rounds**','NOT RUN','visual-regression','Never silently overwrite')
+
 # v1.2 Website Product Builder
 has('website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture','frontend implementation','backend/server logic when needed','api-contract','database-architect','seo-search-console-specialist','browser-qa','production-deployment','BLOCKED')
 has('design-system-architect','typography roles','spacing/layout rhythm','color roles/tokens','focus-visible','prefers-reduced-motion','implementation-oriented design-system contract')
@@ -109,4 +116,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v1.2 Website Product Builder, v1.1 Agency Operations, Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
+print('OK: v1.3 Design-to-Code, v1.2 Website Product Builder, v1.1 Agency Operations, Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
