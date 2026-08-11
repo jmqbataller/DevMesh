@@ -1,6 +1,6 @@
 # DevMesh
 
-**DevMesh** is an evidence-based AI software-engineering, website-operations, and agency-operations orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, plan, build, diagnose, operate, monitor, verify, judge, recover, and deliver without turning assumptions into fake passes.
+**DevMesh** is an evidence-based AI software-engineering, greenfield website product-building, website-operations, and agency-operations orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, design, plan, build, diagnose, operate, monitor, verify, judge, recover, and deliver without turning assumptions into fake passes.
 
 Developer: **John Mark Bataller**
 
@@ -10,96 +10,116 @@ DevMesh ships with:
 
 ## Download DevMesh for ChatGPT
 
-[**Download `devmesh-chatgpt-v1.1.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v1.1.0/devmesh-chatgpt-v1.1.0.zip)
+[**Download `devmesh-chatgpt-v1.2.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v1.2.0/devmesh-chatgpt-v1.2.0.zip)
 
 On a ChatGPT account/surface that supports uploaded Skills: open **Plugins → Skills → Create → Upload from your computer**, upload the ZIP, then start a new chat.
 
+# DevMesh v1.2 — Website Product Builder
+
+v1.2 contains **106 composable skills** and makes greenfield website creation a first-class DevMesh specialization.
+
+## Build a website from scratch
+
+```text
+DevMesh Website Product Builder:
+Build a complete working website from scratch.
+
+Create the product contract, design system, sitemap,
+UI component architecture and responsive frontend.
+Add backend, API, database, auth and integrations only
+where the product actually requires them.
+
+Then implement SEO foundations, run QA,
+judge the integrated result, and prepare production delivery.
+```
+
+Default lifecycle:
+
+```text
+requirements / product contract
+→ design-system-architect
+→ sitemap-information-architecture
+→ ui-component-architecture
+→ frontend implementation
+→ backend/server when needed
+→ api-contract when needed
+→ database-architect when needed
+→ integrations
+→ technical SEO
+→ Browser / accessibility / security / performance / network QA
+→ DevMesh Judge
+→ production deployment when authorized
+→ handoff/report
+```
+
+### New v1.2 skills
+
+- `website-product-builder` — explicit greenfield website lifecycle orchestrator
+- `design-system-architect` — reusable typography, spacing, color/tokens, layout, controls, states, accessibility and motion foundations
+- `sitemap-information-architecture` — route/page hierarchy, navigation, dynamic routes, conversion paths and indexing intent
+- `ui-component-architecture` — reusable UI responsibility map, data/server boundaries, responsive behavior and full state coverage
+
+The builder is scope-aware: a static/marketing/portfolio site does **not** automatically get a backend/database, while a SaaS, booking, quotation, inventory, CRM, e-commerce, membership, or real-estate product can compose the required backend/API/database/auth/integration playbooks.
+
+See [`docs/WEBSITE_PRODUCT_BUILDER.md`](docs/WEBSITE_PRODUCT_BUILDER.md).
+
 # DevMesh v1.1 — Agency Operations Control Center
 
-v1.1 contains **102 composable skills** and extends v1.0 Website Operations into multi-client / multi-site agency operations.
+The v1.1 agency stack remains available for multi-client / multi-site operations:
 
-## Agency command
-
-```text
-DevMesh Agency Deep:
-Review all client websites.
-
-Prioritize outages, SSL/domain expiry, WordPress errors,
-security, failed backups, stale IDX/MLS feeds,
-broken lead flows, CRM failures, SEO/accessibility issues,
-and renewal risks.
-
-Create a site-specific maintenance queue with evidence,
-SLAs, blockers, and client-ready reporting.
-```
-
-Typical agency loop:
-
-```text
-client onboarding + access inventory
-→ multi-site fleet health
-→ scheduled checks
-→ domain / SSL expiry
-→ tickets + SLA priority
-→ site-specific Website/WordPress/IDX specialists
-→ staged update waves / staging→production
-→ change + screenshot history
-→ plugin vulnerability maintenance watch
-→ license/subscription renewals
-→ lead SLA + CRM + MLS provider health
-→ privacy/cookies + accessibility + content QA
-→ client monthly reporting
-→ safe client offboarding when needed
-```
-
-## New v1.1 skills
-
-- `agency-operations-control-center` — top-level multi-client agency orchestrator
-- `multi-site-fleet-manager` — site-specific portfolio health and maintenance prioritization
-- `scheduled-site-health-monitor` — daily/weekly/monthly monitoring contracts and execution evidence
-- `domain-ssl-expiry-monitor` — registrar/domain and TLS expiry/change monitoring
-- `wordpress-update-wave-manager` — canary/staging update waves with stop-on-failure rollout
-- `staging-production-manager` — safe environment comparison and production promotion
-- `website-change-timeline` — evidence-backed change/deploy/update history
-- `visual-history-screenshot-timeline` — timestamped browser snapshots and visual change history
-- `plugin-vulnerability-maintenance-watch` — verified advisory + fleet exposure + update planning
-- `license-subscription-tracker` — renewal/entitlement tracking without storing credentials/payment secrets
-- `client-access-inventory` — operational capability/role inventory without secret values
-- `ticket-request-intake-agent` — structured client request intake without inventing root cause
-- `sla-priority-engine` — P1/P2/P3/P4 impact routing using actual client SLA when available
-- `lead-sla-monitor` — lead handoff latency from site through email/webhook/CRM where observable
-- `real-estate-crm-integration-specialist` — vendor-neutral CRM/webhook/API/email lead integration diagnosis
-- `mls-provider-health-monitor` — upstream provider vs local IDX/MLS failure separation
-- `consent-privacy-cookie-auditor` — technical consent/cookie/data-flow audit without false legal certification
-- `accessibility-continuous-monitor` — release-by-release accessibility regression tracking
-- `content-qa-agent` — placeholder/contact/CTA/content consistency QA with authoritative-source safeguards
-- `client-onboarding-agent` — secret-free client baseline, access gaps, stack map and initial queue
-- `client-offboarding-agent` — ownership-preserving handover/revocation/transfer workflow
+- `agency-operations-control-center`
+- `multi-site-fleet-manager`
+- `scheduled-site-health-monitor`
+- `domain-ssl-expiry-monitor`
+- `wordpress-update-wave-manager`
+- `staging-production-manager`
+- `website-change-timeline`
+- `visual-history-screenshot-timeline`
+- `plugin-vulnerability-maintenance-watch`
+- `license-subscription-tracker`
+- `client-access-inventory`
+- `ticket-request-intake-agent`
+- `sla-priority-engine`
+- `lead-sla-monitor`
+- `real-estate-crm-integration-specialist`
+- `mls-provider-health-monitor`
+- `consent-privacy-cookie-auditor`
+- `accessibility-continuous-monitor`
+- `content-qa-agent`
+- `client-onboarding-agent`
+- `client-offboarding-agent`
 
 See [`docs/AGENCY_OPERATIONS.md`](docs/AGENCY_OPERATIONS.md).
 
 # DevMesh v1.0 — Website Operations Specialist
 
-The v1.0 Website Operations stack remains available:
-
-- `website-operations-specialist`
-- `hosting-dns-ssl-doctor`
-- `wordpress-migration-specialist`
-- `backup-restore-drill`
-- `seo-search-console-specialist`
-- `real-estate-seo-specialist`
-- `core-web-vitals-diagnoser`
-- `analytics-conversion-qa`
-- `email-deliverability-doctor`
-- `broken-link-redirect-manager`
-- `plugin-theme-risk-intelligence`
-- `wp-cron-reliability-doctor`
-- `reso-schema-drift-detector`
-- `reso-provider-capability-inspector`
-- `client-monthly-website-report`
-- `website-emergency-recovery`
+The Website Operations stack remains available for hosting/DNS/SSL, WordPress migration, restore drills, SEO/Search Console, real-estate SEO, Core Web Vitals, analytics, email delivery, redirects, plugin/theme risk, WP-Cron, RESO schema/provider inspection, emergency recovery and client reporting.
 
 See [`docs/WEBSITE_OPERATIONS.md`](docs/WEBSITE_OPERATIONS.md).
+
+## Full-stack development
+
+`website-product-builder` composes the existing `full-stack-build` when multiple application layers are genuinely required.
+
+```text
+Use DevMesh.
+Build a working quotation website.
+```
+
+“Working” means integrated behavior when required: frontend, backend/server logic, API/server actions, persistence/migrations, validation/error states, auth boundaries, integrations, and representative end-to-end evidence.
+
+A typical persisted verification journey is:
+
+```text
+open site
+→ create/submit data
+→ server validates
+→ persist
+→ read back
+→ update
+→ reload
+→ confirm persistence
+```
 
 ## WordPress Real Estate Specialist
 
@@ -109,39 +129,54 @@ DevMesh retains Site Health, plugin/theme conflict isolation, safe updates, WP-C
 
 DevMesh distinguishes IDX, VOW, participant feeds, syndication, and internal uses. RESO provides standards rather than MLS listing credentials. The applicable MLS/provider license remains authoritative for permitted fields, refresh requirements, attribution/disclaimers, and display restrictions.
 
-The real-estate stack includes `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-compliance-review`, `reso-schema-drift-detector`, `reso-provider-capability-inspector`, and v1.1 `mls-provider-health-monitor`.
+The real-estate stack includes `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-compliance-review`, `reso-schema-drift-detector`, `reso-provider-capability-inspector`, and `mls-provider-health-monitor`.
 
 DevMesh will not claim local IDX compliance if current applicable MLS/provider rules were not reviewed; that evidence remains `BLOCKED`.
 
 See [`docs/REAL_ESTATE_IDX_MLS.md`](docs/REAL_ESTATE_IDX_MLS.md) and [`docs/WORDPRESS_REAL_ESTATE.md`](docs/WORDPRESS_REAL_ESTATE.md).
 
-## Client onboarding example
+## Example: complete custom website
 
 ```text
-DevMesh Agency:
-Onboard this client website.
+DevMesh Deep:
+Build a professional working business website from scratch.
 
-Create a secret-free inventory of hosting, DNS, WordPress,
-backups, analytics, Search Console, forms/email, IDX/MLS,
-CRM, renewals, current issues, access gaps,
-baseline screenshots, and an initial maintenance queue.
+Requirements:
+- premium responsive UI/UX
+- clear sitemap and conversion flow
+- reusable design system and component architecture
+- frontend
+- contact/lead workflow
+- backend/API/database only if actually needed
+- SEO foundations
+- accessibility/security/performance QA
+- Browser QA
+- production-ready delivery
+
+Do not use fake APIs or placeholder persistence.
 ```
 
-## Fleet monitoring example
+## Example: full-stack product website
 
 ```text
-DevMesh Agency:
-Monitor this WordPress real-estate fleet for:
-- uptime and HTTPS
-- domain/SSL expiry
-- plugin/theme risk
-- backups
-- IDX/MLS freshness and provider health
-- lead delivery and CRM latency
-- accessibility/content regressions
-- license renewals
+DevMesh Website Product Builder + Deep:
+Build a production-ready booking platform.
 
-Do not claim a monitor is running unless a real scheduler exists.
+Include the design system, sitemap, component architecture,
+frontend, server-side validation, API contracts,
+database schema/migrations, authentication/authorization,
+error states, SEO, QA and deployment verification.
+```
+
+## Agency command
+
+```text
+DevMesh Agency Deep:
+Review all client websites.
+Prioritize outages, SSL/domain expiry, WordPress errors,
+security, failed backups, stale IDX/MLS feeds,
+broken lead flows, CRM failures, SEO/accessibility issues,
+and renewal risks.
 ```
 
 ## Emergency recovery
@@ -163,15 +198,6 @@ Mission Control provides dynamic task graphs, real parallel delegation when supp
 
 Real parallelism or independent judging is never claimed when the runtime does not provide it.
 
-## One prompt → working product
-
-```text
-Use DevMesh.
-Build a working quotation website.
-```
-
-“Working” means integrated behavior when required: frontend, backend/server logic, API/server actions, persistence/migrations, validation/error states, auth boundaries when needed, and end-to-end evidence.
-
 ## Depth + resource modes
 
 ```text
@@ -184,7 +210,7 @@ Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control orchestr
 
 ## ChatGPT Adapter
 
-The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, WP-CLI, WordPress admin, hosting/DNS/registrar dashboards, Search Console, analytics, SMTP/CRM visibility, backup systems, monitoring telemetry, Playwright, sub-agents, MLS credentials, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
+The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a writable workspace, shell, localhost, Git CLI, WP-CLI, WordPress admin, hosting/DNS/registrar dashboards, Search Console, analytics, SMTP/CRM visibility, backup systems, monitoring telemetry, Playwright, sub-agents, MLS credentials, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
 
 Build locally:
 
@@ -192,7 +218,7 @@ Build locally:
 python scripts/build_chatgpt_adapter.py
 ```
 
-Output: `dist/devmesh-chatgpt-v1.1.0.zip`.
+Output: `dist/devmesh-chatgpt-v1.2.0.zip`.
 
 ## Codex Adapter
 
@@ -215,7 +241,7 @@ Start a new Codex thread/session after reinstall.
 
 ## Evidence states
 
-DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Fleet health, monitoring, renewals, access, SLA, CRM/lead delivery, MLS-provider health, privacy/legal claims, WordPress, browser, CI and production status require corresponding evidence.
+DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Greenfield design/implementation, Browser QA, deployment, fleet health, monitoring, renewals, access, SLA, CRM/lead delivery, MLS-provider health, privacy/legal claims, WordPress, CI and production status require corresponding evidence.
 
 ## Public distribution status
 
@@ -238,8 +264,8 @@ python tests/test_plugin_submission_pack.py
 
 | Platform | Status |
 |---|---|
-| Codex | **v1.1 supported** |
-| ChatGPT | **v1.1 portable Agent Skills adapter** |
+| Codex | **v1.2 supported** |
+| ChatGPT | **v1.2 portable Agent Skills adapter** |
 | Claude Code | Planned adapter |
 | Gemini CLI | Planned adapter |
 | Cursor | Planned adapter |
