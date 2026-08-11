@@ -1,6 +1,6 @@
 {
   "name": "devmesh",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A provider-ready software development agent framework for routing, requirements, codebase analysis, planning, implementation, debugging, UI/UX review, Browser QA, QA, code review, and Git delivery. Codex is the first supported adapter.",
   "author": {
     "name": "jmqbataller",
@@ -38,9 +38,12 @@
     "defaultPrompt": [
       "Build this feature safely and verify it before completion.",
       "Fix this bug by finding the root cause first.",
-      "Launch this web app and perform Browser QA before completion.",
-      "Review and improve the UI/UX of this project."
+      "Launch this web app and perform Browser QA before completion."
     ],
-    "websiteURL": "https://github.com/jmqbataller/DevMesh"
+    "websiteURL": "https://github.com/jmqbataller/DevMesh",
+    "brandColor": "#00CFFF",
+    "composerIcon": "./assets/devmesh-icon.png",
+    "logo": "./assets/devmesh-icon.png",
+    "screenshots": []
   }
 }

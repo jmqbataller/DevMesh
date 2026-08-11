@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 - 2026-08-11
+
+- Added the new DevMesh neon technology logo as the Codex plugin icon and logo asset.
+- Added `brandColor`, `composerIcon`, and `logo` interface metadata.
+- Reduced default prompts to the Codex-supported maximum of three.
+
 ## 0.2.0 - 2026-08-11
 
 - Added `browser-qa` as an eleventh first-class DevMesh skill.
