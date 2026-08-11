@@ -1,18 +1,19 @@
-# DevMesh v1.1.0
+# DevMesh v1.2.0
 
-DevMesh v1.1 adds an **Agency Operations Control Center** on top of v1.0 Website Operations, WordPress Real Estate, Mission Control, and the existing **Real Estate IDX / MLS** specialization.
+DevMesh v1.2 adds **Website Product Builder**, an explicit greenfield website-development specialization on top of full-stack engineering, Mission Control, Agency Operations, Website Operations, WordPress Real Estate, and the existing **Real Estate IDX / MLS** specialization.
 
-New agency capabilities include:
-- `agency-operations-control-center` for multi-client / multi-site orchestration
-- `multi-site-fleet-manager` and `scheduled-site-health-monitor`
-- `domain-ssl-expiry-monitor`
-- `wordpress-update-wave-manager` and `staging-production-manager`
-- `website-change-timeline` and `visual-history-screenshot-timeline`
-- `plugin-vulnerability-maintenance-watch` and `license-subscription-tracker`
-- `client-access-inventory`, `ticket-request-intake-agent`, and `sla-priority-engine`
-- `lead-sla-monitor`, `real-estate-crm-integration-specialist`, and `mls-provider-health-monitor`
-- `consent-privacy-cookie-auditor`, `accessibility-continuous-monitor`, and `content-qa-agent`
-- `client-onboarding-agent` and `client-offboarding-agent`
+New greenfield website capabilities include:
+- `website-product-builder` for idea/brief-to-production website orchestration
+- `design-system-architect` for reusable typography, spacing, color/token, layout, control, state, accessibility, and motion foundations
+- `sitemap-information-architecture` for route hierarchy, navigation, dynamic route families, conversion paths, and indexing intent
+- `ui-component-architecture` for reusable UI responsibilities, server/data boundaries, responsive variants, and loading/empty/error/success states
+
+The Website Product Builder routes:
+`requirements/product contract → design system → sitemap/information architecture → UI component architecture → frontend → backend/server when needed → API when needed → database when needed → integrations → SEO → QA → DevMesh Judge → deployment when authorized`.
+
+The builder is scope-aware: static/marketing/portfolio sites do not automatically receive unnecessary databases or APIs, while products that genuinely require server logic, persistence, auth, payments, CRM, IDX/MLS, or other integrations compose the relevant existing DevMesh playbooks.
+
+The Agency Operations Control Center remains available for multi-client fleets, scheduled health monitoring, domain/SSL expiry, staged WordPress updates, change/visual history, plugin vulnerability maintenance, renewal tracking, tickets/SLAs, CRM/lead/MLS health, privacy/accessibility/content QA, and client onboarding/offboarding.
 
 The Website Operations Specialist remains available for hosting/DNS/SSL, WordPress migration, restore drills, technical/real-estate SEO, Core Web Vitals, analytics, email deliverability, links/redirects, WP-Cron, RESO schema/provider inspection, emergency recovery, and client monthly reporting.
 
@@ -20,4 +21,4 @@ The WordPress Real Estate Specialist remains available for Site Health, plugin/t
 
 The **Real Estate IDX / MLS** specialization remains available through `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, and `idx-compliance-review`. **RESO Web API** support remains evidence-based and the actual MLS/provider license/local rules remain authoritative for data access and display rights.
 
-DevMesh v1.1 contains **102 composable skills**. The ChatGPT adapter reports unavailable monitoring/scheduling, hosting, registrar, WordPress admin/WP-CLI, Search Console, analytics, CRM/email, backups, browser, MLS/provider, CI and production evidence as `BLOCKED` or `NOT RUN` rather than fabricating success. Agency fleet status remains site-specific and credential/payment secrets are not stored by the playbooks.
+DevMesh v1.2 contains **106 composable skills**. The ChatGPT adapter reports unavailable writable workspace/runtime, browser, hosting, database, Search Console, analytics, CRM/email, MLS/provider, CI and production evidence as `BLOCKED` or `NOT RUN` rather than fabricating success. A design-system/sitemap/component contract does not substitute for rendered or runtime proof.
