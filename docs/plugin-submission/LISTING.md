@@ -12,17 +12,17 @@ Developer Tools
 
 ## Short description
 
-Mission Control for evidence-based AI software engineering, including full-stack, IDX/MLS, debugging, verification, and delivery.
+Mission Control for evidence-based software engineering, WordPress real estate, IDX / MLS, debugging, verification, and delivery.
 
 ## Long description
 
-DevMesh is a skills-only software engineering orchestration plugin for ChatGPT and Codex. v0.8 adds a Real Estate IDX / MLS specialization for RESO Web API/OData integration, Data Dictionary-aware field mapping, licensed listing synchronization/search, and evidence-based IDX display review against the applicable MLS/provider rules.
+DevMesh is a skills-only software-engineering orchestration plugin for ChatGPT and Codex. v0.9 adds a **WordPress Real Estate Specialist** for WordPress Site Health/runtime audits, plugin/theme conflict diagnosis, safe staged updates, WP-CLI operations, REST API integration, IDX provider detection, WordPress-to-MLS bridging, property search QA, listing freshness, IDX/VOW/compliance monitoring, performance/security review, lead-flow verification, and client handover.
 
-The real-estate specialization sits on top of DevMesh Mission Control: dynamic dependency graphs, real parallel delegation when the runtime supports it, an evidence-first Judge, confidence-aware diagnosis, adversarial architecture review, change-impact mapping, opt-in verified failure memory, eval/replay cases, architecture failure-mode simulation, resource budgets, and production incident command.
+The existing **IDX / MLS** specialization supports RESO Web API/OData, Data Dictionary-aware mapping, licensed listing synchronization/search, and evidence-based public display review against the applicable MLS/provider rules.
 
-DevMesh also includes one-prompt full-stack building, database/API design, Browser QA, network/visual regression, security, accessibility, performance, observability, CI diagnosis, code review, production deployment, and Git delivery workflows.
+These capabilities sit on top of DevMesh Mission Control, full-stack building, database/API design, Browser QA, network/visual regression, accessibility, security, performance, observability, CI diagnosis, code review, production deployment, incident response, and Git delivery workflows.
 
-DevMesh adapts to the tools and evidence actually available. It does not claim tests, parallel agents, an independent judge, Browser QA, CI, repository writes, benchmarks, IDX/MLS provider compatibility/compliance, incident resolution, or deployments succeeded unless corresponding evidence exists. Missing capabilities are reported as BLOCKED or NOT RUN or explicitly labeled as a fallback.
+DevMesh adapts to the tools and evidence actually available. It does not claim WordPress admin/WP-CLI actions, tests, parallel agents, independent judging, Browser QA, CI, repository writes, lead delivery, IDX/MLS compatibility/compliance, incident resolution, or deployments succeeded unless corresponding evidence exists. Missing capabilities are reported as `BLOCKED`, `NOT RUN`, or explicitly labeled as a fallback.
 
 ## Website
 
@@ -52,11 +52,11 @@ Use the verified OpenAI Platform individual/business identity belonging to John 
 
 ## Starter prompts
 
-1. `DevMesh Mission Control: build a production-ready quotation SaaS and judge the integrated result.`
-2. `Use DevMesh. Build a working quotation website.`
-3. `Use DevMesh. Build or audit this real-estate IDX/MLS website using the actual MLS provider rules and RESO data contract.`
-4. `DevMesh Deep + Balanced: review this application for production readiness.`
-5. `DevMesh Incident Commander: production saves are failing; investigate safely and verify recovery.`
+1. `DevMesh Deep: act as a WordPress Real Estate Website Specialist and audit this site end-to-end with evidence.`
+2. `Use DevMesh. Diagnose this WordPress plugin or theme conflict, prove the root cause, fix it safely, and retest.`
+3. `Use DevMesh. Build or audit this real-estate IDX / MLS website using the actual MLS provider rules and RESO data contract.`
+4. `Use DevMesh. Check listing freshness, IDX search/filter/map behavior, security, performance, and lead delivery.`
+5. `DevMesh Mission Control: prepare this WordPress real-estate website for client delivery and create a secret-free handover.`
 
 ## Recommended availability
 
