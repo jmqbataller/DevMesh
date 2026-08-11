@@ -1,223 +1,278 @@
 # DevMesh
 
-**DevMesh** is a provider-ready software development agent framework that routes coding work through the right engineering workflow instead of letting an AI coding agent jump directly into edits.
+**DevMesh** is a provider-ready software-development agent framework that makes AI coding agents inspect, plan, implement, verify, review, and report with evidence instead of jumping directly into edits.
 
-**Codex is the first supported adapter.** The core methodology is intentionally provider-neutral so DevMesh can expand to Claude Code, Gemini CLI, Cursor, GitHub Copilot, and other coding-agent environments.
+**Codex is the first supported adapter.** The core methodology is provider-neutral so future adapters can target Claude Code, Gemini CLI, Cursor, GitHub Copilot, and other coding-agent environments.
 
-## What DevMesh does
+## DevMesh v0.3
 
-DevMesh v0.2.0 contains 11 core workflows:
+v0.3 contains **20 composable skills** plus a bundled **Playwright MCP browser engine**.
 
-1. **Bootstrap / Agent Router** — classify `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy`, or `research` requests and select the minimum safe workflow.
-2. **Brainstorm / Requirements** — turn larger or ambiguous requests into goals, constraints, acceptance criteria, and frozen scope.
-3. **Codebase Intelligence** — inspect instructions, stack, architecture, config boundaries, tests, and Git state before editing.
-4. **Planning Agent** — produce `Task → Files → Changes → Verification` plans.
-5. **Implementation Agent** — make intentional changes in logical, reviewable units.
-6. **Debug Agent** — reproduce → trace → hypothesize → prove root cause → fix → regression verify.
-7. **UI/UX Agent** — review hierarchy, responsiveness, spacing, accessibility, states, motion, overflow, and consistency.
-8. **Browser QA Agent** — launch the app → inspect the rendered page → check console/runtime errors → test desktop/mobile → click interactions → detect overflow → test forms/buttons → capture screenshots → perform visual review → report/fix/retest real issues.
-9. **QA / Verification Agent** — run targeted tests, lint/type/build checks, runtime scenarios, UI checks, and final diff inspection.
-10. **Code Review Agent** — second-pass review for correctness, security, regressions, complexity, maintainability, and test gaps.
-11. **Git / Delivery Agent** — protect working-tree scope and prepare intentional branches, commits, PRs, or handoffs.
+### Core engineering
 
-## Browser QA evidence rule
+1. `using-devmesh` — task router and quality-gate selection
+2. `codebase-intelligence` — repository/stack/config/test/Git understanding
+3. `brainstorming-requirements` — scope, constraints, acceptance criteria
+4. `writing-plans` — Task → Files → Changes → Verification plans
+5. `implementation` — intentional, reviewable changes
+6. `systematic-debugging` — reproduce → trace → prove cause → fix
+7. `risk-engine` — read-only / low / medium / high-risk action control
 
-DevMesh does not treat source-code inspection as browser verification.
+### Browser and product quality
 
-When browser capability is available, `browser-qa` should gather rendered evidence from the actual app. When the active agent cannot launch or control a browser, it must say so explicitly and must **not** claim that responsive layout, interactions, console state, screenshots, or visual QA passed.
+8. `browser-engine` — real browser control through Playwright MCP
+9. `browser-qa` — launch → render → console → viewports → interactions → screenshots → visual review → fix/retest
+10. `ui-ux-review` — hierarchy, consistency, responsive UX, states, motion
+11. `accessibility-review` — keyboard, focus, semantics, labels, forms, contrast, reduced motion
+12. `performance-review` — bundles, images, fonts, network/runtime, measured optimization
 
-The Browser QA flow is:
+### Correctness and safety
+
+13. `regression-testing` — preserve confirmed bug fixes with focused automated coverage
+14. `security-review` — auth, authorization, sessions, secrets, data/API/database/storage boundaries
+15. `qa-verification` — tests, lint/type/build, runtime scenarios, diff verification
+16. `code-review` — correctness, regressions, complexity, maintainability, test gaps
+17. `multi-agent-review` — independent read-only reviewers when native subagents are available
+
+### Memory, reporting, delivery
+
+18. `project-memory` — opt-in `.devmesh/` project facts, decisions, QA baselines
+19. `qa-reporting` — PASS/FAIL/FIXED/BLOCKED evidence and optional persistent artifacts
+20. `git-delivery` — branch/commit/PR/handoff discipline
+
+## Real Browser Engine
+
+DevMesh bundles a Playwright MCP server:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest", "--isolated"]
+    }
+  }
+}
+```
+
+When the host supports plugin MCP servers, Browser QA can use real browser automation instead of source-only inspection.
+
+Browser QA flow:
 
 ```text
 launch app
 → inspect rendered page
-→ check console errors
-→ test desktop/mobile
-→ click interactions
-→ detect overflow
-→ test forms/buttons
-→ take screenshots
-→ visual review
-→ report/fix issues
-→ retest affected scenarios
+→ check console/runtime
+→ test desktop/mobile/tablet when relevant
+→ click/type/navigate
+→ test forms/buttons/states
+→ detect overflow/clipping/z-index issues
+→ capture screenshots/artifacts
+→ UI/accessibility review
+→ fix real issue
+→ rerun the exact failed scenario
+→ add regression coverage when practical
 ```
 
-## Core philosophy
+Browser QA is capped at **3 autonomous fix/retest rounds** to avoid infinite loops.
 
-```text
-Inspect before editing.
-Prove root cause before fixing.
-Use the minimum safe workflow.
-Preserve unrelated working behavior.
-Rendered browser claims require browser evidence.
-Verify before claiming completion.
-```
+## Quality gates are selected, not blindly run
 
-## Request routing
+DevMesh keeps the router lightweight for small tasks while deepening verification when risk/scope requires it.
 
 ```text
 User Request
     ↓
-DevMesh Router
+Task Classification
     ↓
 Codebase Intelligence
     ↓
-Requirements / Planning (when needed)
+Project Memory (only when opted in)
     ↓
-Implementation or Systematic Debugging
+Risk Engine
     ↓
-UI/UX Review (frontend/design work)
+Requirements / Plan (when needed)
     ↓
-Browser QA (runnable browser-facing work)
+Implementation / Debugging
+    ↓
+Relevant Quality Gates
+    ├── Regression Testing
+    ├── Browser QA
+    ├── Accessibility
+    ├── Security
+    ├── Performance
+    └── Multi-Agent Review
     ↓
 QA Verification
     ↓
 Code Review
     ↓
-Git Delivery (when requested/available)
+QA Report / Git Delivery
 ```
 
-The router deliberately does **not** run all workflows for every request. Browser QA is required for redesigns with a runnable browser surface and is conditionally selected for other browser-facing build, fix, debug, review, refactor, and deployment work.
+Examples:
 
-## Repository structure
+- **Tiny backend fix:** inspect → risk → implement → regression test → QA
+- **Browser bug:** inspect → debug → implement → Browser QA → regression test → QA
+- **Web redesign:** inspect → requirements → UI/UX → implement → Browser QA → accessibility → QA → code review
+- **Auth/data feature:** inspect → risk → implement → security review → regression/QA → review
+- **Release readiness:** QA → security → Browser QA → accessibility/performance when relevant → multi-agent review → report → delivery
+
+## Risk Engine
+
+DevMesh classifies mutating actions by blast radius:
+
+- **Read-only** — inspect/search/diagnostics
+- **Low** — scoped source/test/docs edits
+- **Medium** — dependency/schema/auth/CI/env-contract/broad-refactor changes
+- **High** — destructive production/data/history/external/financial/security actions
+
+High-risk actions require explicit authorization unless that exact action was already clearly authorized in the current request.
+
+## Project Memory
+
+Persistent memory is **opt-in**. DevMesh never silently adds project-memory files to unrelated repositories.
+
+When enabled:
 
 ```text
-DevMesh/
-├── .agents/
-│   └── plugins/
-│       └── marketplace.json       # Codex marketplace catalog
-├── plugins/
-│   └── devmesh/                   # Codex adapter package
-│       ├── .codex-plugin/
-│       │   └── plugin.json
-│       ├── skills/
-│       │   ├── browser-qa/
-│       │   └── ...
-│       ├── references/
-│       └── scripts/
-├── tests/
-│   ├── validate_devmesh.py
-│   └── test_routing_contract.py
-├── docs/
-├── AGENTS.md
-├── CHANGELOG.md
-├── LICENSE
-└── README.md
+.devmesh/
+├── project.json
+├── decisions.md
+├── qa-baseline.json
+└── reports/
 ```
 
-## Install in Codex CLI
+Memory stores stable non-secret project facts such as commands, architecture decisions, QA journeys, and baseline references. It must never store tokens, passwords, cookies, private keys, or `.env` contents.
 
-Install the DevMesh GitHub repository as a marketplace:
+## QA Reports
+
+Substantial/release tasks can retain evidence under:
+
+```text
+.devmesh/reports/YYYY-MM-DD-HHMM-task-slug/
+├── report.md
+├── screenshots/
+├── console.txt
+├── network.md
+└── artifacts/
+```
+
+Report states distinguish:
+
+- `PASS`
+- `FAIL`
+- `FIXED`
+- `BLOCKED`
+- `NOT RUN`
+
+Missing evidence is never converted into a pass.
+
+## Multi-Agent Review
+
+When the host environment exposes native subagents, DevMesh can dispatch independent read-only reviewers for:
+
+- spec/correctness
+- code quality
+- security
+- browser/UI/accessibility/performance
+
+Reviewers do not race to edit the same working tree. The lead/implementer owns fixes. DevMesh defaults to at most four concurrent reviewers and one focused re-review round.
+
+When subagents are unavailable, the same review briefs run sequentially.
+
+## Install in Codex
+
+Add the DevMesh marketplace:
 
 ```bash
 codex plugin marketplace add jmqbataller/DevMesh
 ```
 
-Then install DevMesh from that marketplace:
+Install DevMesh:
 
 ```bash
 codex plugin add devmesh@devmesh-marketplace
 ```
 
-Confirm Codex sees it:
+Confirm:
 
 ```bash
 codex plugin list
 ```
 
-After installing or updating DevMesh, **start a new Codex thread/session** before testing so the installed skills are included in the newly rendered prompt.
+After an update/reinstall, start a **new Codex thread/session** so the new skills and MCP configuration are loaded.
 
-### Updating DevMesh
+### Windows note
 
-Refresh/re-add the marketplace if needed, then reinstall DevMesh. The exact update command can vary by Codex CLI version; `codex plugin list` should show the installed DevMesh version after refresh/reinstall.
+If PowerShell blocks `npm.ps1`, use `npm.cmd`/`npx.cmd` for manual Node commands. DevMesh itself declares Playwright MCP through the plugin manifest; the host plugin loader is responsible for starting it.
 
-## Smoke tests
+## Suggested v0.3 smoke test
 
-Use a small disposable code repository for these tests.
-
-### 1. Build routing
+In a disposable web project:
 
 ```text
-Build a small settings page with a theme toggle. Inspect the repository first and tell me which DevMesh workflow you are using before editing.
-```
-
-For browser-facing implementations, Browser QA should be included when the environment can actually launch and inspect the app.
-
-### 2. Debug routing
-
-```text
-The save button sometimes does nothing. Do not guess the fix. Find and prove the root cause, fix it, and verify the regression.
-```
-
-Expected core path:
-
-```text
-codebase-intelligence
-→ systematic-debugging
-→ implementation
-→ qa-verification
-→ code-review
-```
-
-Add `browser-qa` when the failure is browser-facing and a runnable browser surface exists.
-
-### 3. UI/UX + Browser QA routing
-
-```text
-Redesign this page for a modern professional UI and fix mobile overflow and keyboard accessibility. Preserve existing functionality. Launch the app and verify the result in the browser before completion.
-```
-
-Expected path:
-
-```text
-codebase-intelligence
-→ brainstorming-requirements
-→ ui-ux-review
-→ writing-plans
-→ implementation
-→ browser-qa
-→ qa-verification
-→ code-review
+Use DevMesh.
+Build a responsive settings page with a form.
+Run the relevant quality gates.
+Launch the real app in the browser, test desktop and mobile, check console errors,
+exercise the form, capture screenshots, fix any real issues and retest them.
+Add regression coverage for bugs you discover when practical.
+Do not claim a quality gate passed without evidence.
 ```
 
 ## Development validation
 
-Run from the DevMesh repository root:
+From the repository root:
 
 ```bash
 python tests/validate_devmesh.py
 python tests/test_routing_contract.py
+python tests/test_feature_contracts.py
 ```
 
-Expected for v0.2.0:
+Expected:
 
 ```text
 OK: marketplace devmesh-marketplace
-OK: manifest devmesh v0.2.0
-OK: 11 required skills and 8 task types validated
-OK: Browser QA workflow contract validated
-OK: routing contract validated for 8 task types including Browser QA conditions
+OK: manifest devmesh v0.3.0
+OK: Playwright MCP companion configuration validated
+OK: 20 required skills and 8 task types validated
+OK: v0.3 quality-gate contracts validated
+OK: routing contract validated for 8 task types and v0.3 quality gates
+OK: Playwright, fix/retest, regression, security, accessibility, performance, memory, risk, reporting, and multi-agent contracts validated
 ```
 
-## Project helper scripts
+## Repository structure
 
-The installed Codex plugin includes optional helpers under `plugins/devmesh/scripts/`.
-
-The DevMesh skills do not depend on these helpers.
+```text
+DevMesh/
+├── .agents/plugins/marketplace.json
+├── plugins/devmesh/
+│   ├── .codex-plugin/plugin.json
+│   ├── .mcp.json
+│   ├── assets/
+│   ├── skills/
+│   ├── references/
+│   └── scripts/
+├── tests/
+├── docs/
+├── AGENTS.md
+├── CHANGELOG.md
+└── README.md
+```
 
 ## Current platform support
 
 | Platform | Status |
 |---|---|
-| Codex | **v0.2 supported** |
-| Claude Code | Planned |
-| Gemini CLI | Planned |
-| Cursor | Planned |
-| GitHub Copilot | Planned |
+| Codex | **v0.3 supported** |
+| Claude Code | Planned adapter |
+| Gemini CLI | Planned adapter |
+| Cursor | Planned adapter |
+| GitHub Copilot | Planned adapter |
 
-## Current scope
-
-DevMesh intentionally has no custom LLM, backend, database, required API key, or framework dependency. The active coding agent remains the execution engine; DevMesh supplies the engineering methodology and evidence requirements.
+DevMesh has no custom LLM or required backend. The active coding agent remains the execution engine; DevMesh supplies the workflow, browser integration, safety rules, quality gates, review orchestration, memory, and evidence requirements.
 
 ## License
 

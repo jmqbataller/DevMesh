@@ -1,106 +1,146 @@
 ---
 name: using-devmesh
-description: Use at the start of any software-development request to classify the task and route it through the minimum relevant DevMesh skills before taking implementation action.
+description: Use at the start of any software-development request to classify the task, assess action risk, load project context, and route work through the minimum relevant DevMesh skills before implementation.
 ---
 
 # DevMesh Router
 
-This is the bootstrap skill for the framework. Its job is to choose the workflow, not to perform every workflow every time.
+DevMesh selects the smallest workflow that can produce trustworthy evidence. It does **not** run every skill on every task.
 
 ## Core rule
 
-**Inspect and classify before changing code. Verify before claiming completion.**
+**Inspect → classify → assess risk → implement intentionally → verify with the strongest relevant evidence → report limitations.**
 
-User instructions always take precedence. Do not force heavyweight process onto a tiny, obvious task when a smaller safe workflow is sufficient.
+User and repository instructions take precedence over DevMesh defaults.
 
 ## Step 1 — Classify the request
 
 Assign one or more task types:
 
-- `build` — new feature, page, service, tool, or project
+- `build` — new feature/page/service/tool/project
 - `fix` — known defect with a reasonably clear failure
-- `debug` — unclear root cause, intermittent issue, crash, wrong data, or unexpected behavior
-- `redesign` — UI/UX, layout, responsive, accessibility, or interaction changes
+- `debug` — unclear/intermittent failure, crash, wrong data, unexpected behavior
+- `redesign` — UI/UX, responsive, accessibility, interaction, visual work
 - `refactor` — structural improvement with behavior preservation
-- `review` — audit, code review, security review, UX review, or readiness check
-- `deploy` — delivery, release, hosting, environment, CI/CD, branch, PR, or production issue
+- `review` — code/security/UX/accessibility/performance/readiness audit
+- `deploy` — release, hosting, environment, CI/CD, branch/PR, production readiness
 - `research` — technical investigation needed before implementation
 
-A request may belong to several types. Choose the smallest set that explains the work.
+Choose the smallest set that explains the task.
 
-## Step 2 — Select skills
+## Step 2 — Inspect and load context
 
-Use this routing table as a default, not a rigid checklist:
+Start with `codebase-intelligence` for repository work.
 
-| Task | Required path | Conditional path |
+If `.devmesh/` already exists or the user/repository opted into persistent memory, invoke `project-memory` after inspection and validate stored facts against current source/config.
+
+## Step 3 — Assess action risk
+
+Before the first mutating action for `build`, `fix`, `debug`, `redesign`, `refactor`, or `deploy`, invoke `risk-engine`.
+
+High-risk actions require explicit authorization at the point of execution unless that exact action was already clearly authorized in the current request.
+
+## Step 4 — Select the core workflow
+
+| Task | Required path | Conditional quality gates |
 |---|---|---|
-| build | codebase-intelligence → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | ui-ux-review; browser-qa for runnable browser-facing work; git-delivery |
-| fix | codebase-intelligence → implementation → qa-verification | systematic-debugging when root cause is not proven; browser-qa for browser/runtime defects; code-review; git-delivery |
-| debug | codebase-intelligence → systematic-debugging → implementation → qa-verification → code-review | browser-qa when the failure exists in a browser-facing surface; git-delivery |
-| redesign | codebase-intelligence → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → qa-verification → code-review | git-delivery |
-| refactor | codebase-intelligence → writing-plans → implementation → qa-verification → code-review | browser-qa when browser behavior may be affected; git-delivery |
-| review | codebase-intelligence → code-review | ui-ux-review; browser-qa for runnable web UI; qa-verification |
-| deploy | codebase-intelligence → qa-verification → git-delivery | browser-qa for web deployments; systematic-debugging |
-| research | codebase-intelligence | brainstorming-requirements, writing-plans |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | project-memory; browser-qa + accessibility-review for browser UI; security-review for auth/data/API; performance-review for substantial/public web work; multi-agent-review for large/high-risk changes; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is not proven; browser-qa for browser defects; security-review for security-sensitive fixes; multi-agent-review for high-risk fixes; qa-reporting |
+| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | browser-qa for browser failures; security-review when boundary-sensitive; multi-agent-review when broad/high-risk; qa-reporting |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | performance-review; security-review when flows touch auth/data; multi-agent-review for substantial redesigns; qa-reporting |
+| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | regression-testing for behavior contracts; browser-qa when UI/runtime may change; security/performance review when affected; multi-agent-review for broad refactors; qa-reporting |
+| review | codebase-intelligence → code-review | browser-qa; accessibility-review; security-review; performance-review; multi-agent-review for broad/deep review; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → git-delivery | browser-qa for web release; accessibility/performance gates for public UI; multi-agent-review for release readiness; qa-reporting |
+| research | codebase-intelligence | project-memory; brainstorming-requirements; writing-plans |
 
-### Browser QA routing rule
+## Step 5 — Quality-gate rules
 
-Use `browser-qa` whenever the requested outcome materially depends on what a user sees or does in a browser and a runnable application surface is available. Typical triggers include:
+### Browser-facing work
 
-- building or redesigning a web page/application
-- responsive or mobile fixes
-- interaction, navigation, modal, form, or state bugs
-- browser console/runtime failures
-- visual regression or release-readiness checks
+Use `browser-qa` when success materially depends on what a user sees/does in a runnable browser. `browser-qa` invokes `browser-engine` for actual Playwright/browser control.
 
-For browser-facing implementation work, prefer this evidence chain when capabilities are available:
+Typical triggers:
 
-`implementation → browser-qa → qa-verification → code-review`
+- web builds/redesigns
+- responsive/mobile bugs
+- interactions/forms/navigation/modals
+- browser console/runtime issues
+- release-readiness of a web surface
 
-`browser-qa` must not claim rendered, responsive, interaction, console, screenshot, or visual-review success when the active environment lacks the necessary browser capability. In that case, report the missing evidence explicitly and continue only with checks that are actually available.
+### Regression tests
 
-## Step 3 — Scope the work
+Use `regression-testing` by default for confirmed bug fixes when a stable automated test is practical. Do not force a new heavy test stack into a tiny project solely to satisfy the workflow.
 
-Before editing:
+### Security
 
-1. Identify the requested outcome.
-2. Identify constraints explicitly stated by the user.
-3. Separate required work from optional improvements.
-4. Avoid unrelated cleanup unless it is necessary for correctness.
-5. If the repository already has local instructions, follow them.
+Use `security-review` when the change touches authentication, authorization, sessions, user data, APIs, database/storage access, secrets, uploads, redirects, webhooks, deployment/security configuration, or explicitly requests security review.
 
-## Step 4 — Preserve evidence
+### Accessibility
 
-During execution, keep track of:
+Use `accessibility-review` for substantial browser UI, redesigns, public release readiness, or explicit accessibility work. Browser QA's basic keyboard checks do not replace dedicated accessibility review.
 
-- files inspected
-- root cause or design rationale
+### Performance
+
+Use `performance-review` for substantial/public browser work, explicit performance work, large bundle/media changes, or release readiness where loading/runtime cost matters. Numeric claims require actual measurements.
+
+### Multi-agent review
+
+Use `multi-agent-review` for large, high-risk, cross-layer, release-readiness, or explicitly deep review. If native subagents are unavailable, use the sequential fallback and say so.
+
+### QA reporting
+
+Use `qa-reporting` for substantial/release tasks or when project memory/reporting is enabled. Persistent `.devmesh/reports/` files are opt-in via existing project memory/repository instruction/user request; otherwise report evidence in chat only.
+
+## Step 6 — Automatic fix/retest behavior
+
+When a verification skill finds a real in-scope defect:
+
+`finding → prove cause → implementation → rerun the exact failed scenario → regression-testing when practical`
+
+Browser QA may perform up to 3 fix/retest rounds. Multi-agent review defaults to one initial review, one fix round, and one focused re-review.
+
+Do not loop indefinitely.
+
+## Step 7 — Preserve evidence
+
+Track as relevant:
+
+- files/instructions inspected
+- task classification and risk level
+- root cause/design rationale
 - files changed
-- validation commands and outcomes
-- browser routes, interactions, viewports, console findings, and screenshots when browser QA runs
-- unresolved risks or blockers
+- tests/build/lint/typecheck outcomes
+- browser engine, URL, routes, viewports, interactions, console/network findings
+- screenshots/traces/artifacts
+- accessibility/security/performance findings
+- reviewer findings and resolution
+- unresolved risks/blockers
 
 ## Platform adaptation
 
-DevMesh skills describe workflow behavior, not one provider's exact tool names. Use the native tools available in the active coding-agent environment while preserving the same workflow guarantees. Platform-specific references may refine how Git, subagents, browsers, sandboxes, or plugin lifecycle behavior works.
+Core skills are provider-neutral. Use the native tools available in the active coding-agent environment while preserving DevMesh evidence and safety guarantees.
+
+For Codex, plugin-bundled MCP servers may provide browser capabilities and native multi-agent tools may provide independent reviewer agents when enabled.
 
 ## Non-negotiable behavior
 
 Never:
 
 - guess a root cause and present it as proven
-- claim a fix without verification evidence
+- claim a fix without verification
 - claim browser/visual QA without browser evidence
-- rewrite working architecture without a reason tied to the task
-- expose secrets or move server-only credentials to client code
-- silently modify unrelated files
-- invent project requirements, metrics, credentials, or external system behavior
+- invent accessibility/security/performance passes or metrics
+- expose/store secrets in project memory or QA artifacts
+- silently perform high-risk/destructive actions
+- silently rewrite unrelated architecture
+- modify unrelated files without necessity
 
 Always:
 
 - inspect before editing
 - preserve working behavior unless change is intentional
-- prefer small, reversible changes
-- use the repository's existing conventions when they are sound
-- verify the result with the strongest checks available
+- prefer small/reversible changes
+- match repository conventions when sound
+- scale verification depth to risk
+- distinguish PASS from BLOCKED/NOT RUN
 - state clearly what could not be verified

@@ -1,84 +1,160 @@
 # Architecture
 
-DevMesh is a **provider-neutral workflow layer** for AI coding agents, not a new model.
+DevMesh is a **provider-neutral engineering workflow layer** for AI coding agents, not a separate model.
 
-The host agent supplies reasoning and execution. DevMesh supplies reusable software-development methodology through composable skills. **Codex is the first supported adapter**, while the core skill contracts are intentionally written so future adapters can target Claude Code, Gemini CLI, Cursor, Copilot, and other coding-agent environments.
+The host agent supplies reasoning and execution. DevMesh supplies task routing, risk control, browser automation integration, engineering methodology, quality gates, review orchestration, project memory, and evidence requirements. **Codex is the first supported adapter.**
 
-## Request lifecycle
+## v0.3 request lifecycle
 
 ```text
 User request
    ↓
-DevMesh Router / task classification
+using-devmesh
+   ├── classify task
+   ├── codebase-intelligence
+   ├── project-memory (opt-in/existing)
+   └── risk-engine before mutation
    ↓
-Codebase intelligence
+Requirements / plan when needed
    ↓
-Requirements (when needed)
+Implementation or systematic debugging
    ↓
-Plan (when needed)
+Relevant gates selected by surface/risk
+   ├── regression-testing
+   ├── browser-engine → browser-qa
+   ├── ui-ux-review
+   ├── accessibility-review
+   ├── security-review
+   ├── performance-review
+   └── multi-agent-review
    ↓
-Implementation / systematic debugging
+qa-verification
    ↓
-UI/UX review (frontend work)
+code-review
    ↓
-QA verification
-   ↓
-Code review
-   ↓
-Git delivery (when requested/available)
+qa-reporting / git-delivery
 ```
 
-## Core vs adapters
+The router selects the **minimum safe and evidence-producing workflow**. Installing every skill does not mean executing every skill on every task.
+
+## Codex adapter
 
 ```text
-DevMesh
-├── skills/                 # provider-neutral workflow contracts
-├── references/             # shared and platform-specific guidance
-├── scripts/                # optional local helpers
-└── .codex-plugin/          # Codex adapter / packaging metadata (v0.1)
+plugins/devmesh/
+├── .codex-plugin/plugin.json
+├── .mcp.json                    # Playwright MCP
+├── assets/
+├── skills/
+├── references/
+└── scripts/
 ```
 
-The core should avoid depending on one provider's proprietary tool names. Platform-specific capabilities belong in adapter metadata or reference documents. This lets the same ten workflows evolve across multiple coding agents without duplicating the methodology.
+The Codex plugin manifest exposes DevMesh skills and a companion MCP configuration. The bundled Playwright server is a local stdio MCP process started with `npx`; the browser methodology remains provider-neutral so future adapters can map an equivalent browser engine.
 
-## Why routing matters
+## Skill groups
 
-Not every request needs every skill. A backend typo fix should not require a full redesign workflow. A repository-wide redesign should not skip requirements and responsive review.
+### Orchestration
 
-The router selects the **minimum safe workflow**.
-
-## Skill boundaries
-
-| Skill | Owns |
+| Skill | Responsibility |
 |---|---|
-| using-devmesh | classification and routing |
-| brainstorming-requirements | scope and acceptance criteria |
-| codebase-intelligence | repository understanding |
-| writing-plans | executable task breakdown |
-| implementation | intentional code changes |
-| systematic-debugging | evidence-driven root-cause workflow |
-| ui-ux-review | usability, responsive, accessibility, visual QA |
-| qa-verification | proof before completion |
-| code-review | independent correctness/security/quality pass |
+| using-devmesh | classify task and select workflow |
+| risk-engine | action-risk classification and approval behavior |
+| project-memory | opt-in persistent non-secret project context |
+| multi-agent-review | independent reviewer orchestration / sequential fallback |
+| qa-reporting | evidence matrix and artifact/report persistence |
+
+### Discovery and implementation
+
+| Skill | Responsibility |
+|---|---|
+| codebase-intelligence | understand current repository/stack/config/test/Git state |
+| brainstorming-requirements | freeze scope, constraints, acceptance criteria |
+| writing-plans | executable implementation plan |
+| implementation | intentional scoped code changes |
+| systematic-debugging | reproduce/trace/prove root cause |
+| regression-testing | preserve bug fixes/behavior contracts |
+
+### Browser and experience
+
+| Skill | Responsibility |
+|---|---|
+| browser-engine | actual browser execution and evidence transport |
+| browser-qa | rendered functional/responsive/runtime QA and fix/retest loop |
+| ui-ux-review | product/UI design quality |
+| accessibility-review | keyboard, semantics, focus, forms, contrast, motion |
+| performance-review | loading/runtime/resource evidence and optimization |
+
+### Verification and delivery
+
+| Skill | Responsibility |
+|---|---|
+| security-review | auth/data/secrets/API/security boundaries |
+| qa-verification | project-native automated/static verification |
+| code-review | correctness/maintainability/regression review |
 | git-delivery | branch/commit/PR/handoff discipline |
 
-## Platform roadmap
+## Browser architecture
 
-### v0.1 — Codex adapter
+`browser-qa` owns the verification contract; `browser-engine` owns browser control.
 
-`.codex-plugin/plugin.json` exposes the DevMesh skills to Codex.
+```text
+browser-qa
+    ↓
+browser-engine
+    ↓
+Playwright MCP (Codex v0.3 adapter)
+    ↓
+real page/session
+```
 
-### Future adapters
+If the host cannot provide a real browser engine, Browser QA must report the gate as blocked/partial rather than pretending source inspection proves rendered behavior.
 
-Potential adapter targets:
+## Fix/retest architecture
+
+Verification skills may route defects back to implementation:
+
+```text
+Observed defect
+   ↓
+prove root cause
+   ↓
+implementation
+   ↓
+rerun exact failed scenario
+   ↓
+regression-testing when practical
+```
+
+Browser QA caps autonomous fix/retest at three rounds. Multi-agent review caps itself to an initial review, one fix round, and one focused re-review.
+
+## Project memory boundary
+
+Persistent memory is deliberately opt-in:
+
+```text
+.devmesh/
+├── project.json
+├── decisions.md
+├── qa-baseline.json
+└── reports/
+```
+
+Current source/config always outranks stored memory. Secrets and sensitive personal data are forbidden from DevMesh memory and QA artifacts.
+
+## Multi-agent model
+
+DevMesh does not require multi-agent support. When native subagents exist, reviewers are independent/read-only and the lead/implementer owns edits. When native subagents do not exist, reviewer roles execute sequentially using the same contracts.
+
+This preserves compatibility across providers while allowing Codex to use native agent tooling where available.
+
+## Adapter roadmap
+
+Future adapters should map native capabilities to the same contracts rather than fork the methodology:
 
 - Claude Code
 - Gemini CLI
 - Cursor
 - GitHub Copilot
-- other agent environments with reusable instruction/skill systems
+- other coding-agent environments
 
-Adapters should map native tools and lifecycle behavior to the same DevMesh skill contracts rather than fork the core workflows.
-
-## Multi-agent future
-
-The architecture allows implementation and review to be split across subagents when the active coding-agent environment supports it. Multi-agent execution is deliberately not required for v0.1.0, which keeps DevMesh usable in simpler environments.
+A future adapter may use a different browser tool, subagent mechanism, or plugin format while preserving DevMesh's evidence boundaries and workflow semantics.
