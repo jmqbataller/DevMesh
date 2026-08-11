@@ -8,6 +8,7 @@ PLUGIN = ROOT / 'plugins' / 'devmesh'
 MANIFEST = PLUGIN / '.codex-plugin' / 'plugin.json'
 MARKETPLACE = ROOT / '.agents' / 'plugins' / 'marketplace.json'
 MCP = PLUGIN / '.mcp.json'
+CHATGPT = ROOT / 'adapters' / 'chatgpt' / 'devmesh-chatgpt'
 REQUIRED = {
 'using-devmesh','execution-modes','brainstorming-requirements','codebase-intelligence','environment-doctor','writing-plans','implementation','systematic-debugging','risk-engine','full-stack-build','database-architect','api-contract','architecture-guard','browser-engine','browser-qa','network-failure-qa','visual-regression','ui-ux-review','accessibility-review','performance-review','test-data-personas','regression-testing','security-review','observability-review','qa-verification','qa-reporting','code-review','multi-agent-review','ci-auto-heal','issue-to-pr','production-deployment','project-memory','git-delivery'}
 FM = re.compile(r'^---\n(.*?)\n---\n', re.S)
@@ -31,7 +32,7 @@ def main():
     market=json.loads(MARKETPLACE.read_text(encoding='utf-8'))
     mcp=json.loads(MCP.read_text(encoding='utf-8'))
     if manifest.get('name')!='devmesh': fail('manifest name')
-    if manifest.get('version')!='0.5.0': fail('manifest version')
+    if manifest.get('version')!='0.6.0': fail('manifest version')
     if manifest.get('skills')!='./skills/': fail('skills path')
     if manifest.get('mcpServers')!='./.mcp.json': fail('mcp path')
     if 'hooks' in manifest: fail('hooks must not be in plugin.json')
@@ -71,10 +72,16 @@ def main():
     require(PLUGIN/'skills/ci-auto-heal/SKILL.md',['read logs','root cause','make CI green'])
     require(PLUGIN/'skills/architecture-guard/SKILL.md',['server-only','direct database access','circular dependencies'])
     require(PLUGIN/'skills/full-stack-build/SKILL.md',['database-architect','api-contract','network-failure-qa','open app → create data'])
+    chat_meta=frontmatter(CHATGPT/'SKILL.md')
+    if chat_meta.get('name')!='devmesh-chatgpt' or not chat_meta.get('description'): fail('ChatGPT adapter metadata')
+    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','connected GitHub','PASS','BLOCKED','NOT RUN'])
+    for ref in ['tool-adaptation.md','evidence-boundaries.md','invocation-examples.md']:
+        if not (CHATGPT/'references'/ref).exists(): fail(f'missing ChatGPT adapter reference {ref}')
     print(f"OK: marketplace {market['name']}")
     print(f"OK: manifest {manifest['name']} v{manifest['version']}")
     print('OK: Playwright MCP configuration validated')
     print(f'OK: {len(found)} required skills and 8 task types validated')
-    print('OK: v0.5 autonomous engineering contracts validated')
+    print('OK: ChatGPT Agent Skills adapter contract validated')
+    print('OK: v0.6 multi-surface engineering contracts validated')
     return 0
 if __name__=='__main__': sys.exit(main())

@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "0.5.0",
-  "description": "A provider-ready autonomous software engineering workflow framework with one-prompt full-stack builds, environment diagnosis, database/API architecture, Issue-to-PR delivery, CI auto-heal, Playwright Browser QA, resilience/visual regression, security, accessibility, performance, observability, production deployment, architecture guardrails, execution modes, review, memory, reporting, and Git delivery. Codex is the first supported adapter.",
+  "version": "0.6.0",
+  "description": "A provider-ready autonomous software engineering workflow framework with Codex and ChatGPT adapters, one-prompt full-stack builds, environment diagnosis, database/API architecture, Issue-to-PR delivery, CI auto-heal, Playwright Browser QA, resilience/visual regression, security, accessibility, performance, observability, production deployment, architecture guardrails, execution modes, review, memory, reporting, and Git delivery.",
   "author": {
     "name": "jmqbataller",
     "url": "https://github.com/jmqbataller"
@@ -10,16 +10,16 @@
   "repository": "https://github.com/jmqbataller/DevMesh",
   "license": "MIT",
   "keywords": [
-    "devmesh", "codex", "ai-agents", "software-development", "agentic-workflow",
-    "full-stack", "database", "api", "playwright", "browser-automation", "ci-cd",
-    "github", "security", "accessibility", "performance", "observability", "deployment", "qa"
+    "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
+    "agentic-workflow", "full-stack", "database", "api", "playwright", "browser-automation",
+    "ci-cd", "github", "security", "accessibility", "performance", "observability", "deployment", "qa"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
     "shortDescription": "Autonomous end-to-end software engineering workflow mesh",
-    "longDescription": "DevMesh turns concise requests into evidence-based software engineering workflows across environment setup, full-stack architecture, database and API contracts, implementation, browser automation, resilience, visual regression, security, accessibility, performance, observability, CI repair, Issue-to-PR delivery, production deployment, independent review, memory, QA reporting, and Git delivery. Codex is the first supported adapter.",
+    "longDescription": "DevMesh turns concise requests into evidence-based software engineering workflows across environment setup, full-stack architecture, database and API contracts, implementation, browser automation, resilience, visual regression, security, accessibility, performance, observability, CI repair, Issue-to-PR delivery, production deployment, independent review, memory, QA reporting, and Git delivery. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter included in the repository.",
     "developerName": "jmqbataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],

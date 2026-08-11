@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.0 - 2026-08-11
+
+DevMesh v0.6 adds the first non-Codex runtime adapter.
+
+- Added `adapters/chatgpt/devmesh-chatgpt/SKILL.md` as a portable Agent Skills adapter for normal ChatGPT.
+- Added ChatGPT-specific tool adaptation so DevMesh does not assume local shell, localhost, Git CLI, Playwright, or deployment credentials are present.
+- Added explicit GitHub/file/runtime/browser/deployment capability mapping for ChatGPT surfaces.
+- Added strict ChatGPT evidence boundaries: public web browsing is not Browser QA, planned writes are not completed writes, and static review is not runtime verification.
+- Added ChatGPT-compatible `PASS`, `FAIL`, `FIXED`, `BLOCKED`, and `NOT RUN` completion semantics.
+- Added ChatGPT examples for one-prompt full-stack builds, Deep review, GitHub Issue→PR, CI work, and no-runtime fallback behavior.
+- Added `scripts/build_chatgpt_adapter.py` to produce a self-contained upload ZIP with the ChatGPT adapter plus generated copies of all shared DevMesh core playbooks.
+- Added `docs/CHATGPT_ADAPTER.md` with build/install/use guidance.
+- Added `tests/test_chatgpt_adapter.py` and CI coverage for the generated upload bundle.
+- Updated the DevMesh manifest/README to v0.6 and documented Codex + ChatGPT adapter support.
+
 ## 0.5.0 - 2026-08-11
 
 DevMesh v0.5 expands the framework into end-to-end engineering and production orchestration.
