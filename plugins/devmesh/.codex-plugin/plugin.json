@@ -3,7 +3,7 @@
   "version": "0.8.0",
   "description": "A provider-ready AI software engineering orchestration framework with Codex and ChatGPT adapters, Mission Control, one-prompt full-stack builds, Browser QA, security, CI/deployment, and a real-estate IDX/MLS specialization covering RESO Web API, listing sync/search, and display compliance review.",
   "author": {
-    "name": "jmqbataller",
+    "name": "John Mark Bataller",
     "url": "https://github.com/jmqbataller"
   },
   "homepage": "https://github.com/jmqbataller/DevMesh",
@@ -21,7 +21,7 @@
     "displayName": "DevMesh",
     "shortDescription": "Mission Control for evidence-based AI software engineering",
     "longDescription": "DevMesh v0.8 adds a real-estate IDX/MLS specialization with RESO Web API/OData integration, Data Dictionary-aware mapping, listing synchronization/search architecture, and evidence-based IDX compliance review on top of Mission Control, full-stack builds, Browser QA, security, accessibility, performance, CI, production deployment, review, memory, reporting, and Git delivery. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
-    "developerName": "jmqbataller",
+    "developerName": "John Mark Bataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
