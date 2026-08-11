@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 - 2026-08-11
+
+DevMesh v1.2 adds **Website Product Builder** as an explicit greenfield website-development specialization.
+
+- Added `website-product-builder` for website creation from product contract through design, implementation, QA, and deployment.
+- Added `design-system-architect` for reusable visual/interaction foundations.
+- Added `sitemap-information-architecture` for route hierarchy, navigation, dynamic routes, conversion paths, and indexing intent.
+- Added `ui-component-architecture` for reusable component responsibilities, data/server boundaries, responsive behavior, and state coverage.
+- Greenfield routing now explicitly composes frontend plus backend/API/database only when genuinely required.
+- Updated ChatGPT adapter, docs, Plugin Directory materials, release metadata, and validation for **106 composable skills**.
+
 ## 1.1.0 - 2026-08-11
 
 DevMesh v1.1 adds **Agency Operations Control Center** workflows for multi-client and multi-site website operations.
