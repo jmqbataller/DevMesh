@@ -11,7 +11,7 @@ found = {p.name for p in PACK.glob('*.md')}
 assert not (required-found), f'missing submission files: {sorted(required-found)}'
 
 listing=(PACK/'LISTING.md').read_text(encoding='utf-8')
-for phrase in ['Submission type: **Skills only**','## Plugin name','## Short description','## Long description','## Website','## Support URL','## Privacy policy URL','## Terms URL','## Starter prompts','Mission Control','IDX / MLS']:
+for phrase in ['Submission type: **Skills only**','## Plugin name','## Short description','## Long description','## Website','## Support URL','## Privacy policy URL','## Terms URL','## Starter prompts','Mission Control','IDX / MLS','Website Operations Specialist','John Mark Bataller']:
     assert phrase in listing, phrase
 privacy=(PACK/'PRIVACY.md').read_text(encoding='utf-8')
 assert 'does not operate a DevMesh-controlled backend service' in privacy
@@ -26,9 +26,9 @@ for phrase in ['False deployment claim','Secret exposure','Pretend a bug is fixe
     assert phrase in tests
 release=(PACK/'RELEASE_NOTES.md').read_text(encoding='utf-8')
 assert f'DevMesh v{VERSION}' in release
-for phrase in ['Real Estate IDX / MLS','RESO Web API','idx-compliance-review']:
+for phrase in ['Website Operations Specialist','Real Estate IDX / MLS','RESO Web API','idx-compliance-review','81 composable skills']:
     assert phrase in release, phrase
 checklist=(PACK/'SUBMISSION_CHECKLIST.md').read_text(encoding='utf-8')
-for phrase in ['Apps Management: Write','individual verification','business verification','Skills only','Submit for Review',f'devmesh-chatgpt-v{VERSION}.zip']:
+for phrase in ['Apps Management: Write','individual verification','business verification','Skills only','Submit for Review',f'devmesh-chatgpt-v{VERSION}.zip','81 bundled playbooks']:
     assert phrase in checklist, phrase
 print(f'OK: public OpenAI Plugin Directory v{VERSION} submission pack validated')
