@@ -11,6 +11,7 @@ MCP = PLUGIN / '.mcp.json'
 CHATGPT = ROOT / 'adapters' / 'chatgpt' / 'devmesh-chatgpt'
 REQUIRED = {
 'using-devmesh','execution-modes','brainstorming-requirements','codebase-intelligence','environment-doctor','writing-plans','implementation','systematic-debugging','risk-engine','full-stack-build','database-architect','api-contract','architecture-guard','browser-engine','browser-qa','network-failure-qa','visual-regression','ui-ux-review','accessibility-review','performance-review','test-data-personas','regression-testing','security-review','observability-review','qa-verification','qa-reporting','code-review','multi-agent-review','ci-auto-heal','issue-to-pr','production-deployment','project-memory','git-delivery',
+'website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture',
 'mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander',
 'real-estate-idx-mls','reso-web-api','listing-sync-search','idx-compliance-review',
 'wordpress-real-estate-specialist','wordpress-site-doctor','wordpress-plugin-conflict-detective','wordpress-safe-update-manager','wp-cli-operator','wordpress-rest-api-integrator','idx-provider-detector','wordpress-idx-bridge','idx-search-qa','listing-freshness-monitor','idx-compliance-monitor','idx-vow-mode-detector','wordpress-performance-doctor','wordpress-security-specialist','wordpress-lead-flow-qa','wordpress-client-handover',
@@ -37,7 +38,7 @@ def main():
     market=json.loads(MARKETPLACE.read_text(encoding='utf-8'))
     mcp=json.loads(MCP.read_text(encoding='utf-8'))
     if manifest.get('name')!='devmesh': fail('manifest name')
-    if manifest.get('version')!='1.1.0': fail('manifest version')
+    if manifest.get('version')!='1.2.0': fail('manifest version')
     if manifest.get('skills')!='./skills/': fail('skills path')
     if manifest.get('mcpServers')!='./.mcp.json': fail('mcp path')
     if 'hooks' in manifest: fail('hooks must not be in plugin.json')
@@ -66,6 +67,11 @@ def main():
         if f'`{task}`' not in router: fail(f'router task {task}')
     for skill in REQUIRED-{'using-devmesh'}:
         if skill not in router: fail(f'router skill {skill}')
+
+    require(PLUGIN/'skills/website-product-builder/SKILL.md',['design-system-architect','sitemap-information-architecture','ui-component-architecture','frontend implementation','api-contract','database-architect','seo-search-console-specialist','production-deployment','BLOCKED'])
+    require(PLUGIN/'skills/design-system-architect/SKILL.md',['typography roles','color roles/tokens','focus-visible','prefers-reduced-motion'])
+    require(PLUGIN/'skills/sitemap-information-architecture/SKILL.md',['page/route inventory','dynamic route families','indexing intent','dead ends'])
+    require(PLUGIN/'skills/ui-component-architecture/SKILL.md',['stateful vs presentational','loading, skeleton, empty, error and success states','data-fetching/server boundaries','premature abstraction'])
 
     require(PLUGIN/'skills/mission-control/SKILL.md',['dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','Maximum two judge repair rounds'])
     require(PLUGIN/'skills/real-estate-idx-mls/SKILL.md',['RESO Web API','VOW is not IDX','server-side','local MLS/provider rules'])
@@ -96,7 +102,7 @@ def main():
 
     chat_meta=frontmatter(CHATGPT/'SKILL.md')
     if chat_meta.get('name')!='devmesh-chatgpt' or not chat_meta.get('description'): fail('ChatGPT adapter metadata')
-    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','mission-control','website-operations-specialist','agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor','lead-sla-monitor','real-estate-crm-integration-specialist','client-onboarding-agent','client-offboarding-agent','parallel execution: BLOCKED','judge independence: unavailable','PASS','BLOCKED','NOT RUN'])
+    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture','mission-control','website-operations-specialist','agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor','lead-sla-monitor','real-estate-crm-integration-specialist','client-onboarding-agent','client-offboarding-agent','parallel execution: BLOCKED','judge independence: unavailable','PASS','BLOCKED','NOT RUN'])
     for ref in ['tool-adaptation.md','evidence-boundaries.md','invocation-examples.md']:
         if not (CHATGPT/'references'/ref).exists(): fail(f'missing ChatGPT adapter reference {ref}')
 
@@ -105,6 +111,6 @@ def main():
     print('OK: Playwright MCP configuration validated')
     print(f'OK: {len(found)} required skills and 8 task types validated')
     print('OK: ChatGPT Agent Skills adapter contract validated')
-    print('OK: v1.1 Agency Operations + v1.0 Website Operations + WordPress/IDX/MLS contracts validated')
+    print('OK: v1.2 Website Product Builder + Agency/Website Operations + WordPress/IDX/MLS contracts validated')
     return 0
 if __name__=='__main__': sys.exit(main())
