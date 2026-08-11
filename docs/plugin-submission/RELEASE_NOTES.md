@@ -1,24 +1,20 @@
-# DevMesh v0.9.0
+# DevMesh v1.0.0
 
-DevMesh v0.9 adds **WordPress Real Estate Specialist** workflows on top of the existing **Real Estate IDX / MLS** and Mission Control stack.
+DevMesh v1.0 adds a **Website Operations Specialist** and Client Site Autopilot layer on top of Mission Control, WordPress Real Estate, and the existing **Real Estate IDX / MLS** specialization.
 
-New capabilities include:
-- `wordpress-real-estate-specialist` for end-to-end WordPress + real-estate orchestration
-- `wordpress-site-doctor` for WordPress Site Health, PHP/server/database, themes/plugins, cron, REST, permalinks and configuration review
-- `wordpress-plugin-conflict-detective` for evidence-based plugin/theme conflict isolation
-- `wordpress-safe-update-manager` for backups, staging, controlled WordPress/plugin/theme updates and rollback verification
-- `wp-cli-operator` for risk-aware WP-CLI inspection and operations
-- `wordpress-rest-api-integrator` for custom post types, REST routes, permissions and service integration
-- `idx-provider-detector` and `wordpress-idx-bridge` for detecting and designing WordPress ↔ IDX/MLS/provider architecture
-- `idx-search-qa` for browser-level property search, filters, maps, cards, details and mobile QA
-- `listing-freshness-monitor` and `idx-compliance-monitor` for stale-data and public-display restriction monitoring
-- `idx-vow-mode-detector` for evidence-based IDX vs VOW classification
-- `wordpress-performance-doctor` and `wordpress-security-specialist`
-- `wordpress-lead-flow-qa` for downstream inquiry/showing/contact delivery verification
-- `wordpress-client-handover` for secret-free operational documentation
+New website-operations capabilities include:
+- `website-operations-specialist` for end-to-end client-site takeover and maintenance orchestration
+- `hosting-dns-ssl-doctor` for DNS, SSL/TLS, HTTPS, CDN/proxy, redirects and origin diagnosis
+- `wordpress-migration-specialist` and `backup-restore-drill` for migration and recovery readiness
+- `seo-search-console-specialist` and `real-estate-seo-specialist`
+- `core-web-vitals-diagnoser` for measured LCP/INP/CLS diagnosis
+- `analytics-conversion-qa` and `email-deliverability-doctor`
+- `broken-link-redirect-manager`, `plugin-theme-risk-intelligence`, and `wp-cron-reliability-doctor`
+- `reso-schema-drift-detector` and `reso-provider-capability-inspector`
+- `client-monthly-website-report` and `website-emergency-recovery`
 
-The existing Real Estate IDX / MLS specialization remains available, including `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, and `idx-compliance-review`. RESO Web API remains the preferred modern standards-based transport when an MLS/provider offers it; the actual provider license and local rules remain authoritative for access and display rights.
+The WordPress Real Estate Specialist remains available for Site Health, plugin/theme conflicts, safe updates, WP-CLI, REST, IDX provider detection, WordPress↔MLS bridging, property search QA, listing freshness, IDX/VOW monitoring, performance/security, lead delivery and handover.
 
-The release preserves Mission Control, one-prompt full-stack builds, Browser QA, accessibility, general security/performance/observability, CI repair, production deployment, incident response, review, memory, reporting, and Git delivery.
+The Real Estate IDX / MLS specialization remains available through `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, and `idx-compliance-review`. **RESO Web API** support remains evidence-based and the actual MLS/provider license/local rules remain authoritative for data access and display rights.
 
-The ChatGPT adapter bundles all v0.9 WordPress/real-estate playbooks and reports WordPress admin, WP-CLI, browser, MLS/provider, lead-delivery, CI, and production checks as `BLOCKED` or `NOT RUN` when those execution surfaces are unavailable.
+DevMesh v1.0 contains 81 composable skills. The ChatGPT adapter reports unavailable hosting, WordPress admin/WP-CLI, Search Console, analytics, email, backup/restore, browser, MLS/provider, CI and production evidence as `BLOCKED` or `NOT RUN` rather than fabricating success.
