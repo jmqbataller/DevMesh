@@ -19,6 +19,24 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v1.0 Website Operations Specialist
+has('website-operations-specialist','hosting-dns-ssl-doctor','wordpress-site-doctor','backup-restore-drill','seo-search-console-specialist','analytics-conversion-qa','client-monthly-website-report','PASS','BLOCKED','NOT RUN')
+has('hosting-dns-ssl-doctor','DNS','SSL/TLS','redirect loops/chains','CDN/proxy/cache','origin')
+has('wordpress-migration-specialist','rollback','search-replace','DNS/SSL','forms','IDX','Browser QA')
+has('backup-restore-drill','backup exists','restore verified','staging','database','uploads/media')
+has('seo-search-console-specialist','Search Console','robots.txt','canonical','noindex','structured data')
+has('real-estate-seo-specialist','IDX filter','thin-content','canonical','expired','MLS/provider rules')
+has('core-web-vitals-diagnoser','LCP','INP','CLS','Never invent Core Web Vitals numbers','field and lab')
+has('analytics-conversion-qa','downstream reporting','duplicate firing','PII','form_submit')
+has('email-deliverability-doctor','SPF','DKIM','DMARC','inbox delivery','CRM')
+has('broken-link-redirect-manager','404','redirect chains','homepage','risk-engine')
+has('plugin-theme-risk-intelligence','criticality','prove usage','staging','risk register')
+has('wp-cron-reliability-doctor','WP-Cron','overdue','DISABLE_WP_CRON','system scheduler')
+has('reso-schema-drift-detector','$metadata','field added/removed/renamed','change-impact-map','NOT RUN')
+has('reso-provider-capability-inspector','technical capability','licensed permission','RESO Web API','legacy RETS')
+has('client-monthly-website-report','never invent uptime','Not measured this period','IDX/MLS/RESO','PII')
+has('website-emergency-recovery','DNS → SSL/TLS','preserve evidence','UNPROVEN','representative journeys')
+
 # v0.9 WordPress Real Estate Specialist
 has('wordpress-real-estate-specialist','wordpress-site-doctor','wordpress-plugin-conflict-detective','idx-provider-detector','idx-search-qa','wordpress-security-specialist','wordpress-client-handover')
 has('wordpress-site-doctor','WordPress Site Health','PHP/server/database','WP-Cron','REST API','permalinks','BLOCKED')
@@ -43,21 +61,12 @@ has('reso-web-api','$metadata','RESO Data Dictionary','OData','RETS','server-sid
 has('listing-sync-search','authoritative MLS/provider','idempotent','checkpoint','last successful sync','objective criteria','removed/withheld listing','map/list result consistency')
 has('idx-compliance-review','Local MLS/provider rules','seller-withheld','delayed-marketing','confidential','VOW distinction','hidden with CSS','BLOCKED')
 
-# v0.7 Mission Control stack
+# Mission Control and legacy contracts remain intact.
 has('mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','architecture-simulator','failure-memory','eval-replay-lab','Maximum two judge repair rounds')
 has('dynamic-task-graph','acyclic','READY','acceptance criteria','critical path','Replanning')
 has('parallel-agent-orchestration','actual sub-agent','sequential fallback','at most four concurrent workers','integrator')
 has('devmesh-judge','Evidence outranks confidence','independence: unavailable','Critical failures','release decision')
 has('confidence-engine','hypothesis ledger','HIGH','MEDIUM','LOW root-cause confidence','not proof')
-has('adversarial-review','maximum of two debate rounds','single-context adversarial analysis','majority vote alone is not evidence')
-has('change-impact-map','DIRECT','INDIRECT','UNKNOWN','Regression plan','blast radius')
-has('failure-memory','Persistence is opt-in','verified lessons','.devmesh/knowledge','Cross-project memory','Never store secrets')
-has('eval-replay-lab','repeatable cases','deterministic','cherry-pick','.devmesh/evals','self-modify')
-has('architecture-simulator','Simulation is not a benchmark','concurrent edits','rollback','NEEDS MEASUREMENT')
-has('resource-budget','Eco','Balanced','Max','orthogonal','safety-critical gate')
-has('incident-commander','SEV1','preserve evidence','confidence-engine','risk-engine','UNPROVEN','resolved')
-
-# Legacy contracts remain intact.
 has('execution-modes','Quick','Standard','Deep','never bypass')
 has('environment-doctor','runtime/toolchain','port conflicts','Do not fabricate credentials')
 has('database-architect','constraints','indexes','RLS/policies','rollback')
@@ -66,11 +75,6 @@ has('issue-to-pr','read issue','reproduce/confirm','create/update a PR','Never c
 has('production-deployment','Preflight','health/readiness','actual production target','rollback')
 has('visual-regression','baseline','REGRESSION','silently overwrite')
 has('network-failure-qa','API 4xx/5xx','timeout','offline','duplicate submit')
-has('test-data-personas','synthetic','production data','deterministic')
-has('observability-review','structured server logs','health/readiness','Never log passwords')
-has('ci-auto-heal','read logs','root cause','make CI green')
-has('architecture-guard','server-only','direct database access','circular dependencies')
-has('full-stack-build','database-architect','api-contract','architecture-guard','test-data-personas','network-failure-qa','visual-regression','observability-review')
 has('browser-qa','3 browser fix rounds','same browser scenario')
 has('security-review','Supabase')
 has('accessibility-review','prefers-reduced-motion')
@@ -78,4 +82,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v0.9 WordPress Real Estate, v0.8 IDX/MLS, Mission Control, and legacy feature contracts validated')
+print('OK: v1.0 Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
