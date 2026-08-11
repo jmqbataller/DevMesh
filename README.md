@@ -1,6 +1,6 @@
 # DevMesh
 
-**DevMesh** is an evidence-based AI software-engineering, greenfield website product-building, website-operations, and agency-operations orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, design, plan, build, diagnose, operate, monitor, verify, judge, recover, and deliver without turning assumptions into fake passes.
+**DevMesh** is an evidence-based AI software-engineering, design-to-code, greenfield website product-building, website-operations, and agency-operations orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, design, plan, build, diagnose, operate, monitor, verify, judge, recover, and deliver without turning assumptions into fake passes.
 
 Developer: **John Mark Bataller**
 
@@ -10,13 +10,64 @@ DevMesh ships with:
 
 ## Download DevMesh for ChatGPT
 
-[**Download `devmesh-chatgpt-v1.2.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v1.2.0/devmesh-chatgpt-v1.2.0.zip)
+[**Download `devmesh-chatgpt-v1.3.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v1.3.0/devmesh-chatgpt-v1.3.0.zip)
 
 On a ChatGPT account/surface that supports uploaded Skills: open **Plugins → Skills → Create → Upload from your computer**, upload the ZIP, then start a new chat.
 
+# DevMesh v1.3 — Design-to-Code Studio
+
+v1.3 contains **111 composable skills** and makes screenshot/mockup/Figma/export/reference-driven implementation a first-class DevMesh specialization.
+
+## Build from an approved visual reference
+
+```text
+DevMesh Design-to-Code Deep:
+Use the supplied design as the authoritative visual reference.
+Recreate it as a maintainable responsive website.
+
+Analyze the page structure, visual hierarchy, typography,
+spacing, colors, reusable components and responsive behavior.
+Separate OBSERVED, INFERRED and UNKNOWN decisions.
+
+Connect real backend/API/database behavior only where required.
+Run Browser QA and compare the rendered implementation
+against the reference when browser evidence is available.
+Fix meaningful differences without altering the baseline.
+```
+
+Default lifecycle:
+
+```text
+reference intake
+→ visual-reference-analyzer
+→ design-token-extractor
+→ responsive-layout-inference
+→ sitemap-information-architecture when needed
+→ ui-component-architecture
+→ implementation / full-stack-build only as required
+→ Browser QA
+→ visual-regression + visual-fidelity-judge
+→ maximum 3 visual repair rounds
+→ accessibility / security / performance QA
+→ DevMesh Judge
+→ production deployment when authorized
+```
+
+### New v1.3 skills
+
+- `design-to-code-studio` — screenshot/mockup/Figma/reference-to-code orchestrator
+- `visual-reference-analyzer` — observed visual structure/assets/states plus explicit inference/unknown boundaries
+- `design-token-extractor` — semantic typography/color/spacing/layout/control token extraction without false precision
+- `responsive-layout-inference` — deliberate desktop/tablet/mobile decisions when not every viewport is supplied
+- `visual-fidelity-judge` — rendered-reference comparison, prioritized visual findings, and bounded repair
+
+DevMesh does **not** claim that a static screenshot proves hidden interactions, backend behavior, auth, data models, animation timing, or unseen mobile behavior. Visual conclusions are labeled `OBSERVED`, `INFERRED`, or `UNKNOWN`. Visual fidelity is `BLOCKED`/`NOT RUN` when a real rendered comparison cannot be performed, and numeric fidelity percentages are never invented.
+
+See [`docs/DESIGN_TO_CODE.md`](docs/DESIGN_TO_CODE.md).
+
 # DevMesh v1.2 — Website Product Builder
 
-v1.2 contains **106 composable skills** and makes greenfield website creation a first-class DevMesh specialization.
+The v1.2 greenfield builder remains available and composes naturally with Design-to-Code when a supplied design is one input to a larger product.
 
 ## Build a website from scratch
 
@@ -51,13 +102,6 @@ requirements / product contract
 → production deployment when authorized
 → handoff/report
 ```
-
-### New v1.2 skills
-
-- `website-product-builder` — explicit greenfield website lifecycle orchestrator
-- `design-system-architect` — reusable typography, spacing, color/tokens, layout, controls, states, accessibility and motion foundations
-- `sitemap-information-architecture` — route/page hierarchy, navigation, dynamic routes, conversion paths and indexing intent
-- `ui-component-architecture` — reusable UI responsibility map, data/server boundaries, responsive behavior and full state coverage
 
 The builder is scope-aware: a static/marketing/portfolio site does **not** automatically get a backend/database, while a SaaS, booking, quotation, inventory, CRM, e-commerce, membership, or real-estate product can compose the required backend/API/database/auth/integration playbooks.
 
@@ -99,7 +143,7 @@ See [`docs/WEBSITE_OPERATIONS.md`](docs/WEBSITE_OPERATIONS.md).
 
 ## Full-stack development
 
-`website-product-builder` composes the existing `full-stack-build` when multiple application layers are genuinely required.
+`design-to-code-studio` and `website-product-builder` compose the existing `full-stack-build` only when multiple application layers are genuinely required.
 
 ```text
 Use DevMesh.
@@ -134,6 +178,16 @@ The real-estate stack includes `real-estate-idx-mls`, `reso-web-api`, `listing-s
 DevMesh will not claim local IDX compliance if current applicable MLS/provider rules were not reviewed; that evidence remains `BLOCKED`.
 
 See [`docs/REAL_ESTATE_IDX_MLS.md`](docs/REAL_ESTATE_IDX_MLS.md) and [`docs/WORDPRESS_REAL_ESTATE.md`](docs/WORDPRESS_REAL_ESTATE.md).
+
+## Example: design-to-code + real estate
+
+```text
+DevMesh Design-to-Code:
+Implement this supplied real-estate website design.
+Preserve the visual system, then integrate the authorized IDX/MLS search.
+Keep MLS credentials server-side.
+Verify listing/search/lead behavior separately from visual fidelity.
+```
 
 ## Example: complete custom website
 
@@ -210,7 +264,7 @@ Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control orchestr
 
 ## ChatGPT Adapter
 
-The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a writable workspace, shell, localhost, Git CLI, WP-CLI, WordPress admin, hosting/DNS/registrar dashboards, Search Console, analytics, SMTP/CRM visibility, backup systems, monitoring telemetry, Playwright, sub-agents, MLS credentials, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
+The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has private Figma access, a writable workspace, shell, localhost, Git CLI, WP-CLI, WordPress admin, hosting/DNS/registrar dashboards, Search Console, analytics, SMTP/CRM visibility, backup systems, monitoring telemetry, Playwright, sub-agents, MLS credentials, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
 
 Build locally:
 
@@ -218,7 +272,7 @@ Build locally:
 python scripts/build_chatgpt_adapter.py
 ```
 
-Output: `dist/devmesh-chatgpt-v1.2.0.zip`.
+Output: `dist/devmesh-chatgpt-v1.3.0.zip`.
 
 ## Codex Adapter
 
@@ -241,7 +295,7 @@ Start a new Codex thread/session after reinstall.
 
 ## Evidence states
 
-DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Greenfield design/implementation, Browser QA, deployment, fleet health, monitoring, renewals, access, SLA, CRM/lead delivery, MLS-provider health, privacy/legal claims, WordPress, CI and production status require corresponding evidence.
+DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Design-to-code visual fidelity, greenfield design/implementation, Browser QA, deployment, fleet health, monitoring, renewals, access, SLA, CRM/lead delivery, MLS-provider health, privacy/legal claims, WordPress, CI and production status require corresponding evidence.
 
 ## Public distribution status
 
@@ -264,8 +318,8 @@ python tests/test_plugin_submission_pack.py
 
 | Platform | Status |
 |---|---|
-| Codex | **v1.2 supported** |
-| ChatGPT | **v1.2 portable Agent Skills adapter** |
+| Codex | **v1.3 supported** |
+| ChatGPT | **v1.3 portable Agent Skills adapter** |
 | Claude Code | Planned adapter |
 | Gemini CLI | Planned adapter |
 | Cursor | Planned adapter |
