@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "0.9.0",
-  "description": "An evidence-based AI software engineering orchestration framework with Codex and ChatGPT adapters, Mission Control, full-stack builds, Browser QA, IDX/MLS/RESO workflows, and a WordPress Real Estate Specialist for site health, plugins/themes, WP-CLI, REST, safe updates, IDX search, freshness, security, performance, lead QA, and client handover.",
+  "version": "1.0.0",
+  "description": "An evidence-based AI software engineering and website-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, full-stack builds, WordPress, IDX/MLS/RESO, hosting/DNS/SSL, migrations, backups, SEO, Core Web Vitals, analytics, email deliverability, cron, recovery, and client reporting.",
   "author": {
     "name": "John Mark Bataller",
     "url": "https://github.com/jmqbataller"
@@ -11,23 +11,24 @@
   "license": "MIT",
   "keywords": [
     "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
-    "mission-control", "full-stack", "playwright", "browser-automation", "ci-cd", "security",
-    "wordpress", "wp-cli", "wordpress-rest-api", "site-health", "real-estate", "idx", "mls", "reso", "odata",
-    "listing-search", "listing-sync", "vow", "lead-generation", "website-specialist", "performance", "qa"
+    "mission-control", "website-operations", "website-specialist", "wordpress", "wp-cli",
+    "hosting", "dns", "ssl", "migration", "backup", "seo", "search-console", "core-web-vitals",
+    "analytics", "email-deliverability", "real-estate", "idx", "mls", "reso", "odata",
+    "listing-search", "listing-sync", "vow", "lead-generation", "incident-recovery", "qa"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
-    "shortDescription": "Mission Control + WordPress Real Estate engineering specialist",
-    "longDescription": "DevMesh v0.9 adds a WordPress Real Estate Specialist with Site Health diagnostics, plugin/theme conflict isolation, safe staged updates, WP-CLI operation, WordPress REST integration, IDX provider detection, WordPress-to-MLS bridging, property search QA, listing freshness monitoring, IDX/VOW/compliance monitoring, WordPress performance/security review, lead-flow QA, and client handover. It builds on Mission Control, full-stack, RESO/IDX/MLS, Browser QA, CI, security, accessibility, performance, incident, deployment, review, memory, reporting, and Git delivery workflows. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
+    "shortDescription": "AI engineering + Website Operations Specialist Mission Control",
+    "longDescription": "DevMesh v1.0 adds a Website Operations Specialist and Client Site Autopilot layer spanning hosting/DNS/SSL, WordPress migrations and restore drills, technical/real-estate SEO, Core Web Vitals, analytics/conversion QA, email deliverability, links/redirects, plugin/theme risk, WP-Cron reliability, RESO schema/provider inspection, emergency website recovery, and client monthly reporting. It builds on Mission Control, full-stack, WordPress Real Estate, IDX/MLS/RESO, Browser QA, security, accessibility, performance, CI, deployment, incident, review, memory, reporting, and Git delivery workflows. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
     "developerName": "John Mark Bataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
-      "DevMesh Deep: act as a WordPress Real Estate Website Specialist and audit this site end-to-end with evidence.",
-      "Use DevMesh to diagnose this WordPress/IDX issue, prove the root cause, fix it safely, and retest the affected flow.",
-      "Use DevMesh to audit this IDX/MLS website using the actual provider rules, listing freshness, search UX, security, performance, and lead delivery evidence."
+      "DevMesh Website Specialist: take over this client website, audit operations end-to-end, fix safe issues, verify affected journeys, and prepare a client report.",
+      "DevMesh Deep: audit this WordPress real-estate website across hosting, DNS/SSL, backups, security, performance, SEO, analytics, email, IDX/MLS/RESO, listing freshness, and lead delivery.",
+      "DevMesh Emergency: this website is down; diagnose from DNS and SSL through hosting, WordPress and recent changes, stabilize safely, and prove recovery."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
     "brandColor": "#00CFFF",
