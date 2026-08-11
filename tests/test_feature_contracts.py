@@ -19,6 +19,24 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v0.9 WordPress Real Estate Specialist
+has('wordpress-real-estate-specialist','wordpress-site-doctor','wordpress-plugin-conflict-detective','idx-provider-detector','idx-search-qa','wordpress-security-specialist','wordpress-client-handover')
+has('wordpress-site-doctor','WordPress Site Health','PHP/server/database','WP-Cron','REST API','permalinks','BLOCKED')
+has('wordpress-plugin-conflict-detective','Reproduce first','--skip-plugins','--skip-themes','staging','FIXED')
+has('wordpress-safe-update-manager','backup/restore','staging','rollback','post-update','IDX search/detail/map/lead/freshness')
+has('wp-cli-operator','wp plugin','wp cron','--ssh','--http','--skip-plugins','High-risk operations','Never print secrets')
+has('wordpress-rest-api-integrator','show_in_rest','rest_api_init','permission_callback','Application Passwords','server-side')
+has('idx-provider-detector','vendor-hosted iframe/widget','live server-side API query','replicated/local listing database/search index','RESO/OData','legacy RETS')
+has('wordpress-idx-bridge','privileged MLS feed','server-side','cache invalidation/freshness','withheld/removed/delayed-marketing','confidential fields')
+has('idx-search-qa','price min/max','map pins','back-to-results','browser-qa','Network 429/5xx/timeouts')
+has('listing-freshness-monitor','last successful sync','checkpoint','WP-Cron','provider contract','stale public listing')
+has('idx-compliance-monitor','Internet-display-withheld','delayed-marketing','Hiding with CSS is not removal','rule source/version','BLOCKED')
+has('idx-vow-mode-detector','`IDX`','`VOW`','`HYBRID`','broker-consumer relationship','agreements')
+has('wordpress-performance-doctor','Measure before optimizing','Lighthouse/Core Web Vitals','IDX vendor scripts','cache','measured result')
+has('wordpress-security-specialist','risk reduction','least privilege','permission_callback','Application Password','MLS/IDX OAuth/API credentials')
+has('wordpress-lead-flow-qa','success message is not proof','schedule/request showing','duplicate submit','synthetic test leads','downstream delivery')
+has('wordpress-client-handover','passwords, tokens, API keys, MLS credentials','active theme/child theme','weekly/monthly/quarterly','Website Specialist')
+
 # v0.8 real-estate IDX / MLS specialization
 has('real-estate-idx-mls','RESO Web API','RETS','VOW is not IDX','seller instructions','delayed-marketing','server-side','local MLS/provider rules','BLOCKED')
 has('reso-web-api','$metadata','RESO Data Dictionary','OData','RETS','server-side','401/403/429/5xx','NOT RUN')
@@ -39,7 +57,7 @@ has('architecture-simulator','Simulation is not a benchmark','concurrent edits',
 has('resource-budget','Eco','Balanced','Max','orthogonal','safety-critical gate')
 has('incident-commander','SEV1','preserve evidence','confidence-engine','risk-engine','UNPROVEN','resolved')
 
-# Previous contracts remain intact.
+# Legacy contracts remain intact.
 has('execution-modes','Quick','Standard','Deep','never bypass')
 has('environment-doctor','runtime/toolchain','port conflicts','Do not fabricate credentials')
 has('database-architect','constraints','indexes','RLS/policies','rollback')
@@ -60,4 +78,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v0.8 IDX/MLS, v0.7 Mission Control, and legacy feature contracts validated')
+print('OK: v0.9 WordPress Real Estate, v0.8 IDX/MLS, Mission Control, and legacy feature contracts validated')
