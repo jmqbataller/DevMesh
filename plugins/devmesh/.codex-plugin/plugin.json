@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "1.1.0",
-  "description": "An evidence-based AI software engineering, website-operations, and agency-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, WordPress, IDX/MLS/RESO, multi-site fleet management, monitoring, tickets, SLAs, CRM/lead operations, client lifecycle, and reporting.",
+  "version": "1.2.0",
+  "description": "An evidence-based AI software engineering, greenfield website product building, website-operations, and agency-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, full-stack development, WordPress, IDX/MLS/RESO, multi-site operations, QA, and delivery.",
   "author": {
     "name": "John Mark Bataller",
     "url": "https://github.com/jmqbataller"
@@ -11,23 +11,24 @@
   "license": "MIT",
   "keywords": [
     "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
-    "mission-control", "agency-operations", "multi-site", "website-operations", "website-specialist",
-    "wordpress", "hosting", "dns", "ssl", "monitoring", "tickets", "sla", "crm", "lead-routing",
-    "real-estate", "idx", "mls", "reso", "accessibility", "privacy", "client-onboarding", "client-offboarding", "qa"
+    "website-product-builder", "greenfield-website", "design-system", "sitemap", "information-architecture", "ui-components",
+    "full-stack", "frontend", "backend", "api", "database", "seo", "mission-control", "agency-operations",
+    "multi-site", "website-operations", "website-specialist", "wordpress", "hosting", "dns", "ssl", "monitoring",
+    "tickets", "sla", "crm", "lead-routing", "real-estate", "idx", "mls", "reso", "accessibility", "privacy", "qa"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
-    "shortDescription": "AI engineering + Agency Website Operations Mission Control",
-    "longDescription": "DevMesh v1.1 adds an Agency Operations Control Center for multi-client website fleets: scheduled health monitoring, domain/SSL expiry, staged WordPress update waves, staging-to-production promotion, change and visual history, plugin vulnerability maintenance watch, license renewals, client access inventory, ticket intake, SLA priority, lead SLA, real-estate CRM integration, MLS provider health, privacy/cookie auditing, continuous accessibility, content QA, and client onboarding/offboarding. It builds on v1.0 Website Operations, WordPress Real Estate, IDX/MLS/RESO, Mission Control, Browser QA, security, performance, CI, deployment, incident response, review, memory, reporting, and Git delivery.",
+    "shortDescription": "AI Website Product Builder + Engineering Mission Control",
+    "longDescription": "DevMesh v1.2 adds Website Product Builder for explicit greenfield website delivery from requirements through design system, sitemap/information architecture, UI component architecture, frontend, conditional backend/API/database, SEO, QA and deployment. It builds on full-stack engineering, Mission Control, v1.1 Agency Operations, v1.0 Website Operations, WordPress Real Estate, IDX/MLS/RESO, Browser QA, security, accessibility, performance, CI, deployment, incident response, review, memory, reporting, and Git delivery.",
     "developerName": "John Mark Bataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
-      "DevMesh Agency Deep: audit all client websites, prioritize incidents and maintenance, and create a site-specific action queue with evidence.",
-      "DevMesh Agency: onboard this client website, inventory access and stack, establish baselines, and identify operational gaps without storing secrets.",
-      "DevMesh Agency: monitor this WordPress real-estate fleet for uptime, SSL/domain expiry, plugin risk, IDX/MLS freshness, lead delivery, CRM health, and SLA breaches."
+      "DevMesh Website Product Builder: build this website from scratch from product contract through design system, sitemap, UI architecture, implementation, SEO, QA, and production delivery.",
+      "DevMesh Deep: build a complete working website with professional UI/UX plus backend, API, database and integrations only where the product actually requires them.",
+      "DevMesh Agency Deep: audit all client websites, prioritize incidents and maintenance, and create a site-specific action queue with evidence."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
     "brandColor": "#00CFFF",
