@@ -28,6 +28,22 @@ Assign one or more task types:
 
 Choose the smallest set that explains the task.
 
+### Product-level build detection
+
+For a `build`, distinguish a scoped feature from a whole product.
+
+Invoke `full-stack-build` automatically when the user asks for a whole **working website, web app, SaaS, dashboard, portal, system, platform, tool, or similar product** and the requested outcome reasonably requires multiple application layers.
+
+Examples:
+
+- “Build a working quotation website.”
+- “Build an inventory system.”
+- “Create a booking web app.”
+
+A product-level build is not allowed to degrade into a static frontend mock when the requested behavior needs backend/server logic, APIs, persistence, auth, or integrations.
+
+Do not invoke `full-stack-build` for a static landing page, isolated component, or explicitly frontend-only/backend-only task unless the requested behavior actually crosses layers.
+
 ## Step 2 — Inspect and load context
 
 Start with `codebase-intelligence` for repository work.
@@ -44,7 +60,7 @@ High-risk actions require explicit authorization at the point of execution unles
 
 | Task | Required path | Conditional quality gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | project-memory; browser-qa + accessibility-review for browser UI; security-review for auth/data/API; performance-review for substantial/public web work; multi-agent-review for large/high-risk changes; qa-reporting |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | full-stack-build for whole working app/site/system; project-memory; browser-qa + accessibility-review for browser UI; security-review for auth/data/API; performance-review for substantial/public web work; multi-agent-review for large/high-risk changes; qa-reporting |
 | fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is not proven; browser-qa for browser defects; security-review for security-sensitive fixes; multi-agent-review for high-risk fixes; qa-reporting |
 | debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | browser-qa for browser failures; security-review when boundary-sensitive; multi-agent-review when broad/high-risk; qa-reporting |
 | redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | performance-review; security-review when flows touch auth/data; multi-agent-review for substantial redesigns; qa-reporting |
@@ -52,6 +68,16 @@ High-risk actions require explicit authorization at the point of execution unles
 | review | codebase-intelligence → code-review | browser-qa; accessibility-review; security-review; performance-review; multi-agent-review for broad/deep review; qa-reporting |
 | deploy | codebase-intelligence → risk-engine → qa-verification → security-review → git-delivery | browser-qa for web release; accessibility/performance gates for public UI; multi-agent-review for release readiness; qa-reporting |
 | research | codebase-intelligence | project-memory; brainstorming-requirements; writing-plans |
+
+### Whole-product build rule
+
+When `full-stack-build` is triggered, use it **after `risk-engine`** as the cross-layer build orchestrator. It coordinates the minimum product contract and delegates to existing DevMesh skills instead of replacing them.
+
+Typical product build flow:
+
+`codebase-intelligence → risk-engine → full-stack-build → brainstorming-requirements → writing-plans → implementation → relevant quality gates → qa-verification → code-review → qa-reporting`
+
+The user should be able to give one concise request such as **“Build a working quotation website”** without separately instructing DevMesh to add frontend, backend, API, and database layers. DevMesh infers the minimum required layers from the product behavior, preserves existing architecture when present, and asks questions only for decisions that materially change business behavior, security/data ownership, payments, destructive migration strategy, or other difficult-to-reverse choices.
 
 ## Step 5 — Quality-gate rules
 
@@ -107,6 +133,7 @@ Track as relevant:
 
 - files/instructions inspected
 - task classification and risk level
+- full-stack architecture/layers selected for product builds
 - root cause/design rationale
 - files changed
 - tests/build/lint/typecheck outcomes
@@ -129,6 +156,7 @@ Never:
 - guess a root cause and present it as proven
 - claim a fix without verification
 - claim browser/visual QA without browser evidence
+- call a product-level full-stack build “working” when required layers are still mocked or disconnected
 - invent accessibility/security/performance passes or metrics
 - expose/store secrets in project memory or QA artifacts
 - silently perform high-risk/destructive actions
@@ -141,6 +169,7 @@ Always:
 - preserve working behavior unless change is intentional
 - prefer small/reversible changes
 - match repository conventions when sound
+- make product-level builds end-to-end rather than frontend-only when behavior requires more layers
 - scale verification depth to risk
 - distinguish PASS from BLOCKED/NOT RUN
 - state clearly what could not be verified

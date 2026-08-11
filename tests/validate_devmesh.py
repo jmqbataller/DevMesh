@@ -17,6 +17,7 @@ REQUIRED = {
     'implementation',
     'systematic-debugging',
     'ui-ux-review',
+    'full-stack-build',
     'browser-engine',
     'browser-qa',
     'regression-testing',
@@ -67,8 +68,8 @@ def main() -> int:
 
     if manifest.get('name') != 'devmesh':
         fail('manifest name must be devmesh')
-    if manifest.get('version') != '0.3.0':
-        fail('manifest version must be 0.3.0')
+    if manifest.get('version') != '0.4.0':
+        fail('manifest version must be 0.4.0')
     if manifest.get('skills') != './skills/':
         fail('manifest skills must be ./skills/')
     if manifest.get('mcpServers') != './.mcp.json':
@@ -139,6 +140,18 @@ def main() -> int:
         fail('router must explain browser-engine delegation')
 
     require_phrases(
+        PLUGIN / 'skills/full-stack-build/SKILL.md',
+        [
+            '“Working” means integrated behavior, not a frontend mock.',
+            'Frontend',
+            'Backend / server logic',
+            'API contract',
+            'Database / persistence',
+            'Mandatory integration checks',
+            'Completion contract',
+        ],
+    )
+    require_phrases(
         PLUGIN / 'skills/browser-qa/SKILL.md',
         [
             'browser-engine',
@@ -184,7 +197,8 @@ def main() -> int:
     print(f"OK: manifest {manifest['name']} v{manifest['version']}")
     print('OK: Playwright MCP companion configuration validated')
     print(f"OK: {len(found)} required skills and 8 task types validated")
-    print('OK: v0.3 quality-gate contracts validated')
+    print('OK: one-prompt full-stack build contract validated')
+    print('OK: v0.4 quality-gate contracts validated')
     return 0
 
 

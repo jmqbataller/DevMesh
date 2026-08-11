@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.4.0 - 2026-08-11
+
+DevMesh v0.4 adds one-prompt full-stack product building for concise requests such as `Build a working quotation website.`
+
+- Added `full-stack-build` as a 21st DevMesh skill.
+- Added automatic product-level build detection for whole working websites, apps, SaaS products, dashboards, portals, systems, platforms, and tools.
+- Defined `working` as an integrated product rather than a frontend mock when requested behavior requires backend/server logic, APIs, persistence, auth, or integrations.
+- Added cross-layer architecture mapping for frontend, backend/server logic, API contracts, database/persistence, auth/authorization, and external integrations when relevant.
+- Added greenfield decision rules that prefer simple maintainable defaults and avoid unnecessary clarification for low-impact choices.
+- Added scope guardrails so DevMesh infers only the minimum functionality necessary for the requested product and does not silently invent unrelated features.
+- Added vertical-slice implementation guidance so core user journeys become usable end-to-end early rather than building disconnected frontend/backend halves.
+- Added mandatory representative integration checks such as create → server validate → persist → read → update → reload → confirm persistence when applicable.
+- Added explicit completion requirements covering frontend/backend/API/database/auth/configuration, end-to-end evidence, and blocked external services.
+- Updated the router so a request like `Build a working quotation website` automatically invokes the full-stack build workflow without requiring separate frontend/backend/API/database instructions.
+- Updated manifest branding/copy and default build prompt for full-stack product creation.
+- Updated validators, routing tests, feature-contract tests, and README for v0.4.
+
 ## 0.3.0 - 2026-08-11
 
 DevMesh v0.3 turns the framework from a workflow-only plugin into a deeper evidence-driven engineering system.

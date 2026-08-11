@@ -16,6 +16,17 @@ assert '-y' in playwright['args']
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+full_stack = text('full-stack-build')
+assert 'working quotation website' in full_stack.lower()
+assert 'frontend mock' in full_stack.lower()
+assert 'Backend / server logic' in full_stack
+assert 'API contract' in full_stack
+assert 'Database / persistence' in full_stack
+assert 'Mandatory integration checks' in full_stack
+assert 'create data → server validates → persist → read it back → update it → reload page → confirm persistence' in full_stack
+assert 'Do not silently invent payments' in full_stack
+assert 'fake APIs' in full_stack
+
 assert 'Playwright MCP' in text('browser-engine')
 assert 'same browser scenario' in text('browser-qa')
 assert '3 browser fix rounds' in text('browser-qa')
@@ -29,4 +40,4 @@ assert 'BLOCKED' in text('qa-reporting')
 assert 'maximum four concurrent reviewers' in text('multi-agent-review')
 assert 'reviewers should be read-only' in text('multi-agent-review').lower()
 
-print('OK: Playwright, fix/retest, regression, security, accessibility, performance, memory, risk, reporting, and multi-agent contracts validated')
+print('OK: full-stack build, Playwright, fix/retest, regression, security, accessibility, performance, memory, risk, reporting, and multi-agent contracts validated')

@@ -85,6 +85,7 @@ for task, skills in EXPECTED.items():
         pos = nxt
 
 CONDITIONS = [
+    'full-stack-build for whole working app/site/system',
     'browser-qa + accessibility-review for browser UI',
     'security-review for auth/data/API',
     'performance-review for substantial/public web work',
@@ -99,9 +100,13 @@ CONDITIONS = [
 for phrase in CONDITIONS:
     assert phrase in ROUTER, f'missing routing condition: {phrase}'
 
+assert 'Invoke `full-stack-build` automatically' in ROUTER
+assert 'Build a working quotation website' in ROUTER
+assert 'after `risk-engine`' in ROUTER
+assert 'frontend, backend, API, and database layers' in ROUTER
 assert 'browser-qa` invokes `browser-engine`' in ROUTER
 assert '3 fix/retest rounds' in ROUTER
 assert 'Persistent `.devmesh/reports/` files are opt-in' in ROUTER
 assert 'High-risk actions require explicit authorization' in ROUTER
 
-print('OK: routing contract validated for 8 task types and v0.3 quality gates')
+print('OK: routing contract validated for 8 task types, one-prompt full-stack builds, and v0.4 quality gates')
