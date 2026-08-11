@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.1.0 - 2026-08-11
+
+DevMesh v1.1 adds **Agency Operations Control Center** workflows for multi-client and multi-site website operations.
+
+- Added `agency-operations-control-center` as the agency-level orchestrator.
+- Added `multi-site-fleet-manager` and `scheduled-site-health-monitor` for portfolio health and recurring monitoring contracts.
+- Added `domain-ssl-expiry-monitor` for registrar/domain and TLS expiry/change awareness.
+- Added `wordpress-update-wave-manager` and `staging-production-manager` for canary rollouts and safe environment promotion.
+- Added `website-change-timeline` and `visual-history-screenshot-timeline` for operational/visual history.
+- Added `plugin-vulnerability-maintenance-watch` and `license-subscription-tracker`.
+- Added `client-access-inventory`, `ticket-request-intake-agent`, and `sla-priority-engine`.
+- Added `lead-sla-monitor`, `real-estate-crm-integration-specialist`, and `mls-provider-health-monitor`.
+- Added `consent-privacy-cookie-auditor`, `accessibility-continuous-monitor`, and `content-qa-agent`.
+- Added `client-onboarding-agent` and `client-offboarding-agent`.
+- Updated routing, ChatGPT packaging, docs, Plugin Directory materials, and validation for **102 composable skills**.
+
 ## 1.0.0 - 2026-08-11
 
 DevMesh v1.0 adds **Website Operations Specialist** workflows and Client Site Autopilot.
