@@ -25,8 +25,12 @@ for task,skills in EXPECTED.items():
         assert nxt>=0, f'{task} missing {skill}'
         assert nxt>pos, f'{task} order {skill}'
         pos=nxt
-for phrase in ['Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment','read the real issue','never auto-merge','build logs alone are not production verification','never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
+
+for phrase in [
+'Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment',
+'wordpress-real-estate-specialist','website-operations-specialist','hosting-dns-ssl-doctor','wordpress-migration-specialist','backup-restore-drill','seo-search-console-specialist','real-estate-seo-specialist','core-web-vitals-diagnoser','analytics-conversion-qa','email-deliverability-doctor','broken-link-redirect-manager','plugin-theme-risk-intelligence','wp-cron-reliability-doctor','reso-schema-drift-detector','reso-provider-capability-inspector','client-monthly-website-report','website-emergency-recovery',
+'read the real issue','never auto-merge','build logs alone are not production verification','never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
-for phrase in ['3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization','full-stack product working while required layers are mocked/disconnected','fall back sequentially','same-context fallback']:
+for phrase in ['3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization','full-stack product working while required layers are mocked/disconnected','fall back sequentially','same-context fallback','backup existence is not restore proof','success ui is not inbox proof']:
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
-print('OK: routing contract validated for 8 task types and v0.7 Mission Control orchestration')
+print('OK: routing contract validated for 8 task types and v1.0 Website Operations orchestration')
