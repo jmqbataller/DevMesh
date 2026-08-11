@@ -19,6 +19,29 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v1.1 Agency Operations Control Center
+has('agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor','wordpress-update-wave-manager','ticket-request-intake-agent','sla-priority-engine','lead-sla-monitor','client-onboarding-agent','client-offboarding-agent')
+has('multi-site-fleet-manager','independent operational boundary','Healthy','Warning','Critical','BLOCKED')
+has('scheduled-site-health-monitor','monitoring plan is not a running monitor','daily','weekly','monthly','NOT RUN')
+has('domain-ssl-expiry-monitor','certificate validity','domain renewal','30/14/7 days','registrar','BLOCKED')
+has('wordpress-update-wave-manager','representative staging/canary wave','STOP rollout','rollback','per-site')
+has('staging-production-manager','Staging and production','robots/noindex','analytics','Production PASS')
+has('website-change-timeline','Correlation is a lead, not proof','recent changes','systematic-debugging','Never store secrets')
+has('visual-history-screenshot-timeline','screenshot is evidence','never replace old snapshots','browser-control','visual-regression','BLOCKED')
+has('plugin-vulnerability-maintenance-watch','verified advisory/vendor evidence','affected sites','business criticality','mass-disable')
+has('license-subscription-tracker','entitlement metadata','auto-renew','payment secrets','IDX/MLS')
+has('client-access-inventory','Inventory capability and ownership','AVAILABLE','MISSING','PENDING','raw tokens')
+has('ticket-request-intake-agent','symptom separately','root cause','acceptance criteria','sla-priority-engine')
+has('sla-priority-engine','actual SLA','`P1`','`P2`','`P3`','`P4`')
+has('lead-sla-monitor','submitted form is not a delivered lead','synthetic test leads','CRM','PII')
+has('real-estate-crm-integration-specialist','actual integration path','Follow Up Boss','Zapier','webhook','2xx')
+has('mls-provider-health-monitor','provider health from local integration health','$metadata','UPSTREAM','LOCAL','MIXED')
+has('consent-privacy-cookie-auditor','not legal compliance certification','cookies/storage','GDPR/CCPA','BLOCKED')
+has('accessibility-continuous-monitor','release property','automated scans','REGRESSION','FIXED','assistive-technology')
+has('content-qa-agent','must not invent the correct business fact','placeholder/lorem','authoritative')
+has('client-onboarding-agent','verified baseline','client-access-inventory','never passwords/tokens','maintenance queue')
+has('client-offboarding-agent','preserve client ownership','explicit authorization','TRANSFERRED','REVOKED','PENDING')
+
 # v1.0 Website Operations Specialist
 has('website-operations-specialist','hosting-dns-ssl-doctor','wordpress-site-doctor','backup-restore-drill','seo-search-console-specialist','analytics-conversion-qa','client-monthly-website-report','PASS','BLOCKED','NOT RUN')
 has('hosting-dns-ssl-doctor','DNS','SSL/TLS','redirect loops/chains','CDN/proxy/cache','origin')
@@ -55,15 +78,13 @@ has('wordpress-security-specialist','risk reduction','least privilege','permissi
 has('wordpress-lead-flow-qa','success message is not proof','schedule/request showing','duplicate submit','synthetic test leads','downstream delivery')
 has('wordpress-client-handover','passwords, tokens, API keys, MLS credentials','active theme/child theme','weekly/monthly/quarterly','Website Specialist')
 
-# v0.8 real-estate IDX / MLS specialization
-has('real-estate-idx-mls','RESO Web API','RETS','VOW is not IDX','seller instructions','delayed-marketing','server-side','local MLS/provider rules','BLOCKED')
+# IDX/MLS + Mission Control + legacy contracts
+has('real-estate-idx-mls','RESO Web API','RETS','VOW is not IDX','seller instructions','server-side','local MLS/provider rules','BLOCKED')
 has('reso-web-api','$metadata','RESO Data Dictionary','OData','RETS','server-side','401/403/429/5xx','NOT RUN')
-has('listing-sync-search','authoritative MLS/provider','idempotent','checkpoint','last successful sync','objective criteria','removed/withheld listing','map/list result consistency')
-has('idx-compliance-review','Local MLS/provider rules','seller-withheld','delayed-marketing','confidential','VOW distinction','hidden with CSS','BLOCKED')
-
-# Mission Control and legacy contracts remain intact.
-has('mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','architecture-simulator','failure-memory','eval-replay-lab','Maximum two judge repair rounds')
-has('dynamic-task-graph','acyclic','READY','acceptance criteria','critical path','Replanning')
+has('listing-sync-search','authoritative MLS/provider','idempotent','checkpoint','last successful sync','removed/withheld listing')
+has('idx-compliance-review','Local MLS/provider rules','seller-withheld','confidential','VOW distinction','hidden with CSS','BLOCKED')
+has('mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','Maximum two judge repair rounds')
+has('dynamic-task-graph','acyclic','READY','acceptance criteria','critical path')
 has('parallel-agent-orchestration','actual sub-agent','sequential fallback','at most four concurrent workers','integrator')
 has('devmesh-judge','Evidence outranks confidence','independence: unavailable','Critical failures','release decision')
 has('confidence-engine','hypothesis ledger','HIGH','MEDIUM','LOW root-cause confidence','not proof')
@@ -82,4 +103,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v1.0 Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
+print('OK: v1.1 Agency Operations, v1.0 Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
