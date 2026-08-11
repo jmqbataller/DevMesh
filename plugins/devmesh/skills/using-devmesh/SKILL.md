@@ -1,6 +1,6 @@
 ---
 name: using-devmesh
-description: Use at the start of any software-development or website-operations request to classify the task, select Quick/Standard/Deep depth plus Eco/Balanced/Max resource budget, assess risk, and route the minimum evidence-based DevMesh workflow or Mission Control graph.
+description: Use at the start of any software-development, website-operations, or agency-operations request to classify the task, select Quick/Standard/Deep depth plus Eco/Balanced/Max resource budget, assess risk, and route the minimum evidence-based DevMesh workflow or Mission Control graph.
 ---
 
 # DevMesh Router
@@ -67,6 +67,27 @@ Special intents:
 - MLS/RESO provider capability discovery → `reso-provider-capability-inspector`
 - monthly client website report → `client-monthly-website-report`
 - active website outage/recovery → `website-emergency-recovery`
+- multi-client agency/fleet operations → `agency-operations-control-center`
+- fleet inventory/portfolio health → `multi-site-fleet-manager`
+- recurring site checks → `scheduled-site-health-monitor`
+- domain/certificate expiry → `domain-ssl-expiry-monitor`
+- fleet WordPress rollout → `wordpress-update-wave-manager`
+- staging-to-production promotion → `staging-production-manager`
+- recent-change/history analysis → `website-change-timeline`
+- screenshot/visual history → `visual-history-screenshot-timeline`
+- verified plugin/theme advisory watch → `plugin-vulnerability-maintenance-watch`
+- licenses/subscription renewals → `license-subscription-tracker`
+- operational access map → `client-access-inventory`
+- incoming client request/ticket → `ticket-request-intake-agent`
+- priority/SLA classification → `sla-priority-engine`
+- lead latency/SLA → `lead-sla-monitor`
+- real-estate CRM/webhook integration → `real-estate-crm-integration-specialist`
+- MLS/provider availability vs local failure → `mls-provider-health-monitor`
+- cookies/consent/privacy technical audit → `consent-privacy-cookie-auditor`
+- release-by-release accessibility tracking → `accessibility-continuous-monitor`
+- client content consistency → `content-qa-agent`
+- new client setup → `client-onboarding-agent`
+- client handoff/termination → `client-offboarding-agent`
 
 ## 2 — Depth and resource budget
 
@@ -78,20 +99,20 @@ Depth/budget never suppress safety or evidence requirements.
 
 Start repository work with `codebase-intelligence`. Use `environment-doctor` when execution/setup matters or Deep is selected. Use `project-memory` only when opted in; `failure-memory` lessons are hypotheses until revalidated.
 
-Before mutating build/fix/debug/redesign/refactor/deploy or production website operations, invoke `risk-engine`. **High-risk/destructive operations require explicit authorization** unless that exact operation was already authorized. Use `change-impact-map` for substantial existing-code/shared-contract changes and `confidence-engine` when root cause or architecture assumptions are weak.
+Before mutating build/fix/debug/redesign/refactor/deploy or production website/agency operations, invoke `risk-engine`. **High-risk/destructive operations require explicit authorization** unless that exact operation was already authorized. Use `change-impact-map` for substantial existing-code/shared-contract changes and `confidence-engine` when root cause or architecture assumptions are weak.
 
 ## 4 — Core routing
 
 | Task | Required path | Conditional gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; architecture-guard; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; wordpress-real-estate-specialist; wordpress-site-doctor; wordpress-rest-api-integrator; idx-provider-detector; wordpress-idx-bridge; idx-search-qa; listing-freshness-monitor; idx-compliance-monitor; idx-vow-mode-detector; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; website-operations-specialist; hosting-dns-ssl-doctor; seo-search-console-specialist; real-estate-seo-specialist; core-web-vitals-diagnoser; analytics-conversion-qa; email-deliverability-doctor; wp-cron-reliability-doctor; reso-provider-capability-inspector; test-data-personas; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; parallel-agent-orchestration; devmesh-judge; multi-agent-review; qa-reporting |
-| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; website-operations-specialist; hosting-dns-ssl-doctor; wordpress-site-doctor; wordpress-plugin-conflict-detective; wordpress-safe-update-manager; wordpress-migration-specialist; wp-cli-operator; wordpress-rest-api-integrator; backup-restore-drill; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-provider-detector; wordpress-idx-bridge; idx-search-qa; listing-freshness-monitor; idx-compliance-monitor; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; seo-search-console-specialist; real-estate-seo-specialist; core-web-vitals-diagnoser; analytics-conversion-qa; email-deliverability-doctor; broken-link-redirect-manager; plugin-theme-risk-intelligence; wp-cron-reliability-doctor; reso-schema-drift-detector; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; confidence-engine; devmesh-judge; qa-reporting |
-| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | environment-doctor; website-emergency-recovery; hosting-dns-ssl-doctor; wordpress-site-doctor; wordpress-plugin-conflict-detective; wp-cli-operator; idx-provider-detector; listing-freshness-monitor; wordpress-performance-doctor; core-web-vitals-diagnoser; analytics-conversion-qa; email-deliverability-doctor; wp-cron-reliability-doctor; reso-schema-drift-detector; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; confidence-engine; parallel-agent-orchestration; devmesh-judge; multi-agent-review; qa-reporting |
-| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | wordpress-real-estate-specialist; idx-search-qa; wordpress-lead-flow-qa; idx-compliance-review; seo-search-console-specialist; real-estate-seo-specialist; core-web-vitals-diagnoser; analytics-conversion-qa; visual-regression; performance-review; wordpress-performance-doctor; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
-| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | architecture-guard; change-impact-map; wordpress-rest-api-integrator; wordpress-idx-bridge; real-estate-idx-mls; reso-web-api; listing-sync-search; reso-schema-drift-detector; regression-testing; browser-qa; security-review; performance-review; confidence-engine; devmesh-judge; multi-agent-review; qa-reporting |
-| review | codebase-intelligence → code-review | website-operations-specialist; hosting-dns-ssl-doctor; backup-restore-drill; seo-search-console-specialist; real-estate-seo-specialist; core-web-vitals-diagnoser; analytics-conversion-qa; email-deliverability-doctor; broken-link-redirect-manager; plugin-theme-risk-intelligence; wp-cron-reliability-doctor; reso-provider-capability-inspector; wordpress-real-estate-specialist; wordpress-site-doctor; idx-provider-detector; idx-compliance-review; idx-vow-mode-detector; listing-freshness-monitor; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
-| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | environment-doctor; hosting-dns-ssl-doctor; wordpress-migration-specialist; backup-restore-drill; wordpress-safe-update-manager; wordpress-site-doctor; listing-freshness-monitor; idx-compliance-monitor; wordpress-security-specialist; wordpress-performance-doctor; wordpress-lead-flow-qa; seo-search-console-specialist; broken-link-redirect-manager; analytics-conversion-qa; email-deliverability-doctor; idx-search-qa; browser-qa; network-failure-qa; accessibility-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; qa-reporting |
-| research | codebase-intelligence | website-operations-specialist; hosting-dns-ssl-doctor; seo-search-console-specialist; real-estate-seo-specialist; plugin-theme-risk-intelligence; reso-provider-capability-inspector; real-estate-idx-mls; reso-web-api; idx-provider-detector; idx-vow-mode-detector; wordpress-site-doctor; wordpress-rest-api-integrator; wp-cli-operator; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; brainstorming-requirements; writing-plans; eval-replay-lab |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; full-stack-build; database-architect; api-contract; architecture-guard; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; browser-qa; accessibility-review; security-review; performance-review; devmesh-judge; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; hosting-dns-ssl-doctor; email-deliverability-doctor; real-estate-crm-integration-specialist; mls-provider-health-monitor; browser-qa; security-review; confidence-engine; devmesh-judge |
+| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | environment-doctor; website-emergency-recovery; website-change-timeline; mls-provider-health-monitor; browser-qa; network-failure-qa; observability-review; confidence-engine; devmesh-judge |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | visual-regression; visual-history-screenshot-timeline; accessibility-continuous-monitor; content-qa-agent; IDX search/SEO gates; performance-review; devmesh-judge |
+| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | architecture-guard; change-impact-map; regression-testing; browser-qa; security-review; performance-review; confidence-engine; devmesh-judge |
+| review | codebase-intelligence → code-review | website-operations-specialist; agency-operations-control-center; multi-site-fleet-manager; privacy/accessibility/content; WordPress/IDX/MLS; architecture-simulator; browser-qa; visual-regression; security-review; performance-review; devmesh-judge; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | staging-production-manager; wordpress-update-wave-manager; backup-restore-drill; domain-ssl-expiry-monitor; browser-qa; analytics-conversion-qa; accessibility-continuous-monitor; website-change-timeline; devmesh-judge |
+| research | codebase-intelligence | agency-operations-control-center; website-operations-specialist; client-access-inventory; license-subscription-tracker; provider/RESO/WordPress specialists; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; writing-plans |
 
 ## 5 — Mission Control
 
@@ -110,7 +131,7 @@ Never call a **full-stack product working while required layers are mocked/disco
 
 ## 7 — Real-estate IDX / MLS
 
-Use `real-estate-idx-mls` for MLS data use; `reso-web-api` for RESO/OData metadata/query integration; `listing-sync-search` for licensed replication/local indexing; `idx-compliance-review` for evidence-based public-display review. Use `reso-provider-capability-inspector` to separate provider technical capability from licensed permission, and `reso-schema-drift-detector` to detect `$metadata`/lookup/resource changes before they silently break mappings.
+Use `real-estate-idx-mls` for MLS data use; `reso-web-api` for RESO/OData metadata/query integration; `listing-sync-search` for licensed replication/local indexing; `idx-compliance-review` for evidence-based public-display review. Use `reso-provider-capability-inspector` to separate provider technical capability from licensed permission, `reso-schema-drift-detector` for contract changes, and `mls-provider-health-monitor` to separate upstream provider degradation from local sync/search failures.
 
 Actual MLS/provider licensing and local rules are authoritative. Treat RETS as legacy compatibility. Never expose MLS credentials or confidential/non-displayable fields. Local compliance is `BLOCKED` if current applicable rules were not reviewed.
 
@@ -142,16 +163,43 @@ Operational rules:
 - `broken-link-redirect-manager`: fix source links when practical and never mass-redirect unrelated 404s to the homepage.
 - `plugin-theme-risk-intelligence`: prove usage/dependencies before removal or replacement.
 - `wp-cron-reliability-doctor`: registered schedules do not prove timely execution; inspect overdue/duplicate/failed jobs.
-- `reso-schema-drift-detector`: compare provider metadata/contracts and map breaking changes before production migration.
-- `reso-provider-capability-inspector`: distinguish technical provider capability, licensed data use, and local display rules.
 - `client-monthly-website-report`: report only measured/verified values; never invent uptime, leads, rankings or sync times.
-- `website-emergency-recovery`: active outage flow is DNS → SSL → CDN/proxy → hosting → runtime → DB → WordPress → plugins/theme/cache; preserve evidence and verify representative journeys before declaring recovery.
+- `website-emergency-recovery`: preserve evidence and verify representative journeys before declaring recovery.
 
-## 10 — GitHub, CI, production and incidents
+## 10 — Agency Operations Control Center
+
+Trigger `agency-operations-control-center` when work spans multiple clients/sites, an agency maintenance queue, recurring fleet monitoring, client lifecycle, or shared operational governance.
+
+Typical agency loop:
+`client-onboarding-agent/client-access-inventory → multi-site-fleet-manager → scheduled-site-health-monitor → domain-ssl-expiry-monitor → ticket-request-intake-agent → sla-priority-engine → relevant Website/WordPress/IDX specialists → wordpress-update-wave-manager/staging-production-manager when authorized → website-change-timeline + visual-history-screenshot-timeline → plugin-vulnerability-maintenance-watch + license-subscription-tracker → lead-sla-monitor + real-estate-crm-integration-specialist + mls-provider-health-monitor when relevant → consent-privacy-cookie-auditor + accessibility-continuous-monitor + content-qa-agent → client-monthly-website-report → client-offboarding-agent when engagement ends`.
+
+Agency rules:
+- `multi-site-fleet-manager`: preserve per-site evidence/permissions; aggregate only traceable facts.
+- `scheduled-site-health-monitor`: a schedule definition is not a running monitor; mark execution `NOT RUN` without automation.
+- `domain-ssl-expiry-monitor`: certificate validity and domain renewal are separate evidence sources.
+- `wordpress-update-wave-manager`: canary/staging wave first; `STOP rollout` on failed representative verification.
+- `staging-production-manager`: never leak staging noindex/config or production secrets/data across environments.
+- `website-change-timeline`: correlation is not root-cause proof.
+- `visual-history-screenshot-timeline`: historical snapshots are immutable evidence; do not overwrite to hide regressions.
+- `plugin-vulnerability-maintenance-watch`: require verified advisory/vendor evidence before calling a component vulnerable.
+- `license-subscription-tracker`: track entitlement/renewal metadata, never payment secrets or credentials.
+- `client-access-inventory`: record capability/role, never raw secret values.
+- `ticket-request-intake-agent`: preserve client symptom separately from diagnosis.
+- `sla-priority-engine`: use the client's actual SLA when available; defaults are not contractual promises.
+- `lead-sla-monitor`: form submission is not downstream lead delivery.
+- `real-estate-crm-integration-specialist`: detect actual CRM/transport/mapping; never assume vendor behavior.
+- `mls-provider-health-monitor`: distinguish upstream provider state from local integration state.
+- `consent-privacy-cookie-auditor`: technical audit is not legal certification.
+- `accessibility-continuous-monitor`: automated scans are not complete assistive-technology proof.
+- `content-qa-agent`: never invent correct business/contact/legal facts.
+- `client-onboarding-agent`: baseline without silently taking control or storing secrets.
+- `client-offboarding-agent`: transfer continuity first; revocation/deletion/ownership changes require explicit authorization.
+
+## 11 — GitHub, CI, production and incidents
 
 `issue-to-pr` must **read the real issue** and never auto-merge or close it. `ci-auto-heal` reads actual failed logs and never weakens meaningful tests just to make CI green. `production-deployment` requires real target evidence: **build logs alone are not production verification**. Use `incident-commander` for broad active production incidents and `website-emergency-recovery` for website-centric outage triage.
 
-## 11 — Browser, quality and evidence
+## 12 — Browser, quality and evidence
 
 `browser-qa` uses `browser-engine`; source review is not rendered QA. `visual-regression` requires an approved baseline—**never overwrite a baseline** to hide a regression. Use `network-failure-qa`, `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
 
@@ -160,9 +208,9 @@ When a real defect is observed:
 
 Browser QA allows up to **3 fix/retest rounds**. Mission Control allows up to **2 repair/rejudge rounds**. Do not loop indefinitely.
 
-Track evidence as `PASS`, `FAIL`, `FIXED`, `BLOCKED`, or `NOT RUN`. Never claim browser/CI/deployment/parallel-agent/independent-judge/IDX/WordPress/hosting/SEO/analytics/email/restore evidence that did not execute.
+Track evidence as `PASS`, `FAIL`, `FIXED`, `BLOCKED`, or `NOT RUN`. Never claim browser/CI/deployment/parallel-agent/independent-judge/IDX/WordPress/hosting/SEO/analytics/email/restore/fleet-monitoring/SLA/CRM/client-lifecycle evidence that did not execute.
 
-## 12 — Full skill inventory
+## 13 — Full skill inventory
 
 Core: `execution-modes`, `brainstorming-requirements`, `codebase-intelligence`, `environment-doctor`, `writing-plans`, `implementation`, `systematic-debugging`, `risk-engine`, `full-stack-build`, `database-architect`, `api-contract`, `architecture-guard`, `browser-engine`, `browser-qa`, `network-failure-qa`, `visual-regression`, `ui-ux-review`, `accessibility-review`, `performance-review`, `test-data-personas`, `regression-testing`, `security-review`, `observability-review`, `qa-verification`, `qa-reporting`, `code-review`, `multi-agent-review`, `ci-auto-heal`, `issue-to-pr`, `production-deployment`, `project-memory`, `git-delivery`.
 
@@ -173,6 +221,8 @@ Real estate: `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-
 WordPress real estate: `wordpress-real-estate-specialist`, `wordpress-site-doctor`, `wordpress-plugin-conflict-detective`, `wordpress-safe-update-manager`, `wp-cli-operator`, `wordpress-rest-api-integrator`, `idx-provider-detector`, `wordpress-idx-bridge`, `idx-search-qa`, `listing-freshness-monitor`, `idx-compliance-monitor`, `idx-vow-mode-detector`, `wordpress-performance-doctor`, `wordpress-security-specialist`, `wordpress-lead-flow-qa`, `wordpress-client-handover`.
 
 Website operations: `website-operations-specialist`, `hosting-dns-ssl-doctor`, `wordpress-migration-specialist`, `backup-restore-drill`, `seo-search-console-specialist`, `real-estate-seo-specialist`, `core-web-vitals-diagnoser`, `analytics-conversion-qa`, `email-deliverability-doctor`, `broken-link-redirect-manager`, `plugin-theme-risk-intelligence`, `wp-cron-reliability-doctor`, `reso-schema-drift-detector`, `reso-provider-capability-inspector`, `client-monthly-website-report`, `website-emergency-recovery`.
+
+Agency operations: `agency-operations-control-center`, `multi-site-fleet-manager`, `scheduled-site-health-monitor`, `domain-ssl-expiry-monitor`, `wordpress-update-wave-manager`, `staging-production-manager`, `website-change-timeline`, `visual-history-screenshot-timeline`, `plugin-vulnerability-maintenance-watch`, `license-subscription-tracker`, `client-access-inventory`, `ticket-request-intake-agent`, `sla-priority-engine`, `lead-sla-monitor`, `real-estate-crm-integration-specialist`, `mls-provider-health-monitor`, `consent-privacy-cookie-auditor`, `accessibility-continuous-monitor`, `content-qa-agent`, `client-onboarding-agent`, `client-offboarding-agent`.
 
 ## Non-negotiable behavior
 
