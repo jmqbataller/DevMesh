@@ -1,6 +1,6 @@
 ---
 name: using-devmesh
-description: Use at the start of any software-development, greenfield website, website-operations, or agency-operations request to classify the task, select Quick/Standard/Deep depth plus Eco/Balanced/Max resource budget, assess risk, and route the minimum evidence-based DevMesh workflow or Mission Control graph.
+description: Use at the start of any software-development, design-to-code, greenfield website, website-operations, or agency-operations request to classify the task, select Quick/Standard/Deep depth plus Eco/Balanced/Max resource budget, assess risk, and route the minimum evidence-based DevMesh workflow or Mission Control graph.
 ---
 
 # DevMesh Router
@@ -26,6 +26,11 @@ Task types:
 Special intents:
 - GitHub issue delivery → `issue-to-pr`
 - failing CI → `ci-auto-heal`
+- screenshot/mockup/Figma/visual-reference implementation → `design-to-code-studio`
+- analyze supplied visual reference → `visual-reference-analyzer`
+- extract/reconcile design tokens → `design-token-extractor`
+- infer responsive behavior from incomplete viewport references → `responsive-layout-inference`
+- compare rendered implementation against authoritative design → `visual-fidelity-judge`
 - new website/from-scratch/greenfield website → `website-product-builder`
 - design-system definition → `design-system-architect`
 - sitemap/information architecture → `sitemap-information-architecture`
@@ -109,14 +114,14 @@ Before mutating build/fix/debug/redesign/refactor/deploy or production website/a
 
 | Task | Required path | Conditional gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; mission-control; full-stack-build; database-architect; api-contract; architecture-guard; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; browser-qa; accessibility-review; security-review; performance-review; devmesh-judge; qa-reporting |
-| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; hosting-dns-ssl-doctor; email-deliverability-doctor; real-estate-crm-integration-specialist; mls-provider-health-monitor; browser-qa; security-review; confidence-engine; devmesh-judge |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; design-to-code-studio; visual-reference-analyzer; design-token-extractor; responsive-layout-inference; visual-fidelity-judge; website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; mission-control; full-stack-build; database-architect; api-contract; architecture-guard; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; browser-qa; accessibility-review; security-review; performance-review; devmesh-judge; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; visual-fidelity-judge when fixing a reference mismatch; website-operations-specialist; agency-operations-control-center; WordPress/IDX/MLS specialists; hosting-dns-ssl-doctor; email-deliverability-doctor; real-estate-crm-integration-specialist; mls-provider-health-monitor; browser-qa; security-review; confidence-engine; devmesh-judge |
 | debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | environment-doctor; website-emergency-recovery; website-change-timeline; mls-provider-health-monitor; browser-qa; network-failure-qa; observability-review; confidence-engine; devmesh-judge |
-| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | design-system-architect; sitemap-information-architecture; ui-component-architecture; visual-regression; visual-history-screenshot-timeline; accessibility-continuous-monitor; content-qa-agent; IDX search/SEO gates; performance-review; devmesh-judge |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | design-to-code-studio; visual-reference-analyzer; design-token-extractor; responsive-layout-inference; visual-fidelity-judge; design-system-architect; sitemap-information-architecture; ui-component-architecture; visual-regression; visual-history-screenshot-timeline; accessibility-continuous-monitor; content-qa-agent; IDX search/SEO gates; performance-review; devmesh-judge |
 | refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | ui-component-architecture; architecture-guard; change-impact-map; regression-testing; browser-qa; security-review; performance-review; confidence-engine; devmesh-judge |
-| review | codebase-intelligence → code-review | website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; website-operations-specialist; agency-operations-control-center; multi-site-fleet-manager; privacy/accessibility/content; WordPress/IDX/MLS; architecture-simulator; browser-qa; visual-regression; security-review; performance-review; devmesh-judge; qa-reporting |
-| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | website-product-builder; staging-production-manager; wordpress-update-wave-manager; backup-restore-drill; domain-ssl-expiry-monitor; browser-qa; analytics-conversion-qa; accessibility-continuous-monitor; website-change-timeline; devmesh-judge |
-| research | codebase-intelligence | website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; agency-operations-control-center; website-operations-specialist; client-access-inventory; license-subscription-tracker; provider/RESO/WordPress specialists; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; writing-plans |
+| review | codebase-intelligence → code-review | visual-reference-analyzer; visual-fidelity-judge; website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; website-operations-specialist; agency-operations-control-center; multi-site-fleet-manager; privacy/accessibility/content; WordPress/IDX/MLS; architecture-simulator; browser-qa; visual-regression; security-review; performance-review; devmesh-judge; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | design-to-code-studio; visual-fidelity-judge; website-product-builder; staging-production-manager; wordpress-update-wave-manager; backup-restore-drill; domain-ssl-expiry-monitor; browser-qa; analytics-conversion-qa; accessibility-continuous-monitor; website-change-timeline; devmesh-judge |
+| research | codebase-intelligence | visual-reference-analyzer; design-token-extractor; responsive-layout-inference; website-product-builder; design-system-architect; sitemap-information-architecture; ui-component-architecture; agency-operations-control-center; website-operations-specialist; client-access-inventory; license-subscription-tracker; provider/RESO/WordPress specialists; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; writing-plans |
 
 ## 5 — Mission Control
 
@@ -127,7 +132,25 @@ Typical mission:
 
 `parallel-agent-orchestration` must **fall back sequentially** when the runtime lacks real sub-agents. `devmesh-judge` must label a **same-context fallback** when independent review is unavailable.
 
-## 6 — Greenfield Website Product Builder
+## 6 — Design-to-Code Studio
+
+Trigger `design-to-code-studio` when the user supplies or points to a screenshot, mockup, Figma frame/export, visual design, or rendered reference and wants code or a production implementation derived from it.
+
+Default design-to-code flow:
+`reference intake → visual-reference-analyzer → design-token-extractor → responsive-layout-inference → sitemap-information-architecture when route scope matters → ui-component-architecture → implementation/full-stack-build as required → browser-qa → visual-regression + visual-fidelity-judge → bounded visual repair → accessibility/security/performance QA → devmesh-judge → production-deployment when authorized`
+
+Design-to-code rules:
+- record significant conclusions as `OBSERVED`, `INFERRED`, or `UNKNOWN`; static pixels do not prove hidden behavior.
+- `visual-reference-analyzer`: distinguish visible structure/assets/states from guessed interactions, routes, business logic and unseen viewport behavior.
+- `design-token-extractor`: normalize repeated evidence into maintainable semantic tokens; do not claim false pixel precision.
+- `responsive-layout-inference`: unseen viewport behavior is an implementation decision, not an observed fact.
+- `visual-fidelity-judge`: requires an authoritative reference plus real rendered comparison evidence; source review alone is not visual-fidelity proof.
+- never invent a numeric fidelity percentage without a defined repeatable measurement method.
+- maximum **3 visual repair rounds**; fix the implementation and rerender the same reference scenario rather than altering the baseline.
+- never weaken accessibility, functional correctness, responsiveness or performance merely to chase pixel similarity.
+- compose `website-product-builder` when the visual reference is only one input to a larger greenfield product.
+
+## 7 — Greenfield Website Product Builder
 
 Trigger `website-product-builder` for a new website/from-scratch build or when the user explicitly wants the full design-and-development lifecycle.
 
@@ -144,19 +167,19 @@ Greenfield rules:
 - SEO source checks are not Search Console/indexing proof.
 - production completion requires real target evidence; a local build or CI pass alone is not deployment proof.
 
-## 7 — Whole-product builds
+## 8 — Whole-product builds
 
 Trigger `full-stack-build` for a whole working app/site/system requiring multiple layers. Compose `database-architect`, `api-contract`, `architecture-guard`, `test-data-personas`, `security-review`, `browser-qa`, `accessibility-review`, `performance-review`, `observability-review`, `qa-verification` and `devmesh-judge` as relevant.
 
 Never call a **full-stack product working while required layers are mocked/disconnected**.
 
-## 8 — Real-estate IDX / MLS
+## 9 — Real-estate IDX / MLS
 
 Use `real-estate-idx-mls` for MLS data use; `reso-web-api` for RESO/OData metadata/query integration; `listing-sync-search` for licensed replication/local indexing; `idx-compliance-review` for evidence-based public-display review. Use `reso-provider-capability-inspector` to separate provider technical capability from licensed permission, `reso-schema-drift-detector` for contract changes, and `mls-provider-health-monitor` to separate upstream provider degradation from local sync/search failures.
 
 Actual MLS/provider licensing and local rules are authoritative. Treat RETS as legacy compatibility. Never expose MLS credentials or confidential/non-displayable fields. Local compliance is `BLOCKED` if current applicable rules were not reviewed.
 
-## 9 — WordPress Real Estate Specialist
+## 10 — WordPress Real Estate Specialist
 
 Trigger `wordpress-real-estate-specialist` when WordPress and real-estate operations overlap.
 
@@ -165,7 +188,7 @@ Typical Deep audit:
 
 Specialist skills remain available: `wordpress-plugin-conflict-detective`, `wordpress-safe-update-manager`, `wp-cli-operator`, `wordpress-rest-api-integrator`, `wordpress-idx-bridge`, `idx-search-qa`, `listing-freshness-monitor`, `idx-compliance-monitor`, `idx-vow-mode-detector`, `wordpress-performance-doctor`, `wordpress-security-specialist`, `wordpress-lead-flow-qa`, and `wordpress-client-handover`.
 
-## 10 — Website Operations Specialist
+## 11 — Website Operations Specialist
 
 Trigger `website-operations-specialist` for a client-site takeover, recurring maintenance, broad Website Specialist audit, or a request that spans infrastructure + application + business delivery.
 
@@ -187,7 +210,7 @@ Operational rules:
 - `client-monthly-website-report`: report only measured/verified values; never invent uptime, leads, rankings or sync times.
 - `website-emergency-recovery`: preserve evidence and verify representative journeys before declaring recovery.
 
-## 11 — Agency Operations Control Center
+## 12 — Agency Operations Control Center
 
 Trigger `agency-operations-control-center` when work spans multiple clients/sites, an agency maintenance queue, recurring fleet monitoring, client lifecycle, or shared operational governance.
 
@@ -216,24 +239,26 @@ Agency rules:
 - `client-onboarding-agent`: baseline without silently taking control or storing secrets.
 - `client-offboarding-agent`: transfer continuity first; revocation/deletion/ownership changes require explicit authorization.
 
-## 12 — GitHub, CI, production and incidents
+## 13 — GitHub, CI, production and incidents
 
 `issue-to-pr` must **read the real issue** and never auto-merge or close it. `ci-auto-heal` reads actual failed logs and never weakens meaningful tests just to make CI green. `production-deployment` requires real target evidence: **build logs alone are not production verification**. Use `incident-commander` for broad active production incidents and `website-emergency-recovery` for website-centric outage triage.
 
-## 13 — Browser, quality and evidence
+## 14 — Browser, quality and evidence
 
-`browser-qa` uses `browser-engine`; source review is not rendered QA. `visual-regression` requires an approved baseline—**never overwrite a baseline** to hide a regression. Use `network-failure-qa`, `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
+`browser-qa` uses `browser-engine`; source review is not rendered QA. `visual-regression` requires an approved baseline—**never overwrite a baseline** to hide a regression. `visual-fidelity-judge` requires an authoritative reference plus rendered comparison evidence and cannot invent a fidelity score. Use `network-failure-qa`, `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
 
 When a real defect is observed:
 `finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical → re-judge affected gate`.
 
-Browser QA allows up to **3 fix/retest rounds**. Mission Control allows up to **2 repair/rejudge rounds**. Do not loop indefinitely.
+Browser QA allows up to **3 fix/retest rounds**. Design-to-Code allows up to **3 visual repair rounds**. Mission Control allows up to **2 repair/rejudge rounds**. Do not loop indefinitely.
 
-Track evidence as `PASS`, `FAIL`, `FIXED`, `BLOCKED`, or `NOT RUN`. Never claim browser/CI/deployment/parallel-agent/independent-judge/greenfield-design/IDX/WordPress/hosting/SEO/analytics/email/restore/fleet-monitoring/SLA/CRM/client-lifecycle evidence that did not execute.
+Track evidence as `PASS`, `FAIL`, `FIXED`, `BLOCKED`, or `NOT RUN`. Never claim browser/visual-fidelity/CI/deployment/parallel-agent/independent-judge/greenfield-design/IDX/WordPress/hosting/SEO/analytics/email/restore/fleet-monitoring/SLA/CRM/client-lifecycle evidence that did not execute.
 
-## 14 — Full skill inventory
+## 15 — Full skill inventory
 
 Core: `execution-modes`, `brainstorming-requirements`, `codebase-intelligence`, `environment-doctor`, `writing-plans`, `implementation`, `systematic-debugging`, `risk-engine`, `full-stack-build`, `database-architect`, `api-contract`, `architecture-guard`, `browser-engine`, `browser-qa`, `network-failure-qa`, `visual-regression`, `ui-ux-review`, `accessibility-review`, `performance-review`, `test-data-personas`, `regression-testing`, `security-review`, `observability-review`, `qa-verification`, `qa-reporting`, `code-review`, `multi-agent-review`, `ci-auto-heal`, `issue-to-pr`, `production-deployment`, `project-memory`, `git-delivery`.
+
+Design-to-code: `design-to-code-studio`, `visual-reference-analyzer`, `design-token-extractor`, `responsive-layout-inference`, `visual-fidelity-judge`.
 
 Greenfield website product: `website-product-builder`, `design-system-architect`, `sitemap-information-architecture`, `ui-component-architecture`.
 
@@ -249,6 +274,6 @@ Agency operations: `agency-operations-control-center`, `multi-site-fleet-manager
 
 ## Non-negotiable behavior
 
-Never guess root cause as proven, expose secrets/PII, silently perform destructive actions, disable meaningful tests to get green CI, overwrite visual baselines, or merge/close GitHub work without authorization.
+Never guess root cause as proven, expose secrets/PII, silently perform destructive actions, disable meaningful tests to get green CI, overwrite visual/reference baselines, invent visual-fidelity scores, or merge/close GitHub work without authorization.
 
 Always inspect before editing, preserve unrelated work, prefer sound existing architecture, choose the simplest architecture that genuinely satisfies behavior, and state clearly what could not be verified.
