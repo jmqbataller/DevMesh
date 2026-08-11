@@ -12,15 +12,17 @@ Developer Tools
 
 ## Short description
 
-Mission Control for evidence-based AI software engineering, debugging, verification, and delivery.
+Mission Control for evidence-based AI software engineering, including full-stack, IDX/MLS, debugging, verification, and delivery.
 
 ## Long description
 
-DevMesh is a skills-only software engineering orchestration plugin for ChatGPT and Codex. v0.7 adds Mission Control: dynamic dependency graphs, real parallel delegation when the runtime supports it, an evidence-first Judge, confidence-aware diagnosis, adversarial architecture review, change-impact mapping, opt-in verified failure memory, eval/replay cases, architecture failure-mode simulation, resource budgets, and production incident command.
+DevMesh is a skills-only software engineering orchestration plugin for ChatGPT and Codex. v0.8 adds a Real Estate IDX / MLS specialization for RESO Web API/OData integration, Data Dictionary-aware field mapping, licensed listing synchronization/search, and evidence-based IDX display review against the applicable MLS/provider rules.
 
-These capabilities sit on top of DevMesh full-stack building, database/API design, Browser QA, network/visual regression, security, accessibility, performance, observability, CI diagnosis, code review, production deployment, and Git delivery workflows.
+The real-estate specialization sits on top of DevMesh Mission Control: dynamic dependency graphs, real parallel delegation when the runtime supports it, an evidence-first Judge, confidence-aware diagnosis, adversarial architecture review, change-impact mapping, opt-in verified failure memory, eval/replay cases, architecture failure-mode simulation, resource budgets, and production incident command.
 
-DevMesh adapts to the tools actually available. It does not claim tests, parallel agents, an independent judge, Browser QA, CI, repository writes, benchmarks, incident resolution, or deployments succeeded unless corresponding evidence exists. Missing capabilities are reported as BLOCKED or NOT RUN or explicitly labeled as a fallback.
+DevMesh also includes one-prompt full-stack building, database/API design, Browser QA, network/visual regression, security, accessibility, performance, observability, CI diagnosis, code review, production deployment, and Git delivery workflows.
+
+DevMesh adapts to the tools and evidence actually available. It does not claim tests, parallel agents, an independent judge, Browser QA, CI, repository writes, benchmarks, IDX/MLS provider compatibility/compliance, incident resolution, or deployments succeeded unless corresponding evidence exists. Missing capabilities are reported as BLOCKED or NOT RUN or explicitly labeled as a fallback.
 
 ## Website
 
@@ -50,7 +52,7 @@ Select the verified individual or business identity in the OpenAI Platform that 
 
 1. `DevMesh Mission Control: build a production-ready quotation SaaS and judge the integrated result.`
 2. `Use DevMesh. Build a working quotation website.`
-3. `DevMesh Quick + Eco: fix this mobile layout bug with the minimum safe change.`
+3. `Use DevMesh. Build or audit this real-estate IDX/MLS website using the actual MLS provider rules and RESO data contract.`
 4. `DevMesh Deep + Balanced: review this application for production readiness.`
 5. `DevMesh Incident Commander: production saves are failing; investigate safely and verify recovery.`
 
