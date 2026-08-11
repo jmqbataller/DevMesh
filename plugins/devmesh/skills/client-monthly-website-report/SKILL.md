@@ -9,6 +9,8 @@ description: Use to turn verified website operations evidence into a professiona
 
 **Client reports summarize verified work and business impact; they must not turn missing telemetry into invented percentages or successes.**
 
+Rule: **never invent uptime**, traffic, lead counts, rankings, performance scores, listing-sync ages, or completed work.
+
 Use available evidence to cover only relevant sections:
 - website availability/uptime
 - WordPress/PHP/plugin/theme maintenance
@@ -27,6 +29,6 @@ Use available evidence to cover only relevant sections:
 
 Use plain client language first; put technical details in a concise appendix if useful. Never expose credentials, tokens, private customer data, internal exploit details, or unnecessary PII.
 
-If no measurement exists, say `Not measured this period` rather than inventing uptime, traffic, lead counts, rankings, speed scores, or MLS sync times.
+If no measurement exists, say `Not measured this period` rather than inventing a value.
 
 Output should be suitable for email/PDF/doc handoff and clearly distinguish completed, monitored, blocked, and recommended work.
