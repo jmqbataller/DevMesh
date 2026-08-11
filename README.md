@@ -8,24 +8,71 @@ DevMesh ships with:
 
 ## Download DevMesh for ChatGPT
 
-[**Download `devmesh-chatgpt-v0.7.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.7.0/devmesh-chatgpt-v0.7.0.zip)
+[**Download `devmesh-chatgpt-v0.8.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.8.0/devmesh-chatgpt-v0.8.0.zip)
 
 On a ChatGPT account/surface that supports uploaded Skills: open **Plugins → Skills → Create → Upload from your computer**, upload the ZIP, then start a new chat.
 
-## DevMesh v0.7 — Mission Control
+## DevMesh v0.8 — Real Estate IDX / MLS
 
-v0.7 contains **45 composable skills**. The new Mission Control stack adds:
+v0.8 contains **49 composable skills** and adds a real-estate specialization on top of Mission Control:
+
+- `real-estate-idx-mls` — top-level IDX/MLS website, feed, search, VOW-vs-IDX, licensing/evidence orchestration
+- `reso-web-api` — RESO Web API/OData metadata discovery, Data Dictionary mapping, authentication, filtering, pagination and provider extensions
+- `listing-sync-search` — licensed listing replication, incremental sync, reconciliation, media, local search/maps, freshness and observability
+- `idx-compliance-review` — evidence-based public IDX display review using confirmed local MLS/provider rules plus general NAR IDX safeguards
+
+DevMesh explicitly treats RESO as a standards layer—not an MLS data source. Credentials and display rights must come from the actual MLS/data provider. New integrations prefer RESO Web API when available; RETS is treated as legacy compatibility.
+
+### Real-estate examples
+
+```text
+Use DevMesh.
+Build a working real-estate website with IDX property search using my MLS provider.
+```
+
+```text
+DevMesh Deep:
+Audit this IDX website for MLS/IDX compliance, RESO mapping, listing freshness, search UX, security, accessibility and performance.
+```
+
+```text
+Use DevMesh.
+Integrate this RESO Web API feed and build property search, property details and saved listings without exposing MLS credentials to the browser.
+```
+
+A typical IDX workflow is:
+
+```text
+provider/license discovery
+→ IDX vs VOW/use-type classification
+→ RESO Web API metadata + Data Dictionary mapping when applicable
+→ database/API architecture
+→ listing sync/search when replication is licensed
+→ frontend property search + detail experience
+→ security review
+→ IDX compliance review
+→ Browser QA + accessibility + performance
+→ QA/Judge evidence
+```
+
+DevMesh will not claim an IDX site compliant if the current applicable local MLS/provider rules were not actually reviewed; that evidence remains `BLOCKED`.
+
+See [`docs/REAL_ESTATE_IDX_MLS.md`](docs/REAL_ESTATE_IDX_MLS.md).
+
+## Mission Control
+
+The v0.7 Mission Control stack remains fully available:
 
 - `mission-control` — top-level dependency-aware orchestration
 - `dynamic-task-graph` — DAG, readiness, acceptance/evidence contracts
-- `parallel-agent-orchestration` — real delegation when the runtime supports sub-agents; explicit sequential fallback otherwise
-- `devmesh-judge` — evidence-first final release gate
+- `parallel-agent-orchestration` — real delegation when supported; explicit sequential fallback otherwise
+- `devmesh-judge` — evidence-first release gate
 - `confidence-engine` — hypothesis/evidence confidence routing
 - `adversarial-review` — bounded architecture/design debate
 - `change-impact-map` — blast radius + regression scope
 - `failure-memory` — opt-in verified failure lessons
 - `eval-replay-lab` — repeatable regression/benchmark cases
-- `architecture-simulator` — failure-mode scenario simulation before implementation
+- `architecture-simulator` — pre-implementation failure-mode simulation
 - `resource-budget` — Eco / Balanced / Max orchestration intensity
 - `incident-commander` — production incident stabilization and recovery verification
 
@@ -89,13 +136,9 @@ Production quotations stopped saving.
 
 The incident workflow prioritizes stabilization, evidence preservation, blast-radius analysis, recent-change inspection, confidence-aware root-cause testing, risk-gated mitigation, exact recovery verification, monitoring, and a post-incident report.
 
-## Eval / Replay Lab
-
-Representative tasks and proven failures can become reusable `.devmesh/evals/` cases. DevMesh prefers deterministic graders and identical fixtures across versions, then reports regressions/improvements without silently changing expected outcomes.
-
 ## ChatGPT Adapter
 
-The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, Playwright, sub-agents, persistent memory, or deployment credentials. Missing execution capabilities remain `BLOCKED`/`NOT RUN`.
+The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, Playwright, sub-agents, persistent memory, MLS credentials, or deployment credentials. Missing execution/provider evidence remains `BLOCKED`/`NOT RUN`.
 
 Developers can build the upload bundle locally:
 
@@ -103,7 +146,7 @@ Developers can build the upload bundle locally:
 python scripts/build_chatgpt_adapter.py
 ```
 
-Output: `dist/devmesh-chatgpt-v0.7.0.zip`.
+Output: `dist/devmesh-chatgpt-v0.8.0.zip`.
 
 ## Codex Adapter
 
@@ -126,7 +169,7 @@ Start a new Codex thread/session after reinstall.
 
 ## Evidence states
 
-DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A` where appropriate. Browser/CI/production/parallel-agent/independent-judge/benchmark claims require corresponding evidence.
+DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A` where appropriate. Browser/CI/production/parallel-agent/independent-judge/benchmark/IDX-compliance claims require corresponding evidence.
 
 ## Public distribution status
 
@@ -151,8 +194,8 @@ python tests/test_plugin_submission_pack.py
 
 | Platform | Status |
 |---|---|
-| Codex | **v0.7 supported** |
-| ChatGPT | **v0.7 portable Agent Skills adapter** |
+| Codex | **v0.8 supported** |
+| ChatGPT | **v0.8 portable Agent Skills adapter** |
 | Claude Code | Planned adapter |
 | Gemini CLI | Planned adapter |
 | Cursor | Planned adapter |
