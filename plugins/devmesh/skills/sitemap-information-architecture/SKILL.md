@@ -37,4 +37,4 @@ description: Use for greenfield or restructured websites to define the route/pag
 
 Prefer a concise sitemap/route table or tree with: route, purpose, audience, primary CTA/action, data/content source, auth state, dynamic parameters, and indexing intent.
 
-Do not promise Search Console indexing or rankings; sitemap architecture is a design contract, not proof of search-engine state.
+Do not promise Search Console indexing or rankings; sitemap architecture is an architecture contract and design contract, not proof of search-engine state.
