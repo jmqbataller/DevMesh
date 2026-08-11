@@ -1,5 +1,17 @@
 # Invocation Examples
 
+## Design-to-Code Studio
+
+```text
+DevMesh Design-to-Code Deep:
+Use the supplied screenshot as the authoritative visual reference.
+Recreate it as a maintainable responsive website.
+```
+
+Expected routing: reference intake → visual-reference-analyzer → design-token-extractor → responsive-layout-inference → component architecture → implementation → Browser QA → visual-fidelity-judge → bounded repair → accessibility/security/performance QA → Judge.
+
+Separate `OBSERVED`, `INFERRED`, and `UNKNOWN`. A static screenshot does not prove hidden interactions/backend behavior. If browser-controlled rendering is unavailable, visual fidelity remains `NOT RUN`/`BLOCKED`; never invent a fidelity percentage.
+
 ## Greenfield Website Product Builder
 
 ```text
@@ -62,4 +74,4 @@ Use identical fixtures/cases and deterministic graders where possible. If execut
 
 ## ChatGPT without execution tools
 
-A whole-product source implementation can be completed while tests/build, Browser QA, deployment, parallel-agent execution, or persistent failure memory remain `NOT RUN`/`BLOCKED`. Report those boundaries explicitly.
+A whole-product source implementation can be completed while tests/build, Browser QA, visual fidelity, deployment, parallel-agent execution, or persistent failure memory remain `NOT RUN`/`BLOCKED`. Report those boundaries explicitly.
