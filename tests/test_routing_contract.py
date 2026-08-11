@@ -27,6 +27,6 @@ for task,skills in EXPECTED.items():
         pos=nxt
 for phrase in ['Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment','read the real issue','never auto-merge','build logs alone are not production verification','never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
-for phrase in ['3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization','full-stack product working while required layers are mocked/disconnected','parallel execution: blocked / sequential fallback','same-context fallback']:
+for phrase in ['3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization','full-stack product working while required layers are mocked/disconnected','fall back sequentially','same-context fallback']:
     assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
 print('OK: routing contract validated for 8 task types and v0.7 Mission Control orchestration')
