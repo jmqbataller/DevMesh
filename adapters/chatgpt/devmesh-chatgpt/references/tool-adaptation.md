@@ -6,6 +6,9 @@ DevMesh must adapt to capabilities actually exposed in the current ChatGPT surfa
 
 | DevMesh need | ChatGPT-capable path | If unavailable |
 |---|---|---|
+| Analyze supplied visual reference | Image/PDF/file understanding for the reference actually supplied | Mark unavailable portions `BLOCKED`; do not invent unseen design details |
+| Access private Figma/design source | Connected source/tool or user-supplied export/file with actual access | Work from supplied exports/screenshots only; mark private source access `BLOCKED` |
+| Render/reference visual comparison | Browser-control + screenshot/render capture against the implementation plus the authoritative reference | Reference analysis may continue, but visual fidelity is `BLOCKED`/`NOT RUN` |
 | Read private repository | Connected GitHub/app with read access | Ask for repo/file access or work from supplied files only |
 | Edit repository | Explicitly exposed GitHub write action or writable project/artifact workspace | Generate patch/files; mark repository write `BLOCKED` |
 | Read issue/PR/CI | Connected GitHub/app when that data is exposed | Do not infer private state from memory or prompt summaries |
@@ -16,6 +19,14 @@ DevMesh must adapt to capabilities actually exposed in the current ChatGPT surfa
 | Database changes | Connected DB/app/runtime with authorized credentials | Generate schema/migration safely; mark execution `BLOCKED` |
 | Production deploy | Connected hosting/deployment capability + authorization | Produce deployment plan/config; do not claim release |
 | Artifact/source bundle | File/artifact creation capability | Return code/content inline where practical |
+
+## Design-to-Code adaptation
+
+A screenshot/mockup can be valid visual evidence when it is actually supplied, but it is not a complete behavior specification. Keep `OBSERVED`, `INFERRED`, and `UNKNOWN` separate.
+
+Do not assume access to private Figma layers, original design tokens, exact font files, hidden frames, component definitions, hover/animation prototypes, or unseen viewport designs. A supplied export may support implementation without providing those source details.
+
+Visual-fidelity PASS requires a real rendered implementation comparison against an authoritative reference at a matching or explicitly normalized route/state/viewport. Do not invent a numeric fidelity percentage from static reasoning.
 
 ## GitHub adaptation
 
