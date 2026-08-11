@@ -11,7 +11,8 @@ MCP = PLUGIN / '.mcp.json'
 CHATGPT = ROOT / 'adapters' / 'chatgpt' / 'devmesh-chatgpt'
 REQUIRED = {
 'using-devmesh','execution-modes','brainstorming-requirements','codebase-intelligence','environment-doctor','writing-plans','implementation','systematic-debugging','risk-engine','full-stack-build','database-architect','api-contract','architecture-guard','browser-engine','browser-qa','network-failure-qa','visual-regression','ui-ux-review','accessibility-review','performance-review','test-data-personas','regression-testing','security-review','observability-review','qa-verification','qa-reporting','code-review','multi-agent-review','ci-auto-heal','issue-to-pr','production-deployment','project-memory','git-delivery',
-'mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander'}
+'mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander',
+'real-estate-idx-mls','reso-web-api','listing-sync-search','idx-compliance-review'}
 FM = re.compile(r'^---\n(.*?)\n---\n', re.S)
 
 def fail(msg): print('ERROR:',msg); raise SystemExit(1)
@@ -33,7 +34,7 @@ def main():
     market=json.loads(MARKETPLACE.read_text(encoding='utf-8'))
     mcp=json.loads(MCP.read_text(encoding='utf-8'))
     if manifest.get('name')!='devmesh': fail('manifest name')
-    if manifest.get('version')!='0.7.0': fail('manifest version')
+    if manifest.get('version')!='0.8.0': fail('manifest version')
     if manifest.get('skills')!='./skills/': fail('skills path')
     if manifest.get('mcpServers')!='./.mcp.json': fail('mcp path')
     if 'hooks' in manifest: fail('hooks must not be in plugin.json')
@@ -72,9 +73,13 @@ def main():
     require(PLUGIN/'skills/architecture-simulator/SKILL.md',['Simulation is not a benchmark','NEEDS MEASUREMENT','rollback'])
     require(PLUGIN/'skills/resource-budget/SKILL.md',['Eco','Balanced','Max','never'])
     require(PLUGIN/'skills/incident-commander/SKILL.md',['SEV1','preserve evidence','risk-engine','UNPROVEN','BLOCKED'])
+    require(PLUGIN/'skills/real-estate-idx-mls/SKILL.md',['RESO Web API','VOW is not IDX','delayed-marketing','server-side','local MLS/provider rules'])
+    require(PLUGIN/'skills/reso-web-api/SKILL.md',['$metadata','RESO Data Dictionary','RETS','server-side','NOT RUN'])
+    require(PLUGIN/'skills/listing-sync-search/SKILL.md',['idempotent','last successful sync','objective criteria','removed/withheld listing'])
+    require(PLUGIN/'skills/idx-compliance-review/SKILL.md',['Local MLS/provider rules','seller-withheld','delayed-marketing','hidden with CSS','BLOCKED'])
     chat_meta=frontmatter(CHATGPT/'SKILL.md')
     if chat_meta.get('name')!='devmesh-chatgpt' or not chat_meta.get('description'): fail('ChatGPT adapter metadata')
-    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','mission-control','parallel execution: BLOCKED','judge independence: unavailable','PASS','BLOCKED','NOT RUN'])
+    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','mission-control','real-estate-idx-mls','reso-web-api','listing-sync-search','idx-compliance-review','parallel execution: BLOCKED','judge independence: unavailable','PASS','BLOCKED','NOT RUN'])
     for ref in ['tool-adaptation.md','evidence-boundaries.md','invocation-examples.md']:
         if not (CHATGPT/'references'/ref).exists(): fail(f'missing ChatGPT adapter reference {ref}')
     print(f"OK: marketplace {market['name']}")
@@ -82,6 +87,6 @@ def main():
     print('OK: Playwright MCP configuration validated')
     print(f'OK: {len(found)} required skills and 8 task types validated')
     print('OK: ChatGPT Agent Skills adapter contract validated')
-    print('OK: v0.7 Mission Control contracts validated')
+    print('OK: v0.8 IDX/MLS + Mission Control contracts validated')
     return 0
 if __name__=='__main__': sys.exit(main())
