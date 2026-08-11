@@ -24,6 +24,7 @@ jobs:
           python tests/test_routing_contract.py
           python tests/test_feature_contracts.py
           python tests/test_chatgpt_adapter.py
+          python tests/test_plugin_submission_pack.py
       - name: Build ChatGPT distribution bundle
         run: python scripts/build_chatgpt_adapter.py --output dist/devmesh-chatgpt-v0.6.0.zip
       - name: Upload ChatGPT distribution artifact
