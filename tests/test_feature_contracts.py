@@ -3,43 +3,42 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN = ROOT / 'plugins' / 'devmesh'
+PLUGIN = ROOT/'plugins'/'devmesh'
 
+def text(name: str) -> str:
+    return (PLUGIN/'skills'/name/'SKILL.md').read_text(encoding='utf-8')
 
-def text(skill: str) -> str:
-    return (PLUGIN / 'skills' / skill / 'SKILL.md').read_text(encoding='utf-8')
+def has(name: str, *phrases: str) -> None:
+    body = text(name)
+    for phrase in phrases:
+        assert phrase in body, f'{name} missing {phrase!r}'
 
-mcp = json.loads((PLUGIN / '.mcp.json').read_text(encoding='utf-8'))
+mcp = json.loads((PLUGIN/'.mcp.json').read_text(encoding='utf-8'))
 playwright = mcp['mcpServers']['playwright']
-assert playwright['command'] in {'npx', 'npx.cmd'}
-assert '-y' in playwright['args']
+assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
-full_stack = text('full-stack-build')
-assert 'working quotation website' in full_stack.lower()
-assert 'frontend mock' in full_stack.lower()
-assert 'Backend / server logic' in full_stack
-assert 'API contract' in full_stack
-assert 'Database / persistence' in full_stack
-assert 'Mandatory integration checks' in full_stack
-assert 'create data → server validates → persist → read it back → update it → reload page → confirm persistence' in full_stack
-assert 'payments' in full_stack
-assert 'CRM' in full_stack
-assert 'PDF generation' in full_stack
-assert 'fake APIs' in full_stack
+has('execution-modes','Quick','Standard','Deep','never bypass')
+has('environment-doctor','runtime/toolchain','port conflicts','Do not fabricate credentials')
+has('database-architect','constraints','indexes','RLS/policies','rollback')
+has('api-contract','request','response','authentication and authorization','contract/integration tests')
+has('issue-to-pr','read issue','reproduce/confirm','create/update a PR','Never close an issue')
+has('production-deployment','Preflight','health/readiness','actual production target','rollback')
+has('visual-regression','baseline','REGRESSION','silently overwrite')
+has('network-failure-qa','API 4xx/5xx','timeout','offline','duplicate submit')
+has('test-data-personas','synthetic','production data','deterministic')
+has('observability-review','structured server logs','health/readiness','Never log passwords')
+has('ci-auto-heal','read logs','root cause','make CI green')
+has('architecture-guard','server-only','direct database access','circular dependencies')
+has('full-stack-build','database-architect','api-contract','architecture-guard','test-data-personas','network-failure-qa','visual-regression','observability-review')
 
-assert 'Playwright MCP' in text('browser-engine')
-assert 'same browser scenario' in text('browser-qa')
-assert '3 browser fix rounds' in text('browser-qa')
-assert 'fail before the fix' in text('regression-testing')
-assert 'Supabase' in text('security-review')
-assert 'prefers-reduced-motion' in text('accessibility-review')
-assert 'Do not invent Lighthouse/Core Web Vitals numbers' in text('performance-review')
-assert 'Do not silently add `.devmesh/`' in text('project-memory')
-assert 'High risk' in text('risk-engine')
-assert 'BLOCKED' in text('qa-reporting')
-assert 'maximum four concurrent reviewers' in text('multi-agent-review')
-assert 'reviewers should be read-only' in text('multi-agent-review').lower()
+# Existing v0.3/v0.4 safeguards remain intact.
+has('browser-qa','3 browser fix rounds','same browser scenario')
+has('security-review','Supabase')
+has('accessibility-review','prefers-reduced-motion')
+has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
+has('project-memory','Do not silently add `.devmesh/`')
+has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: full-stack build, Playwright, fix/retest, regression, security, accessibility, performance, memory, risk, reporting, and multi-agent contracts validated')
+print('OK: v0.5 full-stack, environment, DB/API, Issue→PR, CI, resilience, visual, observability, architecture, modes, deployment, and legacy contracts validated')

@@ -1,66 +1,50 @@
 # Changelog
 
+## 0.5.0 - 2026-08-11
+
+DevMesh v0.5 expands the framework into end-to-end engineering and production orchestration.
+
+- Added `execution-modes` with Quick, Standard (default), and Deep verification depth while preserving safety/evidence requirements.
+- Added `environment-doctor` for runtimes, package managers, dependencies, scripts, env-variable contracts, ports, database prerequisites, migrations, and browser/MCP readiness.
+- Added `database-architect` for entities/relationships, constraints, indexes, migrations, rollback/repair planning, ownership, and Supabase/Postgres RLS/policies.
+- Added `api-contract` for request/response/error/auth/pagination/concurrency contracts and focused contract/integration testing.
+- Added `issue-to-pr` for issue context → reproduction → implementation → verification → review → commit → PR delivery when authorized.
+- Added `production-deployment` for preflight, migrations, deployment, health/API smoke tests, live Browser QA, post-deploy evidence, and rollback readiness.
+- Added `visual-regression` for deterministic screenshot baselines/diffs without silently overwriting failures.
+- Added `network-failure-qa` for 4xx/5xx, timeout, offline/slow, malformed response, failed resource, duplicate submit, and recovery behavior.
+- Added `test-data-personas` for safe deterministic synthetic users/fixtures/edge cases without production PII.
+- Added `observability-review` for structured logs, error boundaries, health/readiness, correlation, and safe operational signals without secret logging.
+- Added `ci-auto-heal` for actual failing workflow/job/log inspection, root-cause repair, rerun, and anti-test-bypass rules.
+- Added `architecture-guard` for server/client boundaries, secret/data access, domain-rule duplication, circular dependencies, architecture drift, and unnecessary framework duplication.
+- Updated `full-stack-build` to orchestrate environment, database, API, architecture, personas, resilience, visual regression, and observability when relevant.
+- Updated the router so all v0.5 capabilities are selected by intent, risk, execution mode, and evidence needs rather than run blindly.
+- Expanded validation contracts to all 33 skills and v0.5 orchestration rules.
+
 ## 0.4.0 - 2026-08-11
 
-DevMesh v0.4 adds one-prompt full-stack product building for concise requests such as `Build a working quotation website.`
-
-- Added `full-stack-build` as a 21st DevMesh skill.
-- Added automatic product-level build detection for whole working websites, apps, SaaS products, dashboards, portals, systems, platforms, and tools.
-- Defined `working` as an integrated product rather than a frontend mock when requested behavior requires backend/server logic, APIs, persistence, auth, or integrations.
-- Added cross-layer architecture mapping for frontend, backend/server logic, API contracts, database/persistence, auth/authorization, and external integrations when relevant.
-- Added greenfield decision rules that prefer simple maintainable defaults and avoid unnecessary clarification for low-impact choices.
-- Added scope guardrails so DevMesh infers only the minimum functionality necessary for the requested product and does not silently invent unrelated features.
-- Added vertical-slice implementation guidance so core user journeys become usable end-to-end early rather than building disconnected frontend/backend halves.
-- Added mandatory representative integration checks such as create → server validate → persist → read → update → reload → confirm persistence when applicable.
-- Added explicit completion requirements covering frontend/backend/API/database/auth/configuration, end-to-end evidence, and blocked external services.
-- Updated the router so a request like `Build a working quotation website` automatically invokes the full-stack build workflow without requiring separate frontend/backend/API/database instructions.
-- Updated manifest branding/copy and default build prompt for full-stack product creation.
-- Updated validators, routing tests, feature-contract tests, and README for v0.4.
+- Added `full-stack-build` for one-prompt working product requests across frontend, backend/server logic, API, persistence, validation, auth boundaries, and end-to-end verification.
+- Added product-level build detection to the router.
+- Added scope guardrails to avoid inventing unrelated large features.
+- Added full-stack contract tests and v0.4 documentation.
 
 ## 0.3.0 - 2026-08-11
 
-DevMesh v0.3 turns the framework from a workflow-only plugin into a deeper evidence-driven engineering system.
-
-- Added bundled Playwright MCP configuration through `plugins/devmesh/.mcp.json`.
-- Added `browser-engine` for real browser launch, navigation, interaction, viewport, console/network, screenshot, and artifact control.
-- Enhanced `browser-qa` with an automatic evidence-based fix → retest loop capped at three rounds.
-- Added `regression-testing` for preserving confirmed bug fixes with focused automated coverage.
-- Added `security-review` for auth, authorization, sessions, secrets, data/API/database/storage, uploads, redirects, webhooks, CORS/CSRF, and security boundaries.
-- Added `accessibility-review` for keyboard/focus, semantics, labels, forms, contrast, motion, responsive usability, and optional automated scanning.
-- Added `performance-review` for bundles, images, fonts, network/runtime evidence, rendering cost, and measured before/after optimization.
-- Added opt-in `project-memory` using `.devmesh/` for stable commands, decisions, QA baselines, and reports without secrets.
-- Added `risk-engine` with read-only, low, medium, and high-risk action classification and explicit authorization requirements for destructive/high-risk operations.
-- Added `qa-reporting` with PASS/FAIL/FIXED/BLOCKED/NOT RUN evidence states and optional persistent `.devmesh/reports/` artifacts.
-- Added `multi-agent-review` with read-only independent reviewer roles, maximum four concurrent reviewers by default, fix/re-review limits, and sequential fallback when subagents are unavailable.
-- Updated routing so features are selected by task/risk rather than forcing every quality gate onto every small change.
-- Added v0.3 validator coverage for Playwright MCP, all 20 skills, quality-gate contracts, routing, and feature behavior.
-- Updated architecture and documentation for the v0.3 execution model.
+- Added bundled Playwright MCP configuration and `browser-engine`.
+- Added evidence-based Browser QA fix/retest loop capped at three rounds.
+- Added regression testing, security review, accessibility review, performance review, project memory, risk engine, QA reporting, and multi-agent review.
+- Added GitHub Actions validation and expanded routing/feature contracts.
 
 ## 0.2.1 - 2026-08-11
 
-- Added the DevMesh plugin icon and brand color to Codex plugin metadata.
-- Added `composerIcon` and `logo` assets.
-- Reduced default prompts to the supported maximum of three.
+- Added DevMesh plugin icon, `composerIcon`, `logo`, and brand color.
 
 ## 0.2.0 - 2026-08-11
 
-- Added `browser-qa` as an eleventh first-class DevMesh skill.
-- Added browser launch and rendered-page inspection workflow.
-- Added browser console/runtime error inspection.
-- Added desktop, phone, and conditional tablet responsive QA.
-- Added interaction and form journey testing.
-- Added overflow, clipping, z-index, spacing, focus, and responsive visual defect checks.
-- Added screenshot-based QA evidence and visual review guidance.
-- Added evidence-based report/fix/retest loops for browser defects.
-- Added a strict evidence boundary: DevMesh must not claim browser, visual, responsive, interaction, console, or screenshot QA when browser capabilities are unavailable.
-- Updated routing so redesigns require Browser QA and other browser-facing build/fix/debug/review/deploy work invokes it when relevant.
+- Added first-class `browser-qa` with rendered-page, console, responsive, interaction, overflow, screenshot, visual review, and evidence-boundary rules.
 
 ## 0.1.1 - 2026-08-09
 
-- Converted the repository into a Codex-installable marketplace layout.
-- Added `.agents/plugins/marketplace.json` with `devmesh@devmesh-marketplace`.
-- Moved the Codex adapter package to `plugins/devmesh/`.
-- Added marketplace/manifest/skill validation tests and routing contract tests.
+- Converted the repository into a Codex-installable marketplace layout and added validation tests.
 
 ## 0.1.0 - 2026-08-09
 

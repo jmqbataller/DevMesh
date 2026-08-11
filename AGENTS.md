@@ -1,26 +1,17 @@
 # Repository Instructions
 
-This repository defines **DevMesh**, a provider-neutral software-development agent framework with Codex as the first supported adapter.
+This repository defines **DevMesh**, a provider-neutral software-engineering workflow framework with Codex as the first supported adapter.
 
 When modifying it:
 
-1. Keep the core methodology provider-neutral; provider-specific packaging belongs under the relevant adapter/plugin path.
-2. Keep each skill focused on one responsibility and route between skills instead of duplicating full workflows.
-3. Preserve established skill names unless a versioned migration is intentional.
-4. Keep the Codex marketplace source at `./plugins/devmesh` and the manifest at `plugins/devmesh/.codex-plugin/plugin.json`.
-5. Keep browser methodology provider-neutral; Codex-specific Playwright MCP packaging belongs in `plugins/devmesh/.mcp.json`.
-6. Persistent project memory must remain opt-in and must never store tokens, passwords, cookies, private keys, `.env` contents, or sensitive personal data.
-7. High-risk/destructive behavior must preserve explicit authorization boundaries.
-8. Review subagents should be read-only by default; one lead/implementer owns fixes unless isolated worktrees are intentionally used.
-9. Never report browser, accessibility, security, performance, or QA evidence that was not actually collected.
-10. Run all validation tests before claiming the adapter is release-ready:
-
-   ```bash
-   python tests/validate_devmesh.py
-   python tests/test_routing_contract.py
-   python tests/test_feature_contracts.py
-   ```
-
-11. Update `README.md`, `docs/ARCHITECTURE.md`, and `CHANGELOG.md` when public behavior or architecture changes.
-12. Never add secrets, personal tokens, or environment-specific credentials to this repository.
-13. New platform adapters should reuse DevMesh skill contracts instead of forking the methodology unnecessarily.
+1. Keep core methodology provider-neutral; provider-specific packaging/tool notes belong under adapter/plugin paths or references.
+2. Keep each skill focused on one responsibility and route composition through `using-devmesh`.
+3. Do not duplicate whole workflows across skills; orchestrators delegate to specialized skills.
+4. Preserve existing public skill names unless a versioned migration is intentional.
+5. Keep the Codex marketplace source at `./plugins/devmesh` and manifest at `plugins/devmesh/.codex-plugin/plugin.json`.
+6. Run `python tests/validate_devmesh.py`, `python tests/test_routing_contract.py`, and `python tests/test_feature_contracts.py` before claiming the adapter valid.
+7. Update `CHANGELOG.md`, README, version metadata, and tests for user-visible behavior changes.
+8. Never add secrets, real customer data, tokens, cookies, credentials, or environment-specific private values.
+9. New platform support should reuse DevMesh evidence/safety contracts rather than fork the methodology.
+10. Execution modes may reduce depth but must never reduce truthfulness, required safety checks, or high-risk authorization boundaries.
+11. Browser/CI/production/visual-regression passes require actual corresponding evidence; unavailable capabilities must be `BLOCKED`/`NOT RUN`.

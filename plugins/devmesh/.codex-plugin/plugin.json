@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "0.4.0",
-  "description": "A provider-ready software development agent framework with one-prompt full-stack product builds, routing, risk control, planning, implementation, debugging, Playwright browser automation, Browser QA, regression testing, security, accessibility, performance, multi-agent review, QA reporting, project memory, code review, and Git delivery. Codex is the first supported adapter.",
+  "version": "0.5.0",
+  "description": "A provider-ready autonomous software engineering workflow framework with one-prompt full-stack builds, environment diagnosis, database/API architecture, Issue-to-PR delivery, CI auto-heal, Playwright Browser QA, resilience/visual regression, security, accessibility, performance, observability, production deployment, architecture guardrails, execution modes, review, memory, reporting, and Git delivery. Codex is the first supported adapter.",
   "author": {
     "name": "jmqbataller",
     "url": "https://github.com/jmqbataller"
@@ -10,39 +10,23 @@
   "repository": "https://github.com/jmqbataller/DevMesh",
   "license": "MIT",
   "keywords": [
-    "devmesh",
-    "codex",
-    "ai-agents",
-    "software-development",
-    "agentic-workflow",
-    "full-stack",
-    "product-build",
-    "playwright",
-    "browser-automation",
-    "security",
-    "accessibility",
-    "performance",
-    "regression-testing",
-    "multi-agent",
-    "qa"
+    "devmesh", "codex", "ai-agents", "software-development", "agentic-workflow",
+    "full-stack", "database", "api", "playwright", "browser-automation", "ci-cd",
+    "github", "security", "accessibility", "performance", "observability", "deployment", "qa"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
-    "shortDescription": "Autonomous full-stack engineering workflow mesh for coding agents",
-    "longDescription": "DevMesh turns concise product requests into evidence-based engineering workflows, including one-prompt full-stack builds with frontend, backend/server logic, APIs and persistence when required, plus risk assessment, planning, implementation, debugging, real Playwright browser automation, Browser QA, regression tests, security, accessibility, performance, independent review, project memory, QA reports, code review, and delivery. Codex is the first supported adapter.",
+    "shortDescription": "Autonomous end-to-end software engineering workflow mesh",
+    "longDescription": "DevMesh turns concise requests into evidence-based software engineering workflows across environment setup, full-stack architecture, database and API contracts, implementation, browser automation, resilience, visual regression, security, accessibility, performance, observability, CI repair, Issue-to-PR delivery, production deployment, independent review, memory, QA reporting, and Git delivery. Codex is the first supported adapter.",
     "developerName": "jmqbataller",
     "category": "Developer Tools",
-    "capabilities": [
-      "Interactive",
-      "Read",
-      "Write"
-    ],
+    "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
-      "Build a working full-stack web app from this product request.",
-      "Find the root cause, fix it, add regression coverage, and verify it.",
-      "Launch this web app and perform full Browser QA with evidence."
+      "Build this working product end-to-end using DevMesh Standard.",
+      "DevMesh Deep: prepare this application for production.",
+      "Fix the root cause, verify it, and deliver a reviewable PR when authorized."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
     "brandColor": "#00CFFF",
