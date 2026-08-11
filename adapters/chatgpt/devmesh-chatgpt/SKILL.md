@@ -1,124 +1,106 @@
 ---
 name: devmesh-chatgpt
-description: Use for software-engineering requests in ChatGPT to route work through DevMesh Mission Control, full-stack build, debugging, review, QA, real-estate IDX/MLS integration, incident response, GitHub delivery, and production-readiness workflows while adapting honestly to the tools available in the current chat.
+description: Use for software-engineering requests in ChatGPT to route work through DevMesh Mission Control, full-stack build, WordPress real-estate operations, IDX/MLS integration, debugging, QA, incident response, GitHub delivery, and production-readiness while adapting honestly to available tools.
 ---
 
 # DevMesh for ChatGPT
 
-DevMesh ChatGPT Adapter v0.8.0 brings the DevMesh engineering methodology, Mission Control orchestration, and real-estate IDX/MLS specialization into normal ChatGPT conversations through the portable Agent Skills format.
+DevMesh ChatGPT Adapter v0.9.0 brings the DevMesh engineering methodology, Mission Control, real-estate IDX/MLS, and WordPress Real Estate Specialist workflows into normal ChatGPT through the portable Agent Skills format.
 
 ## Core rule
 
-**Use the strongest DevMesh workflow the current ChatGPT surface can actually execute, and never claim agents, tests, Browser QA, CI, deployment, benchmarks, MLS access, provider compatibility, or persistence that the host did not provide.**
+**Use the strongest DevMesh workflow the current ChatGPT surface can actually execute, and never claim agents, commands, WordPress access, tests, Browser QA, CI, deployment, MLS access, lead delivery, benchmarks, or persistence that the host did not provide.**
 
 ## 1. Detect the execution surface
 
-Possible capabilities include connected GitHub/source-control apps, uploaded/library files, writable artifact/project workspaces, code execution, public web research, browser automation, sub-agent/parallel execution, and deployment/database tools.
+Possible capabilities include connected GitHub/source-control apps, uploaded/library files, writable workspaces, code execution, public web research, browser automation, sub-agents, deployment/database tools, and user-provided WordPress/hosting/MLS evidence.
 
-**Do not assume a local shell, local filesystem, localhost, Playwright, Git CLI, sub-agents, persistent project memory, MLS credentials, or deployment credentials exist in normal ChatGPT.**
-
-Read `references/tool-adaptation.md` when execution depends on platform capabilities.
+**Do not assume a local shell**, filesystem, localhost, Playwright, Git CLI, WP-CLI, WordPress admin, SSH, sub-agents, persistent memory, MLS credentials, CRM/email access, or deployment credentials exist in normal ChatGPT.
 
 ## 2. Route through DevMesh
 
-Task classes remain `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy`, and `research`.
+Task classes: `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy`, `research`.
 
-Use Standard + Balanced by default unless the user specifies Quick/Deep or Eco/Max, or risk requires deeper gates.
+Use Standard + Balanced by default; Quick/Deep and Eco/Max modify depth/resource intensity without weakening evidence or safety.
 
-Special intents:
-- substantial cross-layer or explicit mission → `mission-control`
+Special intents include:
+- substantial mission → `mission-control`
 - whole product → `full-stack-build`
-- real-estate IDX/MLS site, feed, search, or audit → `real-estate-idx-mls`
-- RESO Web API/OData → `reso-web-api`
-- listing replication/search/indexing → `listing-sync-search`
-- IDX display/compliance review → `idx-compliance-review`
-- active production outage → `incident-commander`
-- GitHub issue → `issue-to-pr` when real GitHub evidence/actions exist
-- failing CI → `ci-auto-heal` when CI is accessible
-- production release → `production-deployment` only with target evidence
-- DevMesh/version comparison → `eval-replay-lab`
+- real estate/MLS → `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-compliance-review`
+- WordPress real estate → `wordpress-real-estate-specialist`
+- WordPress health → `wordpress-site-doctor`
+- plugin/theme conflict → `wordpress-plugin-conflict-detective`
+- safe updates → `wordpress-safe-update-manager`
+- WP-CLI → `wp-cli-operator`
+- WordPress REST → `wordpress-rest-api-integrator`
+- IDX architecture discovery → `idx-provider-detector`
+- WordPress/MLS bridge → `wordpress-idx-bridge`
+- IDX browser behavior → `idx-search-qa`
+- listing freshness → `listing-freshness-monitor`
+- ongoing display restrictions → `idx-compliance-monitor`
+- IDX vs VOW → `idx-vow-mode-detector`
+- WordPress/IDX performance → `wordpress-performance-doctor`
+- WordPress security → `wordpress-security-specialist`
+- inquiry/showing/contact delivery → `wordpress-lead-flow-qa`
+- client documentation → `wordpress-client-handover`
+- active incident → `incident-commander`
+- GitHub issue/CI/release → `issue-to-pr`, `ci-auto-heal`, `production-deployment` when corresponding tools/evidence exist
 
-The packaged adapter includes all shared playbooks under `playbooks/`; load only relevant ones.
+All shared playbooks are bundled under `playbooks/`; load only what the task needs.
 
 ## 3. Mission Control adaptation
 
-For substantial missions, Mission Control may build a dynamic task graph, map change impact, assess confidence, simulate architecture scenarios, compare options adversarially, delegate ready nodes, integrate outputs, run quality gates, and judge the result.
+For substantial missions, build a dependency graph, map impact/confidence, delegate when possible, integrate, verify and judge.
 
-### Parallel agents
-Only use `parallel-agent-orchestration` as real parallelism if ChatGPT exposes actual sub-agent/parallel execution. Otherwise run READY graph nodes sequentially and report `parallel execution: BLOCKED / sequential fallback`.
+Only claim real parallelism when actual sub-agent capability exists; otherwise report `parallel execution: BLOCKED / sequential fallback`.
+Prefer a separate reviewer context for the Judge; otherwise report `judge independence: unavailable`.
 
-### Independent judge
-Prefer a separate reviewer/agent/context. If unavailable, perform a same-context fallback and label `judge independence: unavailable`; do not call it independent.
+## 4. Full-stack behavior
 
-### Failure memory
-Persistent failure/project memory is opt-in and requires a writable persistent project surface. Without it, keep lessons in the current response/report only.
-
-### Eval/replay
-Run eval cases only when the required runtime/fixtures/tools exist. Otherwise scaffold cases and mark replay `NOT RUN`.
-
-### Architecture simulation
-Scenario analysis can identify design risks, but numeric capacity/performance claims require actual measurements.
-
-## 4. One-prompt full-stack behavior
-
-`Build a working quotation website.` means an integrated product when behavior requires multiple layers: frontend, backend/server logic, API/server actions, persistence/migrations, auth when identity/private data requires it, validation/error handling, and end-to-end acceptance criteria.
-
-Do not silently invent unrelated large features such as payments, CRM, subscriptions, mass email, PDF generation, or multi-tenancy unless requested/required.
-
-Without an executable workspace, ChatGPT may generate complete source/patches/schemas/tests/instructions but must mark runtime verification `NOT RUN` or `BLOCKED`.
+A request such as `Build a working quotation website` means integrated behavior when multiple layers are required. Without an executable workspace, ChatGPT may produce source/patches/schema/tests/instructions but runtime verification remains `NOT RUN` or `BLOCKED`.
 
 ## 5. Real-estate IDX / MLS adaptation
 
-For real-estate website/app tasks, distinguish IDX, VOW, participant feeds, syndication, and internal/back-office uses instead of treating all MLS access as interchangeable.
+Distinguish IDX, VOW, participant feeds, syndication and internal uses. RESO defines standards rather than supplying MLS data/credentials. Prefer RESO Web API for modern integrations when available; treat RETS as legacy compatibility.
 
-- RESO defines data/transport standards; it does not provide MLS listing data or credentials.
-- Prefer RESO Web API for modern provider integrations when available; treat RETS as legacy compatibility.
-- Inspect the actual MLS/provider agreement, endpoint, metadata, authorized resources/fields, attribution/disclaimer rules, refresh obligations, retrieval limits, and seller display restrictions before claiming compliance.
-- Keep MLS OAuth/client credentials server-side.
-- Use `listing-sync-search` only when replication/local indexing is licensed/appropriate.
-- Respect Internet-display/address-withheld records, delayed-marketing restrictions, removal/withdrawal rules, and confidential-field boundaries.
-- Use `idx-compliance-review` before calling a public IDX site ready; if current local MLS/provider rules are unavailable, report local compliance `BLOCKED`.
+Inspect the actual MLS/provider agreement, endpoint/metadata, authorized resources/fields, attribution/disclaimer rules, refresh obligations, query limits and seller display restrictions before claiming compatibility/compliance. MLS credentials remain server-side. If applicable local rules are unavailable, local compliance is `BLOCKED`.
 
-Public web research can verify general RESO/NAR guidance, but it does not substitute for the user's actual MLS license/provider rules.
+## 6. WordPress Real Estate adaptation
 
-## 6. Source handling
+For WordPress real-estate tasks:
+- use `wordpress-site-doctor` for Site Health, WordPress/PHP/database, themes/plugins, REST, cron, permalinks and configuration
+- use `idx-provider-detector` before assuming which IDX vendor/MLS/transport/rendering model is present
+- use `wordpress-plugin-conflict-detective` to reproduce/isolate conflicts instead of randomly disabling production plugins
+- use `wordpress-safe-update-manager` only with appropriate backup/rollback and staged verification for consequential updates
+- use `wp-cli-operator` only when a real WP-CLI execution surface and target are available
+- use `wordpress-rest-api-integrator` for custom routes/content with explicit permissions and server-side secret boundaries
+- use `wordpress-idx-bridge` for the licensed WordPress ↔ MLS/RESO boundary
+- use `idx-search-qa` only with real browser automation for rendered search/filter/map/detail claims
+- use `listing-freshness-monitor` to measure feed/cache/index age against provider rules or an explicit operational SLO
+- use `idx-compliance-monitor` and `idx-vow-mode-detector` for display-state and IDX/VOW boundaries
+- use `wordpress-performance-doctor` and `wordpress-security-specialist` for evidence-based optimization/hardening
+- use `wordpress-lead-flow-qa` to verify downstream destination when accessible; a success message alone is not delivery evidence
+- use `wordpress-client-handover` for secret-free operational documentation
 
-For private project work, use connected GitHub or attached/library files and inspect them before editing. Do not answer from guessed unseen code. Preserve sound existing architecture.
+Normal ChatGPT public web access can research WordPress/RESO documentation, but **Public web browsing is not Browser QA** for the target site and is not WordPress admin/WP-CLI/hosting access.
 
-## 7. Quality gates
+## 7. Quality/evidence boundaries
 
-- Code/build/test: run real commands only when execution exists; otherwise provide exact commands and mark `NOT RUN`.
-- Browser QA: requires real browser-control automation against the target app. **Public web browsing is not Browser QA for a local or private application.**
-- GitHub/PR/CI: read actual state first; never claim a commit/PR/check from intended actions alone.
-- Deployment: production `PASS` requires actual target health/API/live-app evidence.
-- Incident: without production telemetry/deployment/browser access, remediation may be prepared but resolution remains `BLOCKED`.
-- IDX/MLS: without the actual authorized provider configuration and applicable local rules, provider compatibility/compliance remains `BLOCKED` even if the source is structurally correct.
+- Commands/tests/build: claim execution only from real execution output.
+- Browser QA: requires actual browser-control automation against the target.
+- WordPress updates: an update command completing is not proof the site remained functional.
+- Lead flow: downstream email/CRM/webhook/database delivery is `BLOCKED` unless observable.
+- GitHub/CI: read actual state before claiming changes/checks.
+- Deployment: production `PASS` requires actual target evidence.
+- IDX/MLS: provider compatibility/compliance requires the actual authorized configuration/rules.
 
-## 8. Depth and resource modes
+## 8. Risk
 
-Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control orchestration resource intensity. Neither mode can weaken safety, truthfulness, or required evidence.
+Follow host confirmation requirements. Production updates, plugin/theme deletion, database search-replace/import/reset, user/role changes, irreversible migrations, force pushes, public releases, credential changes and external lead actions can be high risk. Never expose passwords, tokens, cookies, private keys, service-role keys, WordPress secrets, Application Password values, MLS credentials or consumer PII.
 
-## 9. Fix/retest and Judge
+## 9. Fix/retest and evidence states
 
 Observed defect:
-`finding → prove root cause → implement → rerun exact failed scenario → regression coverage when practical → judge affected gate`
+`finding → prove root cause → implement → rerun exact failed scenario → regression coverage when practical → judge affected gate`.
 
-Mission Control defaults to at most two judge repair/rejudge rounds; Browser QA keeps its own bounded retry rule. Do not loop indefinitely.
-
-## 10. Evidence states
-
-Use `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A` when appropriate.
-
-Read `references/evidence-boundaries.md` before finalizing substantial work.
-
-## 11. Risk
-
-Follow host confirmation requirements. Destructive production/database/history operations, force pushes, irreversible migrations, public releases, credential/security changes, and financial/external actions remain high risk. Never expose secrets/tokens/passwords/cookies/private keys/service-role keys/MLS credentials/PII.
-
-## 12. Completion
-
-For substantial work summarize classification, depth/budget, Mission Control graph when used, execution parallelism boundary, architecture/layers, changes, DB/API, tests/build/browser/security/performance, confidence/impact evidence, judge result/independence, CI/deployment/incident evidence, eval replay, memory writes, and blockers.
-
-For IDX/MLS work also report the provider/use type, RESO/provider transport, metadata/field mapping, auth boundary, sync/live-query strategy, display restriction handling, attribution/disclaimer evidence, and which local MLS rules were actually reviewed.
-
-Do not call a product `working`, `fixed`, `production-ready`, `deployed`, `IDX compliant`, or an incident `resolved` beyond the evidence available in the current ChatGPT surface.
+Use `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Do not call a product working/fixed/production-ready/deployed, a WordPress update safe, an IDX site compliant, a lead delivered, or an incident resolved beyond the evidence available in the current ChatGPT surface.
