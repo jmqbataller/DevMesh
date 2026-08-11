@@ -20,6 +20,8 @@ assert f'v{VERSION}' in skill
 assert 'Do not assume a local shell' in skill
 assert 'Public web browsing is not Browser QA' in skill
 for phrase in [
+    'design-to-code-studio','visual-reference-analyzer','design-token-extractor','responsive-layout-inference','visual-fidelity-judge',
+    'OBSERVED','INFERRED','UNKNOWN','3 visual repair rounds','never invent a numeric fidelity percentage',
     'website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture',
     'mission-control','real-estate-idx-mls','wordpress-real-estate-specialist',
     'website-operations-specialist','agency-operations-control-center','multi-site-fleet-manager',
@@ -51,6 +53,7 @@ with tempfile.TemporaryDirectory(prefix='devmesh-adapter-test-') as tmp:
         assert bundled == core
         assert zf.read('VERSION').decode().strip() == VERSION
         for playbook in [
+            'design-to-code-studio','visual-reference-analyzer','design-token-extractor','responsive-layout-inference','visual-fidelity-judge',
             'website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture',
             'mission-control','devmesh-judge','incident-commander',
             'real-estate-idx-mls','reso-web-api','listing-sync-search','idx-compliance-review',
@@ -75,4 +78,4 @@ with tempfile.TemporaryDirectory(prefix='devmesh-adapter-test-') as tmp:
             'client-onboarding-agent','client-offboarding-agent']:
             assert f'playbooks/{playbook}.md' in names
 
-print(f'OK: ChatGPT adapter v{VERSION} source and portable Website Product Builder + Agency Operations bundle validated')
+print(f'OK: ChatGPT adapter v{VERSION} source and portable Design-to-Code + Website Product Builder + Agency Operations bundle validated')
