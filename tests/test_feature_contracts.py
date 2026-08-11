@@ -19,6 +19,12 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v1.2 Website Product Builder
+has('website-product-builder','design-system-architect','sitemap-information-architecture','ui-component-architecture','frontend implementation','backend/server logic when needed','api-contract','database-architect','seo-search-console-specialist','browser-qa','production-deployment','BLOCKED')
+has('design-system-architect','typography roles','spacing/layout rhythm','color roles/tokens','focus-visible','prefers-reduced-motion','implementation-oriented design-system contract')
+has('sitemap-information-architecture','page/route inventory','primary and secondary navigation','dynamic route families','indexing intent','dead ends','architecture contract')
+has('ui-component-architecture','stateful vs presentational responsibilities','data-fetching/server boundaries','loading, skeleton, empty, error and success states','responsive variants','premature abstraction')
+
 # v1.1 Agency Operations Control Center
 has('agency-operations-control-center','multi-site-fleet-manager','scheduled-site-health-monitor','wordpress-update-wave-manager','ticket-request-intake-agent','sla-priority-engine','lead-sla-monitor','client-onboarding-agent','client-offboarding-agent')
 has('multi-site-fleet-manager','independent operational boundary','Healthy','Warning','Critical','BLOCKED')
@@ -103,4 +109,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v1.1 Agency Operations, v1.0 Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
+print('OK: v1.2 Website Product Builder, v1.1 Agency Operations, Website Operations, WordPress Real Estate, IDX/MLS, Mission Control, and legacy feature contracts validated')
