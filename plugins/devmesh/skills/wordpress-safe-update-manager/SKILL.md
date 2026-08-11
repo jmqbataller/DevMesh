@@ -19,6 +19,8 @@ Before updates:
 
 Update in controlled batches. Prefer supported WordPress/WP-CLI update mechanisms. Do not use insecure download flags to bypass TLS failures.
 
+## Post-update verification
+
 After updates:
 - clear only appropriate caches
 - verify database upgrade/migration state if applicable
