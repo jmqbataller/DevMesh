@@ -1,130 +1,111 @@
 # DevMesh
 
-**DevMesh** is a provider-ready software-engineering workflow framework for AI coding agents. It makes agents inspect, plan, build, verify, review, repair, and deliver with evidence instead of jumping straight into edits.
+**DevMesh** is an evidence-based AI software-engineering orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, plan, build, delegate, verify, judge, repair, and deliver without turning assumptions into fake passes.
 
-DevMesh ships with two adapters:
-
+DevMesh ships with:
 - **Codex adapter** — plugin + Playwright MCP for coding-environment execution
-- **ChatGPT adapter** — portable Agent Skills bundle that adapts to the tools/connectors available in normal ChatGPT
+- **ChatGPT adapter** — portable Agent Skills bundle that adapts to tools available in normal ChatGPT
 
 ## Download DevMesh for ChatGPT
 
-[**Download `devmesh-chatgpt-v0.6.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.6.0/devmesh-chatgpt-v0.6.0.zip)
+[**Download `devmesh-chatgpt-v0.7.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.7.0/devmesh-chatgpt-v0.7.0.zip)
 
-The GitHub Actions validation workflow builds the ChatGPT bundle from source and publishes it as the `v0.6.0` GitHub Release asset, so users do not need to clone the repository or run the build script themselves.
+On a ChatGPT account/surface that supports uploaded Skills: open **Plugins → Skills → Create → Upload from your computer**, upload the ZIP, then start a new chat.
 
-### Install in ChatGPT
+## DevMesh v0.7 — Mission Control
 
-On a ChatGPT account/surface that supports uploaded Skills:
+v0.7 contains **45 composable skills**. The new Mission Control stack adds:
 
-1. Open **Plugins** in ChatGPT.
-2. Open the **Skills** tab.
-3. Choose **Create** → **Upload from your computer**.
-4. Upload `devmesh-chatgpt-v0.6.0.zip`.
-5. Start a new chat and prompt:
+- `mission-control` — top-level dependency-aware orchestration
+- `dynamic-task-graph` — DAG, readiness, acceptance/evidence contracts
+- `parallel-agent-orchestration` — real delegation when the runtime supports sub-agents; explicit sequential fallback otherwise
+- `devmesh-judge` — evidence-first final release gate
+- `confidence-engine` — hypothesis/evidence confidence routing
+- `adversarial-review` — bounded architecture/design debate
+- `change-impact-map` — blast radius + regression scope
+- `failure-memory` — opt-in verified failure lessons
+- `eval-replay-lab` — repeatable regression/benchmark cases
+- `architecture-simulator` — failure-mode scenario simulation before implementation
+- `resource-budget` — Eco / Balanced / Max orchestration intensity
+- `incident-commander` — production incident stabilization and recovery verification
 
-```text
-Use DevMesh.
-Build a working quotation website.
-```
+Existing full-stack, database/API, Browser QA, security, accessibility, performance, CI, deployment, observability, code review, project memory, reporting, and Git delivery workflows remain available.
 
-Skill availability and installation depend on the ChatGPT plan, workspace settings, role, region, and supported surface.
-
-## DevMesh v0.6
-
-v0.6 keeps the **33 shared engineering playbooks** from v0.5 and adds a first-class ChatGPT adapter.
-
-### Shared engineering stack
-
-- routing + Quick / Standard / Deep modes
-- codebase intelligence + environment doctor
-- one-prompt full-stack product build
-- database architect + API contract
-- architecture guard
-- implementation + systematic debugging
-- Browser QA + network failure QA + visual regression
-- UI/UX + accessibility + performance
-- synthetic test data/personas
-- regression testing + security + observability
-- QA verification + QA reporting + code review + multi-agent review
-- CI auto-heal
-- Issue → PR
-- production deployment
-- project memory + Git delivery
-
-## One prompt → working product
-
-A prompt can be as short as:
+## Mission Control example
 
 ```text
-Use DevMesh.
-Build a working quotation website.
+DevMesh Mission Control:
+Build a production-ready quotation SaaS.
 ```
 
-DevMesh treats **working** as an integrated product when the behavior requires multiple layers:
+Conceptually:
 
 ```text
 inspect source/environment
-→ select execution mode
-→ risk assessment
-→ full-stack product contract
-→ database architecture when required
-→ API contract when required
-→ frontend + backend/server + persistence
-→ vertical-slice integration
-→ relevant QA/security/accessibility/performance
-→ review/report/delivery
+→ choose Quick/Standard/Deep + Eco/Balanced/Max
+→ risk + change-impact map
+→ dynamic task graph
+→ architecture simulation/adversarial review when relevant
+→ parallel READY nodes when real sub-agents exist
+   (sequential fallback otherwise)
+→ integrate frontend/backend/API/database
+→ Browser QA + relevant quality gates
+→ DevMesh Judge
+→ fix exact failed gates + re-judge (bounded)
+→ QA report / delivery
 ```
 
-It does not silently invent unrelated large scope such as payments, subscriptions, CRM, PDF export, or multi-company tenancy unless requested or required.
+Mission Control never claims parallel execution or an independent Judge if the runtime did not actually provide them.
+
+## One prompt → working product
+
+```text
+Use DevMesh.
+Build a working quotation website.
+```
+
+“Working” means integrated behavior when required: frontend, backend/server logic, API/server actions, persistence/migrations, validation/error states, auth boundaries when needed, and end-to-end evidence. DevMesh does not silently invent unrelated scope such as payments, CRM, subscriptions, PDF export, or multi-company tenancy.
+
+## Depth + resource modes
+
+```text
+DevMesh Quick + Eco
+DevMesh Standard + Balanced   # defaults
+DevMesh Deep + Max
+```
+
+Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control resource intensity. Neither can bypass safety/evidence requirements.
+
+## DevMesh Judge
+
+For substantial missions the Judge evaluates relevant dimensions such as functionality, tests/build, data/API integrity, architecture, security, accessibility, browser behavior, performance, regression risk, and operations. Critical failed gates veto release. Missing required evidence remains `BLOCKED`/`NOT RUN` rather than being averaged away.
+
+## Incident Commander
+
+```text
+DevMesh Incident Commander:
+Production quotations stopped saving.
+```
+
+The incident workflow prioritizes stabilization, evidence preservation, blast-radius analysis, recent-change inspection, confidence-aware root-cause testing, risk-gated mitigation, exact recovery verification, monitoring, and a post-incident report.
+
+## Eval / Replay Lab
+
+Representative tasks and proven failures can become reusable `.devmesh/evals/` cases. DevMesh prefers deterministic graders and identical fixtures across versions, then reports regressions/improvements without silently changing expected outcomes.
 
 ## ChatGPT Adapter
 
-Source:
+The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, Playwright, sub-agents, persistent memory, or deployment credentials. Missing execution capabilities remain `BLOCKED`/`NOT RUN`.
 
-```text
-adapters/chatgpt/devmesh-chatgpt/
-├── SKILL.md
-└── references/
-```
-
-The portable upload bundle contains `SKILL.md`, supporting references, and generated copies of all shared DevMesh playbooks.
-
-Developers can also build the bundle locally:
+Developers can build the upload bundle locally:
 
 ```bash
 python scripts/build_chatgpt_adapter.py
 ```
 
-Output:
-
-```text
-dist/devmesh-chatgpt-v0.6.0.zip
-```
-
-The adapter intentionally does **not** assume normal ChatGPT has a local shell, localhost server, Git CLI, Playwright, deployment credentials, or GitHub write access.
-
-Instead it detects the capabilities available in the current chat:
-
-```text
-GitHub readable?       → inspect real repository/issue/PR/CI evidence
-GitHub writable?       → write only if an explicit write action is exposed and authorized
-Files available?       → inspect real uploaded/library source
-Code runtime available?→ run tests/build when possible
-Browser control?       → real Browser QA
-Deployment app/tool?   → production release evidence
-None of the above?     → generate source/patches/plans and mark execution NOT RUN/BLOCKED
-```
-
-The standard ChatGPT GitHub app may be read-only. DevMesh never assumes commit/push/PR-write capability just because GitHub is connected; Codex remains the appropriate OpenAI coding surface for direct repository write/push workflows when those actions are not exposed in ChatGPT.
-
-**Public web browsing is not treated as Browser QA for a local/private application.** Missing execution evidence is never converted into a pass.
-
-See [`docs/CHATGPT_ADAPTER.md`](docs/CHATGPT_ADAPTER.md).
+Output: `dist/devmesh-chatgpt-v0.7.0.zip`.
 
 ## Codex Adapter
-
-Codex remains the deepest execution adapter because the plugin can expose project/runtime tools and bundled Playwright MCP.
 
 Install:
 
@@ -141,71 +122,20 @@ codex plugin add devmesh@devmesh-marketplace
 codex plugin list
 ```
 
-Start a new Codex thread/session after reinstall so updated skills/MCP tools load.
-
-## Execution modes
-
-```text
-DevMesh Quick
-→ small low-risk task
-→ focused evidence
-
-DevMesh Standard   # default
-→ normal routing and relevant quality gates
-
-DevMesh Deep
-→ environment doctor
-→ architecture/database/API review
-→ full relevant test/build checks
-→ browser/resilience QA where executable
-→ accessibility/security/performance
-→ observability + deep review
-→ QA report
-```
-
-Modes control depth, not truthfulness. Quick never bypasses a required safety/evidence boundary.
+Start a new Codex thread/session after reinstall.
 
 ## Evidence states
 
-DevMesh uses:
-
-- `PASS`
-- `FAIL`
-- `FIXED`
-- `BLOCKED`
-- `NOT RUN`
-
-A whole-product implementation may be complete while live Browser QA or deployment remains `BLOCKED`; DevMesh reports that boundary instead of faking success.
+DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A` where appropriate. Browser/CI/production/parallel-agent/independent-judge/benchmark claims require corresponding evidence.
 
 ## Public distribution status
 
-- **GitHub source:** public
-- **GitHub Release ZIP:** automated for v0.6.0
-- **Manual ChatGPT Skill upload:** supported on eligible ChatGPT accounts/surfaces
-- **ChatGPT Plugin Directory listing:** not yet published
+- GitHub source: public
+- GitHub Release ZIP: automated
+- Manual ChatGPT Skill upload: available on eligible ChatGPT accounts/surfaces
+- OpenAI Plugin Directory listing: submission package prepared; publication still requires publisher verification, OpenAI review, approval, and Publish
 
-OpenAI's Plugin Directory can contain skill-only plugins, but public directory availability and publication are controlled by OpenAI. If DevMesh later adds an app/MCP integration for ChatGPT, the OpenAI Apps SDK/app submission flow can also be used as part of a public plugin listing.
-
-## Smoke tests
-
-ChatGPT / Codex product build:
-
-```text
-Use DevMesh.
-Build a working quotation website.
-```
-
-Deep production review:
-
-```text
-DevMesh Deep: prepare this application for production.
-```
-
-GitHub delivery:
-
-```text
-Use DevMesh to fix GitHub issue #42 and prepare a PR. Do not merge it.
-```
+See `docs/plugin-submission/` for the submission pack.
 
 ## Development validation
 
@@ -214,33 +144,19 @@ python tests/validate_devmesh.py
 python tests/test_routing_contract.py
 python tests/test_feature_contracts.py
 python tests/test_chatgpt_adapter.py
+python tests/test_plugin_submission_pack.py
 ```
 
 ## Current platform support
 
 | Platform | Status |
 |---|---|
-| Codex | **v0.6 supported** |
-| ChatGPT | **v0.6 portable Agent Skills adapter** |
+| Codex | **v0.7 supported** |
+| ChatGPT | **v0.7 portable Agent Skills adapter** |
 | Claude Code | Planned adapter |
 | Gemini CLI | Planned adapter |
 | Cursor | Planned adapter |
 | GitHub Copilot | Planned adapter |
-
-## Repository structure
-
-```text
-DevMesh/
-├── .agents/plugins/marketplace.json
-├── plugins/devmesh/                  # Codex adapter
-├── adapters/chatgpt/devmesh-chatgpt/ # ChatGPT Agent Skill source
-├── scripts/build_chatgpt_adapter.py
-├── tests/
-├── docs/
-├── AGENTS.md
-├── CHANGELOG.md
-└── README.md
-```
 
 ## License
 

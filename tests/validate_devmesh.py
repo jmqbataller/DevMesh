@@ -10,7 +10,8 @@ MARKETPLACE = ROOT / '.agents' / 'plugins' / 'marketplace.json'
 MCP = PLUGIN / '.mcp.json'
 CHATGPT = ROOT / 'adapters' / 'chatgpt' / 'devmesh-chatgpt'
 REQUIRED = {
-'using-devmesh','execution-modes','brainstorming-requirements','codebase-intelligence','environment-doctor','writing-plans','implementation','systematic-debugging','risk-engine','full-stack-build','database-architect','api-contract','architecture-guard','browser-engine','browser-qa','network-failure-qa','visual-regression','ui-ux-review','accessibility-review','performance-review','test-data-personas','regression-testing','security-review','observability-review','qa-verification','qa-reporting','code-review','multi-agent-review','ci-auto-heal','issue-to-pr','production-deployment','project-memory','git-delivery'}
+'using-devmesh','execution-modes','brainstorming-requirements','codebase-intelligence','environment-doctor','writing-plans','implementation','systematic-debugging','risk-engine','full-stack-build','database-architect','api-contract','architecture-guard','browser-engine','browser-qa','network-failure-qa','visual-regression','ui-ux-review','accessibility-review','performance-review','test-data-personas','regression-testing','security-review','observability-review','qa-verification','qa-reporting','code-review','multi-agent-review','ci-auto-heal','issue-to-pr','production-deployment','project-memory','git-delivery',
+'mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander'}
 FM = re.compile(r'^---\n(.*?)\n---\n', re.S)
 
 def fail(msg): print('ERROR:',msg); raise SystemExit(1)
@@ -32,7 +33,7 @@ def main():
     market=json.loads(MARKETPLACE.read_text(encoding='utf-8'))
     mcp=json.loads(MCP.read_text(encoding='utf-8'))
     if manifest.get('name')!='devmesh': fail('manifest name')
-    if manifest.get('version')!='0.6.0': fail('manifest version')
+    if manifest.get('version')!='0.7.0': fail('manifest version')
     if manifest.get('skills')!='./skills/': fail('skills path')
     if manifest.get('mcpServers')!='./.mcp.json': fail('mcp path')
     if 'hooks' in manifest: fail('hooks must not be in plugin.json')
@@ -59,22 +60,21 @@ def main():
         if f'`{task}`' not in router: fail(f'router task {task}')
     for skill in REQUIRED-{'using-devmesh'}:
         if skill not in router: fail(f'router skill {skill}')
-    require(PLUGIN/'skills/execution-modes/SKILL.md',['Quick','Standard','Deep','safety-critical'])
-    require(PLUGIN/'skills/environment-doctor/SKILL.md',['package manager','ports','Do not fabricate credentials'])
-    require(PLUGIN/'skills/database-architect/SKILL.md',['migrations','constraints','RLS/policies'])
-    require(PLUGIN/'skills/api-contract/SKILL.md',['request','response','authorization','contract/integration tests'])
-    require(PLUGIN/'skills/issue-to-pr/SKILL.md',['read issue','commit','PR','Never close'])
-    require(PLUGIN/'skills/production-deployment/SKILL.md',['health','production','rollback'])
-    require(PLUGIN/'skills/visual-regression/SKILL.md',['baseline','REGRESSION','overwrite'])
-    require(PLUGIN/'skills/network-failure-qa/SKILL.md',['timeout','offline','duplicate submit'])
-    require(PLUGIN/'skills/test-data-personas/SKILL.md',['synthetic','production data','deterministic'])
-    require(PLUGIN/'skills/observability-review/SKILL.md',['structured server logs','health','Never log'])
-    require(PLUGIN/'skills/ci-auto-heal/SKILL.md',['read logs','root cause','make CI green'])
-    require(PLUGIN/'skills/architecture-guard/SKILL.md',['server-only','direct database access','circular dependencies'])
-    require(PLUGIN/'skills/full-stack-build/SKILL.md',['database-architect','api-contract','network-failure-qa','open app → create data'])
+    require(PLUGIN/'skills/mission-control/SKILL.md',['dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','maximum two judge repair rounds'])
+    require(PLUGIN/'skills/dynamic-task-graph/SKILL.md',['acyclic','READY','acceptance criteria','critical path'])
+    require(PLUGIN/'skills/parallel-agent-orchestration/SKILL.md',['actual sub-agent','sequential fallback','four concurrent','integrator'])
+    require(PLUGIN/'skills/devmesh-judge/SKILL.md',['Evidence outranks confidence','independence: unavailable','Critical failures','BLOCKED'])
+    require(PLUGIN/'skills/confidence-engine/SKILL.md',['hypothesis ledger','LOW root-cause confidence','Confidence controls','FIXED'])
+    require(PLUGIN/'skills/adversarial-review/SKILL.md',['maximum of two debate rounds','single-context adversarial analysis','majority vote'])
+    require(PLUGIN/'skills/change-impact-map/SKILL.md',['DIRECT','INDIRECT','UNKNOWN','Regression plan'])
+    require(PLUGIN/'skills/failure-memory/SKILL.md',['Persistence is opt-in','verified fix','.devmesh/knowledge','Cross-project memory'])
+    require(PLUGIN/'skills/eval-replay-lab/SKILL.md',['deterministic','cherry-pick','.devmesh/evals','NOT RUN'])
+    require(PLUGIN/'skills/architecture-simulator/SKILL.md',['Simulation is not a benchmark','NEEDS MEASUREMENT','rollback'])
+    require(PLUGIN/'skills/resource-budget/SKILL.md',['Eco','Balanced','Max','never'])
+    require(PLUGIN/'skills/incident-commander/SKILL.md',['SEV1','preserve evidence','risk-engine','UNPROVEN','BLOCKED'])
     chat_meta=frontmatter(CHATGPT/'SKILL.md')
     if chat_meta.get('name')!='devmesh-chatgpt' or not chat_meta.get('description'): fail('ChatGPT adapter metadata')
-    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','connected GitHub','PASS','BLOCKED','NOT RUN'])
+    require(CHATGPT/'SKILL.md',['Do not assume a local shell','Public web browsing is not Browser QA','mission-control','parallel execution: BLOCKED','judge independence: unavailable','PASS','BLOCKED','NOT RUN'])
     for ref in ['tool-adaptation.md','evidence-boundaries.md','invocation-examples.md']:
         if not (CHATGPT/'references'/ref).exists(): fail(f'missing ChatGPT adapter reference {ref}')
     print(f"OK: marketplace {market['name']}")
@@ -82,6 +82,6 @@ def main():
     print('OK: Playwright MCP configuration validated')
     print(f'OK: {len(found)} required skills and 8 task types validated')
     print('OK: ChatGPT Agent Skills adapter contract validated')
-    print('OK: v0.6 multi-surface engineering contracts validated')
+    print('OK: v0.7 Mission Control contracts validated')
     return 0
 if __name__=='__main__': sys.exit(main())

@@ -24,9 +24,12 @@ for task,skills in EXPECTED.items():
         assert nxt>=0, f'{task} missing {skill}'
         assert nxt>pos, f'{task} order {skill}'
         pos=nxt
-for phrase in ['Quick','Standard','Deep','environment-doctor','full-stack-build','database-architect','api-contract','test-data-personas','architecture-guard','network-failure-qa','visual-regression','observability-review','issue-to-pr','ci-auto-heal','production-deployment','Read the real issue','Never auto-merge','Build logs alone are not production verification','Never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
+for phrase in ['Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment','Read the real issue','Never auto-merge','Build logs alone are not production verification','Never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
     assert phrase in ROUTER, f'missing router contract {phrase}'
 assert '3 fix/retest rounds' in ROUTER
+assert '2 repair/rejudge rounds' in ROUTER
 assert 'High-risk/destructive operations require explicit authorization' in ROUTER
 assert 'full-stack product working while required layers are mocked/disconnected' in ROUTER
-print('OK: routing contract validated for 8 task types, v0.5 modes, orchestrators, architecture, resilience, CI, and production delivery')
+assert 'parallel execution: BLOCKED / sequential fallback' in ROUTER
+assert 'same-context fallback' in ROUTER
+print('OK: routing contract validated for 8 task types and v0.7 Mission Control orchestration')

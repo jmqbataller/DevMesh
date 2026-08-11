@@ -1,15 +1,15 @@
 ---
 name: using-devmesh
-description: Use at the start of any software-development request to classify the task, select Quick/Standard/Deep execution depth, assess risk, load project context, and route the minimum evidence-based DevMesh workflow.
+description: Use at the start of any software-development request to classify the task, select Quick/Standard/Deep depth plus Eco/Balanced/Max resource budget, assess risk, and route the minimum evidence-based DevMesh workflow or Mission Control graph.
 ---
 
 # DevMesh Router
 
-DevMesh is an orchestration layer. It selects the smallest workflow that can produce trustworthy evidence and escalates only when scope/risk requires it.
+DevMesh is an orchestration layer. It selects the smallest workflow that can produce trustworthy evidence and escalates to Mission Control only when scope/risk benefits from it.
 
 ## Core rule
 
-**Inspect → classify → select mode → assess risk → implement intentionally → verify the real behavior → review → report limitations.**
+**Inspect → classify → select depth/budget → assess risk → map impact/dependencies → implement intentionally → verify real behavior → judge/review → report limitations.**
 
 User and repository instructions take precedence over DevMesh defaults.
 
@@ -25,149 +25,153 @@ Assign one or more task types:
 - `deploy`
 - `research`
 
-Special intents are routed inside those task types:
+Special intents:
 - GitHub issue delivery → `issue-to-pr`
 - failing CI → `ci-auto-heal`
 - whole working app/site/system → `full-stack-build`
 - production release → `production-deployment`
+- active production outage/degradation → `incident-commander`
+- substantial cross-layer/high-risk/explicit mission → `mission-control`
+- DevMesh regression/benchmark comparison → `eval-replay-lab`
 
-## 2 — Select execution mode
+## 2 — Select depth and resource budget
 
-Invoke `execution-modes` conceptually at routing time.
-
+Invoke `execution-modes` conceptually:
 - `Quick` — explicit small/low-risk work
 - `Standard` — default
-- `Deep` — production readiness, large cross-layer changes, migrations/auth/security-sensitive work, or explicit `DevMesh Deep`
+- `Deep` — production readiness, major cross-layer work, migrations/auth/security-sensitive work, or explicit request
 
-A lighter mode never suppresses required safety/evidence gates.
+Invoke `resource-budget` conceptually:
+- `Eco` — conservative agent/tool usage
+- `Balanced` — default
+- `Max` — broader parallel/reviewer/eval capacity when supported
 
-## 3 — Inspect environment and repository
+Depth and budget never suppress required safety/evidence gates.
+
+## 3 — Inspect environment/repository
 
 Start repository work with `codebase-intelligence`.
+Use `environment-doctor` when execution/setup matters or Deep is selected.
+If `.devmesh/` exists or project memory is opted in, invoke `project-memory` and revalidate stored facts.
+Retrieve `failure-memory` only when persistent memory is enabled; old lessons are hypotheses until verified against current source.
 
-Use `environment-doctor` when a runnable build/test/dev server/deployment is required, setup is unknown/broken, dependencies/toolchains may be missing, or Deep mode is selected.
+## 4 — Assess risk and impact
 
-If `.devmesh/` already exists or project memory is opted in, invoke `project-memory` and validate stored facts against source/config.
-
-## 4 — Assess risk
-
-Before mutating `build`, `fix`, `debug`, `redesign`, `refactor`, or `deploy` work, invoke `risk-engine`.
-
-High-risk/destructive operations require explicit authorization unless that exact operation is already clearly authorized in the current request.
+Before mutating `build`, `fix`, `debug`, `redesign`, `refactor`, or `deploy`, invoke `risk-engine`.
+High-risk/destructive operations require explicit authorization unless that exact operation is already clearly authorized.
+Use `change-impact-map` before substantial existing-code changes, shared contracts/schema/domain logic, or broad refactors.
+Use `confidence-engine` whenever root cause/architecture assumptions are not strongly supported.
 
 ## 5 — Core routing
 
 | Task | Required path | Conditional gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; environment-doctor; full-stack-build; database-architect; api-contract; test-data-personas; architecture-guard; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; multi-agent-review; qa-reporting |
-| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; environment-doctor for setup failures; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; qa-reporting |
-| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | environment-doctor; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; multi-agent-review; qa-reporting |
-| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | visual-regression; performance-review; network-failure-qa for networked flows; architecture-guard; security-review; multi-agent-review; qa-reporting |
-| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | architecture-guard; regression-testing; browser-qa; security-review; performance-review; multi-agent-review; qa-reporting |
-| review | codebase-intelligence → code-review | execution-modes; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; multi-agent-review; qa-reporting |
-| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | environment-doctor; database-architect for migrations; browser-qa; network-failure-qa; accessibility-review; performance-review; observability-review; architecture-guard; multi-agent-review; qa-reporting |
-| research | codebase-intelligence | project-memory; environment-doctor; brainstorming-requirements; writing-plans |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; architecture-simulator; adversarial-review; test-data-personas; architecture-guard; change-impact-map; parallel-agent-orchestration; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; confidence-engine; devmesh-judge; failure-memory; eval-replay-lab; multi-agent-review; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | resource-budget; mission-control; change-impact-map; confidence-engine; systematic-debugging when root cause is unproven; environment-doctor; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; devmesh-judge; failure-memory; qa-reporting |
+| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; confidence-engine; environment-doctor; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; parallel-agent-orchestration; devmesh-judge; failure-memory; multi-agent-review; qa-reporting |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; adversarial-review; parallel-agent-orchestration; visual-regression; performance-review; network-failure-qa; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
+| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; architecture-guard; confidence-engine; parallel-agent-orchestration; regression-testing; browser-qa; security-review; performance-review; devmesh-judge; multi-agent-review; qa-reporting |
+| review | codebase-intelligence → code-review | execution-modes; resource-budget; mission-control; change-impact-map; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | resource-budget; mission-control; dynamic-task-graph; change-impact-map; environment-doctor; database-architect; architecture-simulator; browser-qa; network-failure-qa; accessibility-review; performance-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; multi-agent-review; qa-reporting |
+| research | codebase-intelligence | resource-budget; mission-control when broad; dynamic-task-graph; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; environment-doctor; brainstorming-requirements; writing-plans; eval-replay-lab |
 
-## 6 — Special orchestrators
+## 6 — Mission Control
 
-### Whole-product builds
+Trigger `mission-control` for explicit Mission Control requests or substantial work with meaningful independent workstreams, high risk, or cross-layer integration.
+
+Typical mission:
+`inspect → resource-budget → risk-engine → dynamic-task-graph → change-impact-map → architecture-simulator/adversarial-review when relevant → parallel-agent-orchestration if actually available → integration → quality gates → devmesh-judge → bounded repair/rejudge → qa-reporting`
+
+`parallel-agent-orchestration` must fall back sequentially when the runtime lacks real sub-agents. `devmesh-judge` must label a same-context fallback when independent review is unavailable.
+
+## 7 — Whole-product builds
 
 Trigger `full-stack-build` for a whole working website/web app/SaaS/dashboard/portal/system/tool when behavior requires multiple layers.
 
 Typical flow:
-`codebase-intelligence → environment-doctor when needed → risk-engine → full-stack-build → brainstorming-requirements → database-architect/API-contract when required → writing-plans → vertical-slice implementation → test-data-personas when useful → quality gates → qa-verification → code-review → qa-reporting`
+`codebase-intelligence → environment-doctor when needed → risk-engine → full-stack-build → requirements → database-architect/api-contract when required → architecture-simulator for consequential design → writing-plans → vertical-slice implementation → personas/quality gates → qa-verification → devmesh-judge/code-review → qa-reporting`
 
 “Working” must not degrade into a static frontend mock when backend/API/persistence is required.
 
+## 8 — Incidents, GitHub, CI, deployment
+
+### Production incident
+Trigger `incident-commander` for an active production outage, severe degradation, data-integrity incident, or security-sensitive operational failure. Stabilize/preserve evidence before broad cleanup. Never claim resolved without production evidence.
+
 ### GitHub issue → PR
+Trigger `issue-to-pr`; read the real issue, reproduce/confirm, implement, verify, review, commit, and create a PR only when authorized. Never auto-merge or close the issue.
 
-Trigger `issue-to-pr` when the user asks to fix/implement an actual GitHub issue and deliver reviewable Git work.
-
-Read the real issue, reproduce/confirm, implement, verify, review, commit, and create a PR only when authorized. Never auto-merge or close the issue without explicit authorization.
-
-### CI failures
-
-Trigger `ci-auto-heal` when CI/checks are failing. Read the actual failed job/logs, classify infra vs code/test/config, reproduce when possible, fix root cause, and rerun. Never disable legitimate tests just to make CI green.
+### CI failure
+Trigger `ci-auto-heal`; read actual failed jobs/logs, classify infra vs code/test/config, prove root cause, fix, and rerun. Never weaken meaningful tests just to make CI green.
 
 ### Production deployment
+Trigger `production-deployment`; build logs alone are not production verification. Require health/API/live Browser QA evidence when applicable and available.
 
-Trigger `production-deployment` for real production release intent. Build logs alone are not production verification: perform health/API/live Browser QA evidence when the environment allows it.
+## 9 — Architecture/evidence intelligence
 
-## 7 — Cross-layer build gates
+Use `database-architect` for durable data/schema/migrations.
+Use `api-contract` at API/server-action/service boundaries.
+Use `architecture-simulator` before consequential hard-to-reverse architecture choices; simulation is not measured capacity.
+Use `adversarial-review` when multiple credible approaches remain; maximum two debate rounds.
+Use `test-data-personas` for safe synthetic representative/edge/volume cases.
+Use `architecture-guard` for substantial/cross-layer/Deep work or boundary drift.
+Use `change-impact-map` to derive regression scope.
+Use `confidence-engine` to prevent low-evidence root-cause edits.
 
-Use `database-architect` when durable data/schema/migrations are required.
+## 10 — Browser/product/operations gates
 
-Use `api-contract` whenever frontend/backend/services cross an API/server-action boundary.
+`browser-qa` invokes `browser-engine` for real rendered evidence.
+Use `network-failure-qa` for important networked/resilience-sensitive flows.
+Use `visual-regression` only with stable approved baselines; never overwrite a baseline to hide a regression.
+Use `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
 
-Use `test-data-personas` when QA needs representative roles, edge cases, or volume. Use synthetic data only.
+## 11 — Judge, memory, evals
 
-Use `architecture-guard` for substantial/cross-layer builds, refactors, Deep mode, or when boundaries/secrets/data access could drift.
+Use `devmesh-judge` after substantial missions/Deep release work. Critical failed gates veto release regardless of average score.
+Use `failure-memory` only for verified failure/root-cause/fix lessons and only with opt-in persistent storage; never store secrets/PII.
+Use `eval-replay-lab` for DevMesh changes or mature products needing repeatable regression benchmarks. Deterministic graders take precedence over qualitative model judging when they directly test an invariant.
 
-## 8 — Browser/product gates
+## 12 — Automatic fix/retest
 
-`browser-qa` invokes `browser-engine` for real Playwright/browser evidence.
+When a verification/judge gate finds a real in-scope defect:
+`finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical → re-judge affected gate`
 
-Use `network-failure-qa` for important networked flows, Deep mode, or resilience-sensitive products. Distinguish simulated failure evidence from live-service evidence.
+Browser QA may use up to 3 fix/retest rounds. Mission Control judge loop defaults to 2 repair/rejudge rounds. Do not loop indefinitely.
 
-Use `visual-regression` when stable approved UI baselines exist or the task is explicitly about preventing visual drift. Never overwrite a baseline merely to hide a regression.
-
-Use `accessibility-review` for substantial/public browser UI and release readiness.
-
-Use `performance-review` for substantial/public web work, explicit optimization, or release readiness. Numeric claims require measurements.
-
-## 9 — Production operations gates
-
-Use `observability-review` for production-capable services/apps where failures need operational diagnosis. Never log secrets/tokens/cookies/private sensitive payloads.
-
-Use `production-deployment` after preflight verification for real release requests; migrations/domain/destructive data actions remain risk-gated.
-
-## 10 — Automatic fix/retest
-
-When any verification gate finds a real in-scope defect:
-`finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical`
-
-Browser QA may use up to 3 fix/retest rounds. Multi-agent review defaults to one fix round + focused re-review. Do not loop indefinitely.
-
-## 11 — Evidence
+## 13 — Evidence
 
 Track as relevant:
-- task classification + selected mode
-- environment readiness/blockers
-- risk level/authorization boundary
-- architecture/layers and decisions
-- DB migrations/policies
-- API contracts
-- test personas/fixtures
-- files changed
-- tests/lint/type/build results
-- browser URL/routes/viewports/interactions
-- console/network/failure-injection evidence
-- screenshots/visual diffs
-- accessibility/security/performance findings
-- observability signals
-- CI run/job evidence
-- production health/smoke evidence
-- reviewer findings
+- task classification + depth + resource budget
+- Mission Control graph/node states and whether execution was parallel or sequential fallback
+- confidence hypotheses and decisive evidence
+- impact map / regression scope
+- architecture simulation vs measured benchmark distinction
+- environment/risk/authorization
+- architecture, DB/API contracts, files changed
+- tests/lint/type/build/browser/network/screenshots
+- security/accessibility/performance/observability
+- CI/production/incident evidence
+- judge dimensions and independence boundary
+- eval/replay results
+- persistent memory writes (if opted in)
 - unresolved blockers
 
 ## Non-negotiable behavior
 
 Never:
 - guess root cause and present it as proven
-- claim browser/visual/production/CI success without the corresponding evidence
+- claim parallel agents/independent judge/benchmark/browser/production/CI evidence that did not execute
 - call a full-stack product working while required layers are mocked/disconnected
-- expose or persist secrets in memory/reports/logs
-- silently perform high-risk/destructive actions
-- disable meaningful tests solely to make CI green
-- silently overwrite visual baselines to hide regressions
-- use production customer data as casual test fixtures
+- expose or persist secrets/PII in memory/reports/logs/evals
+- silently perform destructive actions
+- disable meaningful tests to make CI green
+- overwrite visual baselines to hide regressions
 - merge/close GitHub work without authorization
 
 Always:
 - inspect before editing
 - preserve unrelated work
 - prefer existing architecture when sound
-- choose the simplest architecture that makes the requested behavior genuinely work
-- scale depth through Quick/Standard/Deep while preserving safety
+- use the simplest architecture that genuinely satisfies behavior
 - distinguish `PASS`, `FAIL`, `FIXED`, `BLOCKED`, and `NOT RUN`
 - state clearly what could not be verified

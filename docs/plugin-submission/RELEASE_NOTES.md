@@ -1,19 +1,9 @@
-# DevMesh v0.6.0 — Plugin Submission Release Notes
+# DevMesh v0.7.0
 
-Initial public Plugin Directory submission.
+DevMesh v0.7 introduces **Mission Control**, an evidence-aware orchestration layer for substantial software-engineering work.
 
-DevMesh is a skills-only software engineering workflow plugin that packages reusable workflows for planning, full-stack product construction, debugging, database/API design, QA, security/accessibility/performance review, CI diagnosis, code review, and delivery.
+New capabilities include dynamic dependency task graphs, real parallel-agent delegation when supported with explicit sequential fallback, an evidence-first DevMesh Judge, confidence-aware diagnosis, bounded adversarial design review, change-impact mapping, opt-in verified failure memory, deterministic-first eval/replay cases, architecture failure-mode simulation, Eco/Balanced/Max resource budgets, and Incident Commander for production stabilization and recovery verification.
 
-This initial submission includes:
+The release preserves the existing full-stack, Browser QA, database/API, security, accessibility, performance, observability, CI, production deployment, review, reporting, memory, and Git workflows.
 
-- the portable ChatGPT Agent Skill adapter;
-- 33 shared DevMesh engineering playbooks bundled for portable use;
-- Quick, Standard, and Deep execution modes;
-- one-prompt full-stack workflow behavior;
-- explicit evidence states: `PASS`, `FAIL`, `FIXED`, `BLOCKED`, and `NOT RUN`;
-- tool-adaptation rules so ChatGPT does not assume local shell, browser automation, Git write access, or deployment capabilities that are not actually available;
-- secret-handling, risk, and false-verification safeguards.
-
-The skills-only submission does not require an MCP server, external DevMesh account, DevMesh-hosted backend, OAuth flow, or reviewer credentials.
-
-Reviewer note: DevMesh intentionally distinguishes workflow guidance from executed evidence. A task may be implemented while runtime, browser, CI, or deployment verification remains `NOT RUN` or `BLOCKED` when those execution surfaces are unavailable.
+The ChatGPT adapter continues to adapt to available tools and does not claim parallelism, independent review, runtime tests, Browser QA, CI, deployment, benchmark, persistence, or incident recovery evidence when those capabilities are unavailable.

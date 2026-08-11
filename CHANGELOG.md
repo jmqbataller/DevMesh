@@ -1,61 +1,50 @@
 # Changelog
 
+## 0.7.0 - 2026-08-11
+
+DevMesh v0.7 introduces **Mission Control** and an evidence-aware orchestration/evaluation layer.
+
+- Added `mission-control` for dependency-aware mission planning, delegated execution, integration, judging, and bounded repair/rejudge loops.
+- Added `dynamic-task-graph` with acyclic dependencies, readiness states, acceptance/evidence contracts, critical-path reporting, and selective replanning.
+- Added `parallel-agent-orchestration` with real-runtime capability detection, max-four default concurrency, isolated ownership guidance, integration checks, and explicit sequential fallback when sub-agents are unavailable.
+- Added `devmesh-judge` as a final evidence gate with independent-review preference, same-context fallback disclosure, relevant quality dimensions, critical-failure vetoes, and PASS/FAIL/BLOCKED decisions.
+- Added `confidence-engine` with a hypothesis ledger and LOW/MEDIUM/HIGH evidence-aware routing that never treats confidence as proof.
+- Added `adversarial-review` with bounded two-round option critique and evidence-based synthesis.
+- Added `change-impact-map` for direct/indirect/unknown blast-radius mapping and focused regression planning.
+- Added opt-in `failure-memory` for verified root-cause/fix lessons with strict secret/PII and cross-project boundaries.
+- Added `eval-replay-lab` for reproducible cases, deterministic-first grading, version/config replay, and regression/improvement measurement.
+- Added `architecture-simulator` for pre-implementation failure-mode scenarios while explicitly separating simulation from measured benchmarks/capacity.
+- Added `resource-budget` with Eco/Balanced/Max orchestration intensity orthogonal to Quick/Standard/Deep engineering depth.
+- Added `incident-commander` for production stabilization, evidence preservation, blast-radius analysis, safe mitigation, recovery verification, and incident reporting.
+- Updated the router, Codex manifest, ChatGPT adapter, validation tests, README/docs, GitHub Release workflow, and Plugin Directory submission pack for v0.7.
+
 ## 0.6.0 - 2026-08-11
 
 DevMesh v0.6 adds the first non-Codex runtime adapter.
 
 - Added `adapters/chatgpt/devmesh-chatgpt/SKILL.md` as a portable Agent Skills adapter for normal ChatGPT.
-- Added ChatGPT-specific tool adaptation so DevMesh does not assume local shell, localhost, Git CLI, Playwright, or deployment credentials are present.
-- Added explicit GitHub/file/runtime/browser/deployment capability mapping for ChatGPT surfaces.
-- Added strict ChatGPT evidence boundaries: public web browsing is not Browser QA, planned writes are not completed writes, and static review is not runtime verification.
-- Added ChatGPT-compatible `PASS`, `FAIL`, `FIXED`, `BLOCKED`, and `NOT RUN` completion semantics.
-- Added ChatGPT examples for one-prompt full-stack builds, Deep review, GitHub Issue→PR, CI work, and no-runtime fallback behavior.
-- Added `scripts/build_chatgpt_adapter.py` to produce a self-contained upload ZIP with the ChatGPT adapter plus generated copies of all shared DevMesh core playbooks.
-- Added `docs/CHATGPT_ADAPTER.md` with build/install/use guidance.
-- Added `tests/test_chatgpt_adapter.py` and CI coverage for the generated upload bundle.
-- Updated the DevMesh manifest/README to v0.6 and documented Codex + ChatGPT adapter support.
+- Added ChatGPT-specific tool adaptation and strict evidence boundaries.
+- Added a self-contained ChatGPT upload bundle builder, docs, tests, GitHub Release distribution, and Plugin Directory submission materials.
 
 ## 0.5.0 - 2026-08-11
 
-DevMesh v0.5 expands the framework into end-to-end engineering and production orchestration.
-
-- Added `execution-modes` with Quick, Standard (default), and Deep verification depth while preserving safety/evidence requirements.
-- Added `environment-doctor` for runtimes, package managers, dependencies, scripts, env-variable contracts, ports, database prerequisites, migrations, and browser/MCP readiness.
-- Added `database-architect` for entities/relationships, constraints, indexes, migrations, rollback/repair planning, ownership, and Supabase/Postgres RLS/policies.
-- Added `api-contract` for request/response/error/auth/pagination/concurrency contracts and focused contract/integration testing.
-- Added `issue-to-pr` for issue context → reproduction → implementation → verification → review → commit → PR delivery when authorized.
-- Added `production-deployment` for preflight, migrations, deployment, health/API smoke tests, live Browser QA, post-deploy evidence, and rollback readiness.
-- Added `visual-regression` for deterministic screenshot baselines/diffs without silently overwriting failures.
-- Added `network-failure-qa` for 4xx/5xx, timeout, offline/slow, malformed response, failed resource, duplicate submit, and recovery behavior.
-- Added `test-data-personas` for safe deterministic synthetic users/fixtures/edge cases without production PII.
-- Added `observability-review` for structured logs, error boundaries, health/readiness, correlation, and safe operational signals without secret logging.
-- Added `ci-auto-heal` for actual failing workflow/job/log inspection, root-cause repair, rerun, and anti-test-bypass rules.
-- Added `architecture-guard` for server/client boundaries, secret/data access, domain-rule duplication, circular dependencies, architecture drift, and unnecessary framework duplication.
-- Updated `full-stack-build` to orchestrate environment, database, API, architecture, personas, resilience, visual regression, and observability when relevant.
-- Updated the router so all v0.5 capabilities are selected by intent, risk, execution mode, and evidence needs rather than run blindly.
-- Expanded validation contracts to all 33 skills and v0.5 orchestration rules.
+DevMesh v0.5 expands the framework into end-to-end engineering and production orchestration with execution modes, Environment Doctor, database/API architecture, Issue→PR, deployment, visual regression, network failure QA, test personas, observability, CI auto-heal, and architecture guardrails.
 
 ## 0.4.0 - 2026-08-11
 
-- Added `full-stack-build` for one-prompt working product requests across frontend, backend/server logic, API, persistence, validation, auth boundaries, and end-to-end verification.
-- Added product-level build detection to the router.
-- Added scope guardrails to avoid inventing unrelated large features.
-- Added full-stack contract tests and v0.4 documentation.
+- Added one-prompt `full-stack-build` with frontend/backend/API/persistence integration and scope guardrails.
 
 ## 0.3.0 - 2026-08-11
 
-- Added bundled Playwright MCP configuration and `browser-engine`.
-- Added evidence-based Browser QA fix/retest loop capped at three rounds.
-- Added regression testing, security review, accessibility review, performance review, project memory, risk engine, QA reporting, and multi-agent review.
-- Added GitHub Actions validation and expanded routing/feature contracts.
+- Added Playwright MCP Browser Engine, bounded Browser QA fix/retest, regression/security/accessibility/performance review, project memory, risk engine, QA reporting, multi-agent review, and GitHub Actions validation.
 
 ## 0.2.1 - 2026-08-11
 
-- Added DevMesh plugin icon, `composerIcon`, `logo`, and brand color.
+- Added DevMesh plugin icon, composer icon/logo, and brand color.
 
 ## 0.2.0 - 2026-08-11
 
-- Added first-class `browser-qa` with rendered-page, console, responsive, interaction, overflow, screenshot, visual review, and evidence-boundary rules.
+- Added first-class Browser QA.
 
 ## 0.1.1 - 2026-08-09
 

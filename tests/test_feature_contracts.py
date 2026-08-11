@@ -19,6 +19,21 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v0.7 Mission Control stack
+has('mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','architecture-simulator','failure-memory','eval-replay-lab','Maximum two judge repair rounds')
+has('dynamic-task-graph','acyclic','READY','acceptance criteria','critical path','Replanning')
+has('parallel-agent-orchestration','actual sub-agent','sequential fallback','at most four concurrent workers','integrator')
+has('devmesh-judge','Evidence outranks confidence','independence: unavailable','Critical failures','release decision')
+has('confidence-engine','hypothesis ledger','HIGH','MEDIUM','LOW root-cause confidence','not proof')
+has('adversarial-review','maximum of two debate rounds','single-context adversarial analysis','majority vote alone is not evidence')
+has('change-impact-map','DIRECT','INDIRECT','UNKNOWN','Regression plan','blast radius')
+has('failure-memory','Persistence is opt-in','verified lessons','.devmesh/knowledge','Cross-project memory','Never store secrets')
+has('eval-replay-lab','repeatable cases','deterministic','cherry-pick','.devmesh/evals','self-modify')
+has('architecture-simulator','Simulation is not a benchmark','concurrent edits','rollback','NEEDS MEASUREMENT')
+has('resource-budget','Eco','Balanced','Max','orthogonal','safety-critical gate')
+has('incident-commander','SEV1','preserve evidence','confidence-engine','risk-engine','UNPROVEN','resolved')
+
+# Previous contracts remain intact.
 has('execution-modes','Quick','Standard','Deep','never bypass')
 has('environment-doctor','runtime/toolchain','port conflicts','Do not fabricate credentials')
 has('database-architect','constraints','indexes','RLS/policies','rollback')
@@ -32,8 +47,6 @@ has('observability-review','structured server logs','health/readiness','Never lo
 has('ci-auto-heal','read logs','root cause','make CI green')
 has('architecture-guard','server-only','direct database access','circular dependencies')
 has('full-stack-build','database-architect','api-contract','architecture-guard','test-data-personas','network-failure-qa','visual-regression','observability-review')
-
-# Existing v0.3/v0.4 safeguards remain intact.
 has('browser-qa','3 browser fix rounds','same browser scenario')
 has('security-review','Supabase')
 has('accessibility-review','prefers-reduced-motion')
@@ -41,4 +54,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v0.5 full-stack, environment, DB/API, Issue→PR, CI, resilience, visual, observability, architecture, modes, deployment, and legacy contracts validated')
+print('OK: v0.7 Mission Control and all legacy feature contracts validated')

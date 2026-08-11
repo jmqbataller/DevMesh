@@ -1,189 +1,103 @@
 ---
 name: devmesh-chatgpt
-description: Use for software-engineering requests in ChatGPT to route work through DevMesh planning, full-stack build, debugging, review, QA, GitHub delivery, and production-readiness workflows while adapting honestly to the tools and connected apps available in the current chat.
+description: Use for software-engineering requests in ChatGPT to route work through DevMesh Mission Control, full-stack build, debugging, review, QA, incident response, GitHub delivery, and production-readiness workflows while adapting honestly to the tools available in the current chat.
 ---
 
 # DevMesh for ChatGPT
 
-DevMesh ChatGPT Adapter v0.6.0 brings the DevMesh engineering methodology into normal ChatGPT conversations through the portable Agent Skills format.
+DevMesh ChatGPT Adapter v0.7.0 brings the DevMesh engineering methodology and Mission Control orchestration into normal ChatGPT conversations through the portable Agent Skills format.
 
 ## Core rule
 
-**Use the strongest engineering workflow the current ChatGPT surface can actually execute, and never claim evidence from tools that are not available.**
+**Use the strongest DevMesh workflow the current ChatGPT surface can actually execute, and never claim agents, tests, Browser QA, CI, deployment, benchmarks, or persistence that the host did not provide.**
 
-DevMesh is the orchestration layer. ChatGPT remains the execution environment.
+## 1. Detect the execution surface
 
-## 1. Detect the available execution surface first
+Possible capabilities include connected GitHub/source-control apps, uploaded/library files, writable artifact/project workspaces, code execution, public web research, browser automation, sub-agent/parallel execution, and deployment/database tools.
 
-Before promising repository edits, tests, Browser QA, CI repair, deployment, or PR delivery, identify which capabilities are actually available in the current chat.
-
-Possible capabilities include:
-
-- connected GitHub or another source-control app
-- uploaded/conversation/library files
-- writable artifact or project workspace tools
-- code execution/runtime tools
-- public web access for documentation/research
-- browser-control or browser-automation tools
-- deployment/hosting/database apps or APIs
-
-**Do not assume a local shell, local filesystem, localhost server, Playwright, Git CLI, or deployment credentials exist in normal ChatGPT.**
+**Do not assume a local shell, local filesystem, localhost, Playwright, Git CLI, sub-agents, persistent project memory, or deployment credentials exist in normal ChatGPT.**
 
 Read `references/tool-adaptation.md` when execution depends on platform capabilities.
 
-## 2. Route the request through DevMesh
+## 2. Route through DevMesh
 
-Use `Standard` mode by default unless the user explicitly asks for `Quick` or `Deep`, or scope/risk clearly requires Deep.
+Task classes remain `build`, `fix`, `debug`, `redesign`, `refactor`, `review`, `deploy`, and `research`.
 
-Task classes:
-
-- `build`
-- `fix`
-- `debug`
-- `redesign`
-- `refactor`
-- `review`
-- `deploy`
-- `research`
+Use Standard + Balanced by default unless the user specifies Quick/Deep or Eco/Max, or risk requires deeper gates.
 
 Special intents:
+- substantial cross-layer or explicit mission → `mission-control`
+- whole product → `full-stack-build`
+- active production outage → `incident-commander`
+- GitHub issue → `issue-to-pr` when real GitHub evidence/actions exist
+- failing CI → `ci-auto-heal` when CI is accessible
+- production release → `production-deployment` only with target evidence
+- DevMesh/version comparison → `eval-replay-lab`
 
-- whole working product → full-stack build
-- GitHub issue → issue-to-PR workflow when GitHub is connected
-- failing CI → CI auto-heal when CI evidence is accessible
-- production release → production-deployment workflow only when target tools/credentials are available
+The packaged adapter includes all shared playbooks under `playbooks/`; load only relevant ones.
 
-The packaged adapter contains the shared DevMesh playbooks under `playbooks/`. Load only the playbooks relevant to the request rather than all of them at once.
+## 3. Mission Control adaptation
 
-## 3. One-prompt full-stack behavior
+For substantial missions, Mission Control may build a dynamic task graph, map change impact, assess confidence, simulate architecture scenarios, compare options adversarially, delegate ready nodes, integrate outputs, run quality gates, and judge the result.
 
-A concise request such as:
+### Parallel agents
+Only use `parallel-agent-orchestration` as real parallelism if ChatGPT exposes actual sub-agent/parallel execution. Otherwise run READY graph nodes sequentially and report `parallel execution: BLOCKED / sequential fallback`.
 
-`Build a working quotation website.`
+### Independent judge
+Prefer a separate reviewer/agent/context. If unavailable, perform a same-context fallback and label `judge independence: unavailable`; do not call it independent.
 
-means an integrated product when the requested behavior requires it, not merely a frontend mock.
+### Failure memory
+Persistent failure/project memory is opt-in and requires a writable persistent project surface. Without it, keep lessons in the current response/report only.
 
-Infer the minimum necessary product layers:
+### Eval/replay
+Run eval cases only when the required runtime/fixtures/tools exist. Otherwise scaffold cases and mark replay `NOT RUN`.
 
-- frontend/screens/forms/states
-- backend or server logic
-- API/server-action contracts
-- database/persistence and migrations when durable data is required
-- authentication/authorization only when identity/private data requires it
-- validation/error handling
-- security boundaries
-- end-to-end acceptance criteria
+### Architecture simulation
+Scenario analysis can identify design risks, but numeric capacity/performance claims require actual measurements.
 
-Do not silently invent unrelated large features such as payments, CRM, subscriptions, mass email, PDF generation, or multi-tenant administration unless the request or existing project requires them.
+## 4. One-prompt full-stack behavior
 
-When ChatGPT lacks an executable project workspace, it may still produce complete source files, patches, schemas, API contracts, migration plans, tests, and deployment instructions through available artifact/file tools, but it must mark commands/runtime verification as `NOT RUN` or `BLOCKED` instead of pretending they executed.
+`Build a working quotation website.` means an integrated product when behavior requires multiple layers: frontend, backend/server logic, API/server actions, persistence/migrations, auth when identity/private data requires it, validation/error handling, and end-to-end acceptance criteria.
 
-## 4. ChatGPT-native source handling
+Do not silently invent unrelated large features such as payments, CRM, subscriptions, mass email, PDF generation, or multi-tenancy unless requested/required.
 
-When the request depends on private project material:
+Without an executable workspace, ChatGPT may generate complete source/patches/schemas/tests/instructions but must mark runtime verification `NOT RUN` or `BLOCKED`.
 
-- use connected GitHub for repositories/issues/PRs/CI when available
-- use attached or library files for uploaded source/projects/documents
-- inspect before editing
-- preserve existing architecture when sound
-- do not answer from guessed unseen code
+## 5. Source handling
 
-When no private source is provided for a greenfield build, choose the simplest maintainable architecture compatible with the requested deployment and state important defaults before implementation.
+For private project work, use connected GitHub or attached/library files and inspect them before editing. Do not answer from guessed unseen code. Preserve sound existing architecture.
 
-## 5. Tool-adapted quality gates
+## 6. Quality gates
 
-Run quality gates only when their evidence can actually be produced.
+- Code/build/test: run real commands only when execution exists; otherwise provide exact commands and mark `NOT RUN`.
+- Browser QA: requires real browser-control automation against the target app. **Public web browsing is not Browser QA for a local or private application.**
+- GitHub/PR/CI: read actual state first; never claim a commit/PR/check from intended actions alone.
+- Deployment: production `PASS` requires actual target health/API/live-app evidence.
+- Incident: without production telemetry/deployment/browser access, remediation may be prepared but resolution remains `BLOCKED`.
 
-### Code/build/test
+## 7. Depth and resource modes
 
-If code execution is available, run the real relevant tests/build/lint/type checks.
+Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control orchestration resource intensity. Neither mode can weaken safety, truthfulness, or required evidence.
 
-If code execution is unavailable, review source statically and provide the exact verification commands the user should run. Mark execution evidence `NOT RUN`.
+## 8. Fix/retest and Judge
 
-### Browser QA
+Observed defect:
+`finding → prove root cause → implement → rerun exact failed scenario → regression coverage when practical → judge affected gate`
 
-Only claim Browser QA when a real browser-control/browser-automation capability exercised the rendered app.
+Mission Control defaults to at most two judge repair/rejudge rounds; Browser QA keeps its own bounded retry rule. Do not loop indefinitely.
 
-**Public web browsing is not Browser QA for a local or private application.**
+## 9. Evidence states
 
-Without browser automation, perform source-level UI/UX/accessibility review where possible and mark rendered interaction/responsive/console evidence `BLOCKED` or `NOT RUN`.
-
-### GitHub / PR / CI
-
-If GitHub is connected, read the real repository/issue/PR/check evidence before acting.
-
-Do not say a PR was created, CI passed, or an issue was fixed unless the corresponding connected action/evidence exists.
-
-Never auto-merge or close an issue unless explicitly authorized.
-
-### Deployment
-
-Do not claim production success from code generation or build output alone.
-
-Production `PASS` requires target deployment evidence plus appropriate health/API/live-app checks. Otherwise mark deployment `BLOCKED` or `NOT RUN`.
-
-## 6. Quick / Standard / Deep
-
-### Quick
-
-Use for explicit small, low-risk work. Keep inspection and verification focused.
-
-### Standard
-
-Default. Use the relevant architecture, implementation, QA, and review gates without unnecessary ceremony.
-
-### Deep
-
-Use for production readiness, large/cross-layer changes, auth/security-sensitive work, migrations, release review, or explicit `DevMesh Deep`.
-
-Deep should consider environment readiness, architecture guard, database/API contracts, browser/resilience checks, security/accessibility/performance, observability, multi-review, and QA reporting when those are relevant and executable.
-
-A lighter mode never permits false evidence or bypasses required safety authorization.
-
-## 7. Automatic fix/retest loop
-
-When a real in-scope failure is observed:
-
-`finding → prove root cause → implement → rerun the exact failed scenario → regression coverage when practical`
-
-Do not keep looping indefinitely. If the execution surface cannot run the required retest, say so.
-
-## 8. Evidence states
-
-Use these states consistently:
-
-- `PASS` — directly verified with appropriate evidence
-- `FAIL` — directly verified failing
-- `FIXED` — observed failure was corrected and the same scenario was rerun successfully
-- `BLOCKED` — required external tool/environment/credential is unavailable
-- `NOT RUN` — relevant verification was intentionally not executed or execution capability is absent
+Use `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A` when appropriate.
 
 Read `references/evidence-boundaries.md` before finalizing substantial work.
 
-## 9. Risk and external actions
+## 10. Risk
 
-Follow the host product's confirmation requirements and DevMesh risk rules.
+Follow host confirmation requirements. Destructive production/database/history operations, force pushes, irreversible migrations, public releases, credential/security changes, and financial/external actions remain high risk. Never expose secrets/tokens/passwords/cookies/private keys/service-role keys/PII.
 
-Treat destructive production/database/history operations, public releases, financial/external actions, credential/security changes, force pushes, and irreversible migrations as high risk.
+## 11. Completion
 
-Do not perform newly discovered high-risk actions silently.
+For substantial work summarize classification, depth/budget, Mission Control graph when used, execution parallelism boundary, architecture/layers, changes, DB/API, tests/build/browser/security/performance, confidence/impact evidence, judge result/independence, CI/deployment/incident evidence, eval replay, memory writes, and blockers.
 
-Never expose secrets, tokens, passwords, cookies, private keys, service-role keys, or `.env` values in chat output, reports, generated test fixtures, or logs.
-
-## 10. Completion format
-
-For substantial software work, finish with a compact evidence-based summary covering what is relevant:
-
-- classification + mode
-- architecture/layers selected
-- files or repository changes made
-- database/API changes
-- tests/build/lint/type results
-- browser/interaction evidence
-- security/accessibility/performance findings
-- GitHub/CI/deployment evidence
-- blockers or `NOT RUN` checks
-
-Do not call a product `working`, `fixed`, `production-ready`, or `deployed` beyond the evidence available in the current ChatGPT surface.
-
-For examples, read `references/invocation-examples.md`.
+Do not call a product `working`, `fixed`, `production-ready`, `deployed`, or an incident `resolved` beyond the evidence available in the current ChatGPT surface.

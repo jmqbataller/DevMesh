@@ -1,21 +1,21 @@
 # Invocation Examples
 
-## One-prompt product build
+## Mission Control product build
 
 ```text
-Use DevMesh.
-Build a working quotation website.
+DevMesh Mission Control:
+Build a production-ready quotation SaaS.
 ```
 
-Expected routing: Standard → inspect available source/tools → full-stack product contract → database/API architecture when required → implementation → executable quality gates → evidence summary.
+Expected routing: inspect → Standard/Deep + resource budget → task graph → architecture/database/API work → delegated READY nodes when real sub-agents exist (sequential fallback otherwise) → integration → quality gates → Judge → bounded repair/rejudge.
 
-## Deep production review
+## Deep + Eco
 
 ```text
-DevMesh Deep: prepare this application for production.
+DevMesh Deep + Eco: prepare this application for production.
 ```
 
-Expected routing considers environment readiness, architecture guard, database/API boundaries, Browser QA, resilience, security, accessibility, performance, observability, review, reporting, and deployment only where tools/evidence exist.
+Deep preserves required engineering gates while Eco conserves parallel/tool/replay usage. Eco never weakens safety or evidence.
 
 ## Small fix
 
@@ -23,7 +23,7 @@ Expected routing considers environment readiness, architecture guard, database/A
 DevMesh Quick: fix the mobile navbar overflow.
 ```
 
-Keep scope focused. If no runnable browser exists, do not claim responsive Browser QA passed; provide source-level review and exact manual/runtime verification steps.
+Keep scope focused. If no runnable browser exists, do not claim responsive Browser QA passed.
 
 ## GitHub issue
 
@@ -31,24 +31,24 @@ Keep scope focused. If no runnable browser exists, do not claim responsive Brows
 Use DevMesh to fix GitHub issue #42 and prepare a PR. Do not merge it.
 ```
 
-When GitHub is connected: read the real issue/repository first, implement within authorization, verify, then create a reviewable PR. If GitHub write access is absent, produce the patch/plan and mark PR delivery `BLOCKED`.
+Read the real issue/repository first. If GitHub writes are unavailable, produce the patch/plan and mark PR delivery `BLOCKED`.
 
-## CI failure
+## Incident
 
 ```text
-Use DevMesh to fix the failing CI.
+DevMesh Incident Commander: production quotations stopped saving.
 ```
 
-Read the actual failing workflow/job/logs if accessible. Never weaken tests just to turn the status green.
+Preserve evidence, scope impact, evaluate recent changes, prove the root cause, risk-gate mitigation, verify recovery, and report `BLOCKED` rather than `RESOLVED` when production evidence is unavailable.
+
+## Eval replay
+
+```text
+Use DevMesh Eval / Replay Lab to compare this DevMesh release against our previous regression cases.
+```
+
+Use identical fixtures/cases and deterministic graders where possible. If execution is absent, scaffold cases and mark replay `NOT RUN`.
 
 ## ChatGPT without execution tools
 
-If the user asks for a working app but the current chat only supports text/file generation, produce the complete project source/config/schema/tests when possible, then report:
-
-- source implementation: completed
-- static review: completed
-- tests/build: `NOT RUN`
-- Browser QA: `BLOCKED`
-- production deployment: `NOT RUN`
-
-This is more accurate than claiming a runtime pass without runtime evidence.
+A whole-product source implementation can be completed while tests/build, Browser QA, deployment, parallel-agent execution, or persistent failure memory remain `NOT RUN`/`BLOCKED`. Report those boundaries explicitly.
