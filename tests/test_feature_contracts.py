@@ -19,6 +19,12 @@ assert playwright['command'] in {'npx','npx.cmd'}
 assert '@playwright/mcp@latest' in playwright['args']
 assert '--isolated' in playwright['args']
 
+# v0.8 real-estate IDX / MLS specialization
+has('real-estate-idx-mls','RESO Web API','RETS','VOW is not IDX','seller instructions','delayed-marketing','server-side','local MLS/provider rules','BLOCKED')
+has('reso-web-api','$metadata','RESO Data Dictionary','OData','RETS','server-side','401/403/429/5xx','NOT RUN')
+has('listing-sync-search','authoritative MLS/provider','idempotent','checkpoint','last successful sync','objective criteria','removed/withheld listing','map/list result consistency')
+has('idx-compliance-review','Local MLS/provider rules','seller-withheld','delayed-marketing','confidential','VOW distinction','hidden with CSS','BLOCKED')
+
 # v0.7 Mission Control stack
 has('mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','architecture-simulator','failure-memory','eval-replay-lab','Maximum two judge repair rounds')
 has('dynamic-task-graph','acyclic','READY','acceptance criteria','critical path','Replanning')
@@ -54,4 +60,4 @@ has('performance-review','Do not invent Lighthouse/Core Web Vitals numbers')
 has('project-memory','Do not silently add `.devmesh/`')
 has('multi-agent-review','maximum four concurrent reviewers')
 
-print('OK: v0.7 Mission Control and all legacy feature contracts validated')
+print('OK: v0.8 IDX/MLS, v0.7 Mission Control, and legacy feature contracts validated')
