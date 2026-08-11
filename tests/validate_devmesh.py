@@ -60,7 +60,7 @@ def main():
         if f'`{task}`' not in router: fail(f'router task {task}')
     for skill in REQUIRED-{'using-devmesh'}:
         if skill not in router: fail(f'router skill {skill}')
-    require(PLUGIN/'skills/mission-control/SKILL.md',['dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','maximum two judge repair rounds'])
+    require(PLUGIN/'skills/mission-control/SKILL.md',['dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','Maximum two judge repair rounds'])
     require(PLUGIN/'skills/dynamic-task-graph/SKILL.md',['acyclic','READY','acceptance criteria','critical path'])
     require(PLUGIN/'skills/parallel-agent-orchestration/SKILL.md',['actual sub-agent','sequential fallback','four concurrent','integrator'])
     require(PLUGIN/'skills/devmesh-judge/SKILL.md',['Evidence outranks confidence','independence: unavailable','Critical failures','BLOCKED'])
