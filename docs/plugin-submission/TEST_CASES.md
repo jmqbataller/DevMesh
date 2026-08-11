@@ -2,27 +2,29 @@
 
 These cases are designed for a **skills-only** DevMesh submission and do not require an internal network, private account, or hidden fixture.
 
-## Positive test 1 — One-prompt full-stack product
+## Positive test 1 — Greenfield Website Product Builder
 
 **User prompt**
 
-`Use DevMesh. Build a working quotation website.`
+`DevMesh Website Product Builder: build a professional business website from scratch with a responsive UI/UX, contact lead flow, SEO foundations, QA, and production-ready delivery. Add backend/API/database only if the product actually needs them.`
 
 **Expected workflow behavior**
 
-- Classify as `build` and whole-product/full-stack intent.
-- Use Standard mode unless the environment or user requires another mode.
-- Infer only the minimum necessary frontend, backend/server, API/server-action, persistence, validation, and error-handling layers.
-- Do not silently add unrelated features such as payments, CRM, subscriptions, or mass email.
-- Use the strongest tools actually available in the current environment.
+- Classify as `build` plus explicit `website-product-builder` intent.
+- Establish the minimum product contract and audience/primary conversion goal.
+- Route through `design-system-architect`, `sitemap-information-architecture`, and `ui-component-architecture` before implementation.
+- Build the responsive frontend and include loading/error/success or other required states where applicable.
+- Add backend/API/database/auth only when the requested behavior genuinely requires those layers.
+- Apply technical SEO foundations and choose relevant Browser/accessibility/security/performance/QA gates.
+- Do not silently add payments, subscriptions, CRM, AI, IDX/MLS, multi-tenancy, or unrelated product scope.
 
 **Expected result shape**
 
-A structured implementation or implementation-ready artifact covering the required product layers, followed by an evidence summary. Runtime/browser/deployment claims must be `PASS` only when directly executed; otherwise use `BLOCKED` or `NOT RUN`.
+A structured website-product plan or implementation covering design system, sitemap, UI architecture, required technical layers, SEO and QA, followed by evidence states. Rendered/runtime/deployment claims must be `PASS` only when directly executed; otherwise use `BLOCKED` or `NOT RUN`.
 
 **Fixture data**
 
-None required. Sensible greenfield defaults may be selected and stated.
+None required. Reversible greenfield defaults may be selected and stated.
 
 ---
 
