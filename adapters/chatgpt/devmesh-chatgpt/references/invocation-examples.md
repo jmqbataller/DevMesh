@@ -1,5 +1,16 @@
 # Invocation Examples
 
+## Greenfield Website Product Builder
+
+```text
+DevMesh Website Product Builder:
+Build a professional working business website from scratch.
+```
+
+Expected routing: product contract → design system → sitemap/information architecture → UI component architecture → responsive frontend → backend/API/database only if required → SEO foundations → Browser/accessibility/security/performance/network QA → Judge → production deployment when authorized.
+
+Do not add a database, auth, payments, CRM, AI, IDX/MLS, or another major layer merely because it is available. If the current ChatGPT surface cannot execute/write/deploy, implementation or runtime/deployment gates remain `NOT RUN`/`BLOCKED`.
+
 ## Mission Control product build
 
 ```text
