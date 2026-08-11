@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   validate:
@@ -26,9 +26,24 @@ jobs:
           python tests/test_chatgpt_adapter.py
       - name: Build ChatGPT distribution bundle
         run: python scripts/build_chatgpt_adapter.py --output dist/devmesh-chatgpt-v0.6.0.zip
-      - name: Upload ChatGPT distribution bundle
+      - name: Upload ChatGPT distribution artifact
         uses: actions/upload-artifact@v4
         with:
           name: devmesh-chatgpt-v0.6.0
           path: dist/devmesh-chatgpt-v0.6.0.zip
           if-no-files-found: error
+      - name: Publish GitHub Release bundle
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BUNDLE="dist/devmesh-chatgpt-v0.6.0.zip"
+          if gh release view v0.6.0 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload v0.6.0 "$BUNDLE" --clobber --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create v0.6.0 "$BUNDLE" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" \
+              --title "DevMesh v0.6.0" \
+              --notes "DevMesh v0.6.0 adds the portable ChatGPT Agent Skills adapter alongside the Codex adapter. Download devmesh-chatgpt-v0.6.0.zip and upload it in ChatGPT Skills on eligible accounts/surfaces."
+          fi

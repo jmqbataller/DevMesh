@@ -2,14 +2,37 @@
 
 **DevMesh** is a provider-ready software-engineering workflow framework for AI coding agents. It makes agents inspect, plan, build, verify, review, repair, and deliver with evidence instead of jumping straight into edits.
 
-DevMesh now ships with two adapters:
+DevMesh ships with two adapters:
 
 - **Codex adapter** — plugin + Playwright MCP for coding-environment execution
 - **ChatGPT adapter** — portable Agent Skills bundle that adapts to the tools/connectors available in normal ChatGPT
 
+## Download DevMesh for ChatGPT
+
+[**Download `devmesh-chatgpt-v0.6.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.6.0/devmesh-chatgpt-v0.6.0.zip)
+
+The GitHub Actions validation workflow builds the ChatGPT bundle from source and publishes it as the `v0.6.0` GitHub Release asset, so users do not need to clone the repository or run the build script themselves.
+
+### Install in ChatGPT
+
+On a ChatGPT account/surface that supports uploaded Skills:
+
+1. Open **Plugins** in ChatGPT.
+2. Open the **Skills** tab.
+3. Choose **Create** → **Upload from your computer**.
+4. Upload `devmesh-chatgpt-v0.6.0.zip`.
+5. Start a new chat and prompt:
+
+```text
+Use DevMesh.
+Build a working quotation website.
+```
+
+Skill availability and installation depend on the ChatGPT plan, workspace settings, role, region, and supported surface.
+
 ## DevMesh v0.6
 
-v0.6 keeps the 33 shared engineering playbooks from v0.5 and adds a first-class **ChatGPT Adapter**.
+v0.6 keeps the **33 shared engineering playbooks** from v0.5 and adds a first-class ChatGPT adapter.
 
 ### Shared engineering stack
 
@@ -57,7 +80,7 @@ It does not silently invent unrelated large scope such as payments, subscription
 
 ## ChatGPT Adapter
 
-The ChatGPT adapter lives at:
+Source:
 
 ```text
 adapters/chatgpt/devmesh-chatgpt/
@@ -65,9 +88,9 @@ adapters/chatgpt/devmesh-chatgpt/
 └── references/
 ```
 
-It follows the portable Agent Skills model and is packaged with generated copies of all shared DevMesh playbooks so the upload bundle is self-contained.
+The portable upload bundle contains `SKILL.md`, supporting references, and generated copies of all shared DevMesh playbooks.
 
-Build it with:
+Developers can also build the bundle locally:
 
 ```bash
 python scripts/build_chatgpt_adapter.py
@@ -79,18 +102,21 @@ Output:
 dist/devmesh-chatgpt-v0.6.0.zip
 ```
 
-The adapter intentionally does **not** assume normal ChatGPT has a local shell, localhost server, Git CLI, Playwright, or deployment credentials.
+The adapter intentionally does **not** assume normal ChatGPT has a local shell, localhost server, Git CLI, Playwright, deployment credentials, or GitHub write access.
 
-Instead it detects the tools available in the current chat and adapts:
+Instead it detects the capabilities available in the current chat:
 
 ```text
-GitHub connected?      → inspect/edit issue/repo/PR/CI when authorized
+GitHub readable?       → inspect real repository/issue/PR/CI evidence
+GitHub writable?       → write only if an explicit write action is exposed and authorized
 Files available?       → inspect real uploaded/library source
 Code runtime available?→ run tests/build when possible
 Browser control?       → real Browser QA
 Deployment app/tool?   → production release evidence
 None of the above?     → generate source/patches/plans and mark execution NOT RUN/BLOCKED
 ```
+
+The standard ChatGPT GitHub app may be read-only. DevMesh never assumes commit/push/PR-write capability just because GitHub is connected; Codex remains the appropriate OpenAI coding surface for direct repository write/push workflows when those actions are not exposed in ChatGPT.
 
 **Public web browsing is not treated as Browser QA for a local/private application.** Missing execution evidence is never converted into a pass.
 
@@ -151,6 +177,15 @@ DevMesh uses:
 
 A whole-product implementation may be complete while live Browser QA or deployment remains `BLOCKED`; DevMesh reports that boundary instead of faking success.
 
+## Public distribution status
+
+- **GitHub source:** public
+- **GitHub Release ZIP:** automated for v0.6.0
+- **Manual ChatGPT Skill upload:** supported on eligible ChatGPT accounts/surfaces
+- **ChatGPT Plugin Directory listing:** not yet published
+
+OpenAI's Plugin Directory can contain skill-only plugins, but public directory availability and publication are controlled by OpenAI. If DevMesh later adds an app/MCP integration for ChatGPT, the OpenAI Apps SDK/app submission flow can also be used as part of a public plugin listing.
+
 ## Smoke tests
 
 ChatGPT / Codex product build:
@@ -197,7 +232,7 @@ python tests/test_chatgpt_adapter.py
 ```text
 DevMesh/
 ├── .agents/plugins/marketplace.json
-├── plugins/devmesh/                 # Codex adapter
+├── plugins/devmesh/                  # Codex adapter
 ├── adapters/chatgpt/devmesh-chatgpt/ # ChatGPT Agent Skill source
 ├── scripts/build_chatgpt_adapter.py
 ├── tests/
