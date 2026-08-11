@@ -2,6 +2,7 @@
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 ROUTER=(ROOT/'plugins/devmesh/skills/using-devmesh/SKILL.md').read_text(encoding='utf-8')
+ROUTER_LOWER=ROUTER.lower()
 EXPECTED={
 'build':['codebase-intelligence','risk-engine','brainstorming-requirements','writing-plans','implementation','qa-verification','code-review'],
 'fix':['codebase-intelligence','risk-engine','implementation','regression-testing','qa-verification'],
@@ -24,12 +25,8 @@ for task,skills in EXPECTED.items():
         assert nxt>=0, f'{task} missing {skill}'
         assert nxt>pos, f'{task} order {skill}'
         pos=nxt
-for phrase in ['Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment','Read the real issue','Never auto-merge','Build logs alone are not production verification','Never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
-    assert phrase in ROUTER, f'missing router contract {phrase}'
-assert '3 fix/retest rounds' in ROUTER
-assert '2 repair/rejudge rounds' in ROUTER
-assert 'High-risk/destructive operations require explicit authorization' in ROUTER
-assert 'full-stack product working while required layers are mocked/disconnected' in ROUTER
-assert 'parallel execution: BLOCKED / sequential fallback' in ROUTER
-assert 'same-context fallback' in ROUTER
+for phrase in ['Quick','Standard','Deep','Eco','Balanced','Max','mission-control','dynamic-task-graph','parallel-agent-orchestration','devmesh-judge','confidence-engine','adversarial-review','change-impact-map','failure-memory','eval-replay-lab','architecture-simulator','resource-budget','incident-commander','environment-doctor','full-stack-build','database-architect','api-contract','issue-to-pr','ci-auto-heal','production-deployment','read the real issue','never auto-merge','build logs alone are not production verification','never overwrite a baseline','PASS','BLOCKED','NOT RUN']:
+    assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
+for phrase in ['3 fix/retest rounds','2 repair/rejudge rounds','high-risk/destructive operations require explicit authorization','full-stack product working while required layers are mocked/disconnected','parallel execution: blocked / sequential fallback','same-context fallback']:
+    assert phrase.lower() in ROUTER_LOWER, f'missing router contract {phrase}'
 print('OK: routing contract validated for 8 task types and v0.7 Mission Control orchestration')
