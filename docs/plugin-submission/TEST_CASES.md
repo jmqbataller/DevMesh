@@ -28,26 +28,27 @@ None required. Reversible greenfield defaults may be selected and stated.
 
 ---
 
-## Positive test 2 — Quick targeted UI fix
+## Positive test 2 — Design-to-Code evidence boundaries
 
 **User prompt**
 
-`DevMesh Quick: this card overflows horizontally on a 390px mobile screen. Review this CSS and give me the smallest safe fix: .card { width: 520px; padding: 24px; }`
+`DevMesh Design-to-Code: I have supplied one desktop visual reference for a business homepage. Recreate the design as a responsive site. No tablet/mobile frames, hover states, animations, backend behavior, or browser-render comparison are supplied. Clearly separate what is observed from what you infer.`
 
 **Expected workflow behavior**
 
-- Select Quick mode.
-- Identify the explicit fixed width as the likely source from the supplied minimal fixture.
-- Propose a scoped responsive correction rather than a full redesign.
-- Avoid claiming rendered Browser QA unless a browser-control capability actually runs the scenario.
+- Route through `design-to-code-studio`, `visual-reference-analyzer`, `design-token-extractor`, `responsive-layout-inference`, and component architecture as relevant.
+- Label material decisions as `OBSERVED`, `INFERRED`, or `UNKNOWN` rather than treating the desktop reference as a complete product specification.
+- Treat tablet/mobile behavior as inferred unless additional viewport evidence is provided.
+- Do not invent hidden hover/animation/backend/auth behavior from a static reference.
+- Do not claim a numeric visual-fidelity score or a visual-fidelity `PASS` unless a real rendered implementation is compared with the authoritative reference.
 
 **Expected result shape**
 
-A concise CSS patch or replacement, explanation of why it addresses the supplied overflow condition, and verification status distinguishing static reasoning from rendered evidence.
+A reference analysis and implementation-oriented plan/source that preserves the supplied visual intent while documenting responsive and behavioral inference. Browser QA/visual fidelity must remain `BLOCKED` or `NOT RUN` when no browser-controlled rendered comparison exists.
 
 **Fixture data**
 
-The CSS in the prompt is the complete fixture.
+The user's supplied single desktop reference is the fixture. If an image attachment is unavailable in the reviewer surface, the test may still evaluate the evidence-boundary behavior described by the prompt; it must not fabricate visual details.
 
 ---
 
