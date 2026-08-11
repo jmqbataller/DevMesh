@@ -1,7 +1,7 @@
 {
   "name": "devmesh",
-  "version": "1.0.0",
-  "description": "An evidence-based AI software engineering and website-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, full-stack builds, WordPress, IDX/MLS/RESO, hosting/DNS/SSL, migrations, backups, SEO, Core Web Vitals, analytics, email deliverability, cron, recovery, and client reporting.",
+  "version": "1.1.0",
+  "description": "An evidence-based AI software engineering, website-operations, and agency-operations orchestration framework with Codex and ChatGPT adapters, Mission Control, WordPress, IDX/MLS/RESO, multi-site fleet management, monitoring, tickets, SLAs, CRM/lead operations, client lifecycle, and reporting.",
   "author": {
     "name": "John Mark Bataller",
     "url": "https://github.com/jmqbataller"
@@ -11,24 +11,23 @@
   "license": "MIT",
   "keywords": [
     "devmesh", "codex", "chatgpt", "agent-skills", "ai-agents", "software-development",
-    "mission-control", "website-operations", "website-specialist", "wordpress", "wp-cli",
-    "hosting", "dns", "ssl", "migration", "backup", "seo", "search-console", "core-web-vitals",
-    "analytics", "email-deliverability", "real-estate", "idx", "mls", "reso", "odata",
-    "listing-search", "listing-sync", "vow", "lead-generation", "incident-recovery", "qa"
+    "mission-control", "agency-operations", "multi-site", "website-operations", "website-specialist",
+    "wordpress", "hosting", "dns", "ssl", "monitoring", "tickets", "sla", "crm", "lead-routing",
+    "real-estate", "idx", "mls", "reso", "accessibility", "privacy", "client-onboarding", "client-offboarding", "qa"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DevMesh",
-    "shortDescription": "AI engineering + Website Operations Specialist Mission Control",
-    "longDescription": "DevMesh v1.0 adds a Website Operations Specialist and Client Site Autopilot layer spanning hosting/DNS/SSL, WordPress migrations and restore drills, technical/real-estate SEO, Core Web Vitals, analytics/conversion QA, email deliverability, links/redirects, plugin/theme risk, WP-Cron reliability, RESO schema/provider inspection, emergency website recovery, and client monthly reporting. It builds on Mission Control, full-stack, WordPress Real Estate, IDX/MLS/RESO, Browser QA, security, accessibility, performance, CI, deployment, incident, review, memory, reporting, and Git delivery workflows. Codex uses the plugin adapter; ChatGPT uses the portable Agent Skills adapter.",
+    "shortDescription": "AI engineering + Agency Website Operations Mission Control",
+    "longDescription": "DevMesh v1.1 adds an Agency Operations Control Center for multi-client website fleets: scheduled health monitoring, domain/SSL expiry, staged WordPress update waves, staging-to-production promotion, change and visual history, plugin vulnerability maintenance watch, license renewals, client access inventory, ticket intake, SLA priority, lead SLA, real-estate CRM integration, MLS provider health, privacy/cookie auditing, continuous accessibility, content QA, and client onboarding/offboarding. It builds on v1.0 Website Operations, WordPress Real Estate, IDX/MLS/RESO, Mission Control, Browser QA, security, performance, CI, deployment, incident response, review, memory, reporting, and Git delivery.",
     "developerName": "John Mark Bataller",
     "category": "Developer Tools",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
-      "DevMesh Website Specialist: take over this client website, audit operations end-to-end, fix safe issues, verify affected journeys, and prepare a client report.",
-      "DevMesh Deep: audit this WordPress real-estate website across hosting, DNS/SSL, backups, security, performance, SEO, analytics, email, IDX/MLS/RESO, listing freshness, and lead delivery.",
-      "DevMesh Emergency: this website is down; diagnose from DNS and SSL through hosting, WordPress and recent changes, stabilize safely, and prove recovery."
+      "DevMesh Agency Deep: audit all client websites, prioritize incidents and maintenance, and create a site-specific action queue with evidence.",
+      "DevMesh Agency: onboard this client website, inventory access and stack, establish baselines, and identify operational gaps without storing secrets.",
+      "DevMesh Agency: monitor this WordPress real-estate fleet for uptime, SSL/domain expiry, plugin risk, IDX/MLS freshness, lead delivery, CRM health, and SLA breaches."
     ],
     "websiteURL": "https://github.com/jmqbataller/DevMesh",
     "brandColor": "#00CFFF",
