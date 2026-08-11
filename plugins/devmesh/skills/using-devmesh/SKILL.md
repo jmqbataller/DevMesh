@@ -5,17 +5,15 @@ description: Use at the start of any software-development request to classify th
 
 # DevMesh Router
 
-DevMesh is an orchestration layer. It selects the smallest workflow that can produce trustworthy evidence and escalates to Mission Control only when scope/risk benefits from it.
+DevMesh selects the smallest workflow that can produce trustworthy evidence. User/repository instructions override defaults.
 
 ## Core rule
 
 **Inspect → classify → select depth/budget → assess risk → map impact/dependencies → implement intentionally → verify real behavior → judge/review → report limitations.**
 
-User and repository instructions take precedence over DevMesh defaults.
-
 ## 1 — Classify
 
-Assign one or more task types:
+Task types:
 - `build`
 - `fix`
 - `debug`
@@ -33,167 +31,114 @@ Special intents:
 - active production outage/degradation → `incident-commander`
 - substantial cross-layer/high-risk/explicit mission → `mission-control`
 - DevMesh regression/benchmark comparison → `eval-replay-lab`
-- real-estate IDX/MLS website, feed, search, or audit → `real-estate-idx-mls`
-- RESO Web API/OData integration → `reso-web-api`
+- real-estate IDX/MLS website/feed/search/audit → `real-estate-idx-mls`
+- RESO Web API/OData → `reso-web-api`
 - MLS replication/search/indexing → `listing-sync-search`
-- IDX display/compliance audit → `idx-compliance-review`
+- IDX display review → `idx-compliance-review`
+- WordPress real-estate site/audit → `wordpress-real-estate-specialist`
+- WordPress health/configuration → `wordpress-site-doctor`
+- plugin/theme conflict → `wordpress-plugin-conflict-detective`
+- WordPress update/upgrade → `wordpress-safe-update-manager`
+- WP-CLI execution → `wp-cli-operator`
+- WordPress REST/headless/integration → `wordpress-rest-api-integrator`
+- unknown IDX vendor/architecture → `idx-provider-detector`
+- WordPress ↔ IDX/MLS integration → `wordpress-idx-bridge`
+- rendered IDX search/filter/map QA → `idx-search-qa`
+- stale MLS/listing data → `listing-freshness-monitor`
+- ongoing IDX display restrictions → `idx-compliance-monitor`
+- IDX vs VOW uncertainty → `idx-vow-mode-detector`
+- WordPress/IDX performance → `wordpress-performance-doctor`
+- WordPress security hardening/review → `wordpress-security-specialist`
+- real-estate contact/showing/lead journey → `wordpress-lead-flow-qa`
+- WordPress client handover → `wordpress-client-handover`
 
-## 2 — Select depth and resource budget
+## 2 — Depth and resource budget
 
-Invoke `execution-modes` conceptually:
-- `Quick` — explicit small/low-risk work
-- `Standard` — default
-- `Deep` — production readiness, major cross-layer work, migrations/auth/security-sensitive work, or explicit request
+Use `execution-modes`: `Quick`, `Standard` (default), `Deep`.
+Use `resource-budget`: `Eco`, `Balanced` (default), `Max`.
+Depth/budget never suppress safety or evidence requirements.
 
-Invoke `resource-budget` conceptually:
-- `Eco` — conservative agent/tool usage
-- `Balanced` — default
-- `Max` — broader parallel/reviewer/eval capacity when supported
+## 3 — Inspect, risk and impact
 
-Depth and budget never suppress required safety/evidence gates.
+Start repository work with `codebase-intelligence`. Use `environment-doctor` when execution/setup matters or Deep is selected. Use `project-memory` only when opted in; `failure-memory` lessons are hypotheses until revalidated.
 
-## 3 — Inspect environment/repository
+Before mutating build/fix/debug/redesign/refactor/deploy work, invoke `risk-engine`. **High-risk/destructive operations require explicit authorization** unless that exact operation was already authorized. Use `change-impact-map` for substantial existing-code/shared-contract changes and `confidence-engine` when root cause or architecture assumptions are weak.
 
-Start repository work with `codebase-intelligence`.
-Use `environment-doctor` when execution/setup matters or Deep is selected.
-If `.devmesh/` exists or project memory is opted in, invoke `project-memory` and revalidate stored facts.
-Retrieve `failure-memory` only when persistent memory is enabled; old lessons are hypotheses until verified against current source.
-
-## 4 — Assess risk and impact
-
-Before mutating `build`, `fix`, `debug`, `redesign`, `refactor`, or `deploy`, invoke `risk-engine`.
-High-risk/destructive operations require explicit authorization unless that exact operation is already clearly authorized.
-Use `change-impact-map` before substantial existing-code changes, shared contracts/schema/domain logic, or broad refactors.
-Use `confidence-engine` whenever root cause/architecture assumptions are not strongly supported.
-
-## 5 — Core routing
+## 4 — Core routing
 
 | Task | Required path | Conditional gates |
 |---|---|---|
-| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; architecture-simulator; adversarial-review; test-data-personas; architecture-guard; change-impact-map; parallel-agent-orchestration; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; confidence-engine; devmesh-judge; failure-memory; eval-replay-lab; multi-agent-review; qa-reporting |
-| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | resource-budget; mission-control; change-impact-map; confidence-engine; systematic-debugging when root cause is unproven; environment-doctor; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; devmesh-judge; failure-memory; qa-reporting |
-| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; confidence-engine; environment-doctor; real-estate-idx-mls; reso-web-api; listing-sync-search; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; parallel-agent-orchestration; devmesh-judge; failure-memory; multi-agent-review; qa-reporting |
-| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; real-estate-idx-mls; idx-compliance-review; adversarial-review; parallel-agent-orchestration; visual-regression; performance-review; network-failure-qa; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
-| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | resource-budget; mission-control; dynamic-task-graph; change-impact-map; real-estate-idx-mls; reso-web-api; listing-sync-search; architecture-guard; confidence-engine; parallel-agent-orchestration; regression-testing; browser-qa; security-review; performance-review; devmesh-judge; multi-agent-review; qa-reporting |
-| review | codebase-intelligence → code-review | execution-modes; resource-budget; mission-control; change-impact-map; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
-| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | resource-budget; mission-control; dynamic-task-graph; change-impact-map; environment-doctor; database-architect; real-estate-idx-mls; idx-compliance-review; architecture-simulator; browser-qa; network-failure-qa; accessibility-review; performance-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; multi-agent-review; qa-reporting |
-| research | codebase-intelligence | resource-budget; mission-control when broad; dynamic-task-graph; confidence-engine; adversarial-review; architecture-simulator; real-estate-idx-mls; reso-web-api; idx-compliance-review; project-memory; failure-memory; environment-doctor; brainstorming-requirements; writing-plans; eval-replay-lab |
+| build | codebase-intelligence → risk-engine → brainstorming-requirements → writing-plans → implementation → qa-verification → code-review | execution-modes; resource-budget; mission-control; dynamic-task-graph; environment-doctor; full-stack-build; database-architect; api-contract; architecture-guard; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-compliance-review; wordpress-real-estate-specialist; wordpress-site-doctor; wordpress-rest-api-integrator; idx-provider-detector; wordpress-idx-bridge; idx-search-qa; listing-freshness-monitor; idx-compliance-monitor; idx-vow-mode-detector; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; wordpress-client-handover; test-data-personas; browser-qa; network-failure-qa; visual-regression; accessibility-review; security-review; performance-review; observability-review; parallel-agent-orchestration; devmesh-judge; multi-agent-review; qa-reporting |
+| fix | codebase-intelligence → risk-engine → implementation → regression-testing → qa-verification | systematic-debugging when root cause is unproven; wordpress-site-doctor; wordpress-plugin-conflict-detective; wordpress-safe-update-manager; wp-cli-operator; wordpress-rest-api-integrator; real-estate-idx-mls; reso-web-api; listing-sync-search; idx-provider-detector; wordpress-idx-bridge; idx-search-qa; listing-freshness-monitor; idx-compliance-monitor; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; browser-qa; network-failure-qa; architecture-guard; security-review; ci-auto-heal; confidence-engine; devmesh-judge; qa-reporting |
+| debug | codebase-intelligence → risk-engine → systematic-debugging → implementation → regression-testing → qa-verification → code-review | environment-doctor; wordpress-site-doctor; wordpress-plugin-conflict-detective; wp-cli-operator; idx-provider-detector; listing-freshness-monitor; wordpress-performance-doctor; wordpress-security-specialist; browser-qa; network-failure-qa; observability-review; security-review; ci-auto-heal; confidence-engine; parallel-agent-orchestration; devmesh-judge; multi-agent-review; qa-reporting |
+| redesign | codebase-intelligence → risk-engine → brainstorming-requirements → ui-ux-review → writing-plans → implementation → browser-qa → accessibility-review → qa-verification → code-review | wordpress-real-estate-specialist; idx-search-qa; wordpress-lead-flow-qa; idx-compliance-review; visual-regression; performance-review; wordpress-performance-doctor; architecture-guard; security-review; devmesh-judge; multi-agent-review; qa-reporting |
+| refactor | codebase-intelligence → risk-engine → writing-plans → implementation → qa-verification → code-review | architecture-guard; change-impact-map; wordpress-rest-api-integrator; wordpress-idx-bridge; real-estate-idx-mls; reso-web-api; listing-sync-search; regression-testing; browser-qa; security-review; performance-review; confidence-engine; devmesh-judge; multi-agent-review; qa-reporting |
+| review | codebase-intelligence → code-review | wordpress-real-estate-specialist; wordpress-site-doctor; idx-provider-detector; idx-compliance-review; idx-vow-mode-detector; listing-freshness-monitor; wordpress-performance-doctor; wordpress-security-specialist; wordpress-lead-flow-qa; architecture-simulator; adversarial-review; architecture-guard; browser-qa; visual-regression; network-failure-qa; accessibility-review; security-review; performance-review; observability-review; devmesh-judge; multi-agent-review; qa-reporting |
+| deploy | codebase-intelligence → risk-engine → qa-verification → security-review → production-deployment → git-delivery | environment-doctor; wordpress-safe-update-manager; wordpress-site-doctor; listing-freshness-monitor; idx-compliance-monitor; wordpress-security-specialist; wordpress-performance-doctor; wordpress-lead-flow-qa; idx-search-qa; browser-qa; network-failure-qa; accessibility-review; observability-review; architecture-guard; devmesh-judge; incident-commander if active failure; qa-reporting |
+| research | codebase-intelligence | wordpress-real-estate-specialist; real-estate-idx-mls; reso-web-api; idx-provider-detector; idx-vow-mode-detector; wordpress-site-doctor; wordpress-rest-api-integrator; wp-cli-operator; confidence-engine; adversarial-review; architecture-simulator; project-memory; failure-memory; brainstorming-requirements; writing-plans; eval-replay-lab |
 
-## 6 — Mission Control
+## 5 — Mission Control
 
-Trigger `mission-control` for explicit Mission Control requests or substantial work with meaningful independent workstreams, high risk, or cross-layer integration.
+Trigger `mission-control` for explicit missions or substantial work with independent workstreams, high risk or cross-layer integration.
 
 Typical mission:
 `inspect → resource-budget → risk-engine → dynamic-task-graph → change-impact-map → architecture-simulator/adversarial-review when relevant → parallel-agent-orchestration if actually available → integration → quality gates → devmesh-judge → bounded repair/rejudge → qa-reporting`
 
-`parallel-agent-orchestration` must fall back sequentially when the runtime lacks real sub-agents. `devmesh-judge` must label a same-context fallback when independent review is unavailable.
+`parallel-agent-orchestration` must **fall back sequentially** when the runtime lacks real sub-agents. `devmesh-judge` must label a **same-context fallback** when independent review is unavailable.
 
-## 7 — Whole-product builds
+## 6 — Whole-product builds
 
-Trigger `full-stack-build` for a whole working website/web app/SaaS/dashboard/portal/system/tool when behavior requires multiple layers.
+Trigger `full-stack-build` for a whole working app/site/system requiring multiple layers. Compose `database-architect`, `api-contract`, `architecture-guard`, `test-data-personas`, `security-review`, `browser-qa`, `accessibility-review`, `performance-review`, `observability-review`, `qa-verification` and `devmesh-judge` as relevant.
 
-Typical flow:
-`codebase-intelligence → environment-doctor when needed → risk-engine → full-stack-build → requirements → database-architect/api-contract when required → architecture-simulator for consequential design → writing-plans → vertical-slice implementation → personas/quality gates → qa-verification → devmesh-judge/code-review → qa-reporting`
+Never call a **full-stack product working while required layers are mocked/disconnected**.
 
-“Working” must not degrade into a static frontend mock when backend/API/persistence is required.
+## 7 — Real-estate IDX / MLS
 
-## 8 — Real-estate IDX / MLS specialization
+Use `real-estate-idx-mls` for MLS data use; `reso-web-api` for RESO/OData metadata/query integration; `listing-sync-search` for licensed replication/local indexing; `idx-compliance-review` for evidence-based public-display review.
 
-Trigger `real-estate-idx-mls` whenever a website/app consumes or displays MLS listing data, implements IDX/VOW behavior, or needs an MLS/RESO audit.
+Actual MLS/provider licensing and local rules are authoritative. Treat RETS as legacy compatibility. Never expose MLS credentials or confidential/non-displayable fields. Local compliance is `BLOCKED` if current applicable rules were not reviewed.
 
-Use `reso-web-api` for RESO Web API/OData transport, metadata discovery, Data Dictionary mapping, authentication, queries, pagination, and provider extensions.
+## 8 — WordPress Real Estate Specialist
 
-Use `listing-sync-search` when authorized listing data is replicated into a local database/search index or when listing freshness, reconciliation, media, map/search performance, or incremental sync matters.
+Trigger `wordpress-real-estate-specialist` when WordPress and real-estate operations overlap.
 
-Use `idx-compliance-review` for public display review. The actual MLS/provider license and local rules are authoritative; general NAR IDX policy is only a baseline. Never invent credentials, display rights, refresh requirements, disclaimer wording, or field permissions. Treat RETS as legacy compatibility for existing feeds, not the default for new integrations.
+Typical Deep audit:
+`wordpress-site-doctor → idx-provider-detector → idx-vow-mode-detector → WordPress/IDX architecture map → plugin/update/REST checks → listing-freshness-monitor → idx-search-qa → idx-compliance-review + idx-compliance-monitor → wordpress-performance-doctor → wordpress-security-specialist → wordpress-lead-flow-qa → browser-qa → devmesh-judge → wordpress-client-handover`
 
-A typical working IDX build is:
-`real-estate-idx-mls → provider/license discovery → reso-web-api when applicable → database-architect/api-contract → listing-sync-search when replication is allowed → full-stack implementation → security-review → idx-compliance-review → browser-qa/accessibility/performance → qa-verification`
+Specialist rules:
+- `wordpress-site-doctor`: Site Health, WordPress/PHP/database, themes/plugins, REST, cron, permalinks, filesystem/configuration.
+- `wordpress-plugin-conflict-detective`: reproduce and isolate before deactivation/fix; prefer staging.
+- `wordpress-safe-update-manager`: backup/rollback + staging for consequential updates + post-update regression evidence.
+- `wp-cli-operator`: verify target, read first, risk-gate writes; never print secrets.
+- `wordpress-rest-api-integrator`: explicit permissions/validation; privileged credentials stay server-side.
+- `idx-provider-detector`: identify vendor/MLS/transport/render/sync model from evidence.
+- `wordpress-idx-bridge`: expose only licensed data through WordPress/server boundaries.
+- `idx-search-qa`: real browser evidence for filters/sort/pagination/map/list/detail/mobile.
+- `listing-freshness-monitor`: measure sync/query age against provider rules or explicit SLO; inspect cron/provider/cache/index failures.
+- `idx-compliance-monitor`: detect public exposure after seller opt-out, delayed marketing, removal or other non-display state; hiding with CSS is not removal.
+- `idx-vow-mode-detector`: classify `IDX`, `VOW`, `OTHER LICENSED USE`, `HYBRID` or `UNKNOWN` from behavior and agreements.
+- `wordpress-performance-doctor`: measure before optimizing; preserve IDX freshness/compliance when caching.
+- `wordpress-security-specialist`: WordPress hardening plus REST/Application Passwords and MLS credential boundaries.
+- `wordpress-lead-flow-qa`: verify downstream lead delivery, not only a success message; use synthetic data.
+- `wordpress-client-handover`: document verified architecture/maintenance/limitations with no passwords/tokens/API or MLS credentials.
 
-Never call an IDX implementation compliant when current local MLS/provider rules were not reviewed; mark that evidence `BLOCKED`.
+## 9 — GitHub, CI, production and incidents
 
-## 9 — Incidents, GitHub, CI, deployment
+`issue-to-pr` must **read the real issue** and never auto-merge or close it. `ci-auto-heal` reads actual failed logs and never weakens meaningful tests just to make CI green. `production-deployment` requires real target evidence: **build logs alone are not production verification**. Use `incident-commander` for active production incidents and preserve evidence before cleanup.
 
-### Production incident
-Trigger `incident-commander` for an active production outage, severe degradation, data-integrity incident, or security-sensitive operational failure. Stabilize/preserve evidence before broad cleanup. Never claim resolved without production evidence.
+## 10 — Browser, quality and evidence
 
-### GitHub issue → PR
-Trigger `issue-to-pr`; read the real issue, reproduce/confirm, implement, verify, review, commit, and create a PR only when authorized. Never auto-merge or close the issue.
+`browser-qa` uses `browser-engine`; source review is not rendered QA. `visual-regression` requires an approved baseline—**never overwrite a baseline** to hide a regression. Use `network-failure-qa`, `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
 
-### CI failure
-Trigger `ci-auto-heal`; read actual failed jobs/logs, classify infra vs code/test/config, prove root cause, fix, and rerun. Never weaken meaningful tests just to make CI green.
+When a real defect is observed:
+`finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical → re-judge affected gate`.
 
-### Production deployment
-Trigger `production-deployment`; build logs alone are not production verification. Require health/API/live Browser QA evidence when applicable and available.
+Browser QA allows up to **3 fix/retest rounds**. Mission Control allows up to **2 repair/rejudge rounds**. Do not loop indefinitely.
 
-## 10 — Architecture/evidence intelligence
-
-Use `database-architect` for durable data/schema/migrations.
-Use `api-contract` at API/server-action/service boundaries.
-Use `architecture-simulator` before consequential hard-to-reverse architecture choices; simulation is not measured capacity.
-Use `adversarial-review` when multiple credible approaches remain; maximum two debate rounds.
-Use `test-data-personas` for safe synthetic representative/edge/volume cases.
-Use `architecture-guard` for substantial/cross-layer/Deep work or boundary drift.
-Use `change-impact-map` to derive regression scope.
-Use `confidence-engine` to prevent low-evidence root-cause edits.
-
-## 11 — Browser/product/operations gates
-
-`browser-qa` invokes `browser-engine` for real rendered evidence.
-Use `network-failure-qa` for important networked/resilience-sensitive flows.
-Use `visual-regression` only with stable approved baselines; never overwrite a baseline to hide a regression.
-Use `accessibility-review`, `performance-review`, `security-review`, and `observability-review` when relevant.
-
-## 12 — Judge, memory, evals
-
-Use `devmesh-judge` after substantial missions/Deep release work. Critical failed gates veto release regardless of average score.
-Use `failure-memory` only for verified failure/root-cause/fix lessons and only with opt-in persistent storage; never store secrets/PII.
-Use `eval-replay-lab` for DevMesh changes or mature products needing repeatable regression benchmarks. Deterministic graders take precedence over qualitative model judging when they directly test an invariant.
-
-## 13 — Automatic fix/retest
-
-When a verification/judge gate finds a real in-scope defect:
-`finding → prove cause → implementation → rerun exact failed scenario → regression-testing when practical → re-judge affected gate`
-
-Browser QA may use up to 3 fix/retest rounds. Mission Control judge loop defaults to 2 repair/rejudge rounds. Do not loop indefinitely.
-
-## 14 — Evidence
-
-Track as relevant:
-- task classification + depth + resource budget
-- Mission Control graph/node states and whether execution was parallel or sequential fallback
-- confidence hypotheses and decisive evidence
-- impact map / regression scope
-- architecture simulation vs measured benchmark distinction
-- environment/risk/authorization
-- architecture, DB/API contracts, files changed
-- IDX/MLS provider, authorized use, local rule evidence, RESO metadata/mapping, listing freshness/sync and display restrictions when relevant
-- tests/lint/type/build/browser/network/screenshots
-- security/accessibility/performance/observability
-- CI/production/incident evidence
-- judge dimensions and independence boundary
-- eval/replay results
-- persistent memory writes (if opted in)
-- unresolved blockers
+Track evidence as `PASS`, `FAIL`, `FIXED`, `BLOCKED`, or `NOT RUN`. Never claim browser/CI/deployment/parallel-agent/independent-judge/IDX/WordPress evidence that did not execute.
 
 ## Non-negotiable behavior
 
-Never:
-- guess root cause and present it as proven
-- claim parallel agents/independent judge/benchmark/browser/production/CI evidence that did not execute
-- call a full-stack product working while required layers are mocked/disconnected
-- claim IDX/MLS compliance without reviewing the applicable provider/local MLS rules
-- expose MLS/API credentials or confidential/non-displayable listing fields
-- expose or persist secrets/PII in memory/reports/logs/evals
-- silently perform destructive actions
-- disable meaningful tests to make CI green
-- overwrite visual baselines to hide regressions
-- merge/close GitHub work without authorization
+Never guess root cause as proven, expose secrets/PII, silently perform destructive actions, disable meaningful tests to get green CI, overwrite visual baselines, or merge/close GitHub work without authorization.
 
-Always:
-- inspect before editing
-- preserve unrelated work
-- prefer existing architecture when sound
-- use the simplest architecture that genuinely satisfies behavior
-- distinguish `PASS`, `FAIL`, `FIXED`, `BLOCKED`, and `NOT RUN`
-- state clearly what could not be verified
+Always inspect before editing, preserve unrelated work, prefer sound existing architecture, choose the simplest architecture that genuinely satisfies behavior, and state clearly what could not be verified.
