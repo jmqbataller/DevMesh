@@ -1,6 +1,8 @@
 # DevMesh
 
-**DevMesh** is an evidence-based AI software-engineering orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, plan, build, diagnose, verify, judge, repair, and deliver without turning assumptions into fake passes.
+**DevMesh** is an evidence-based AI software-engineering and website-operations orchestration framework for ChatGPT, Codex, and future adapters. It helps agents inspect, plan, build, diagnose, operate, verify, judge, recover, and deliver without turning assumptions into fake passes.
+
+Developer: **John Mark Bataller**
 
 DevMesh ships with:
 - **Codex adapter** — plugin + Playwright MCP for coding-environment execution
@@ -8,100 +10,117 @@ DevMesh ships with:
 
 ## Download DevMesh for ChatGPT
 
-[**Download `devmesh-chatgpt-v0.9.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v0.9.0/devmesh-chatgpt-v0.9.0.zip)
+[**Download `devmesh-chatgpt-v1.0.0.zip`**](https://github.com/jmqbataller/DevMesh/releases/download/v1.0.0/devmesh-chatgpt-v1.0.0.zip)
 
 On a ChatGPT account/surface that supports uploaded Skills: open **Plugins → Skills → Create → Upload from your computer**, upload the ZIP, then start a new chat.
 
-## DevMesh v0.9 — WordPress Real Estate Specialist
+# DevMesh v1.0 — Website Operations Specialist
 
-v0.9 contains **65 composable skills**. The new WordPress real-estate stack adds:
+v1.0 contains **81 composable skills** and turns DevMesh into a broader Website Specialist / Site Operations framework.
 
-- `wordpress-real-estate-specialist` — top-level WordPress + real-estate orchestration
-- `wordpress-site-doctor` — Site Health, PHP/server/database, themes/plugins, cron, REST, permalinks and configuration
-- `wordpress-plugin-conflict-detective` — evidence-based plugin/theme conflict isolation
-- `wordpress-safe-update-manager` — backup/staging/update/rollback workflow
-- `wp-cli-operator` — risk-aware WP-CLI operations
-- `wordpress-rest-api-integrator` — custom content/routes/auth/service integration
-- `idx-provider-detector` — identify IDX vendor, MLS/provider, transport, render and sync architecture
-- `wordpress-idx-bridge` — secure WordPress ↔ IDX/MLS/RESO boundary
-- `idx-search-qa` — browser QA for filters, sort, pagination, maps, cards, details and mobile
-- `listing-freshness-monitor` — sync/query age, cron/provider/cache/index failure diagnosis
-- `idx-compliance-monitor` — ongoing display-restriction monitoring
-- `idx-vow-mode-detector` — IDX vs VOW vs hybrid classification
-- `wordpress-performance-doctor` — measured WordPress/IDX performance diagnosis
-- `wordpress-security-specialist` — WordPress-specific hardening + MLS credential boundaries
-- `wordpress-lead-flow-qa` — inquiry/showing/contact downstream delivery verification
-- `wordpress-client-handover` — secret-free operational handover
-
-The v0.8 real-estate stack remains available: `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, and `idx-compliance-review`.
-
-### Website Specialist example
+## Client Site Autopilot
 
 ```text
-DevMesh Deep:
-Act as a WordPress Real Estate Website Specialist.
+DevMesh Website Specialist:
+Take over this client website.
 
-Audit this website end-to-end:
-- WordPress core, PHP, database, Site Health, theme/child theme and plugins
-- REST API, WP-Cron, permalinks and configuration
-- IDX provider and MLS/RESO architecture
-- listing freshness and search/filter/map/detail behavior
-- IDX vs VOW and public display restrictions
-- performance, security and accessibility
-- inquiry/showing/contact lead delivery
+Audit hosting, DNS, SSL, WordPress, backups, security,
+performance, SEO, analytics, forms/email, IDX/MLS/RESO,
+listing freshness, leads and operational reliability.
 
-Find the real root cause before fixing issues.
-Fix safe issues, run Browser QA, retest affected workflows,
-and prepare a secret-free client handover.
-Do not claim a check passed without evidence.
+Fix safe issues, verify affected journeys,
+and prepare a professional client report.
 ```
 
-### WordPress maintenance examples
+Typical flow:
 
 ```text
-Use DevMesh.
-Diagnose this WordPress plugin conflict, prove the root cause, fix it safely, and retest.
+inventory
+→ hosting / DNS / SSL
+→ WordPress Site Health
+→ backup / restore readiness
+→ plugin/theme risk
+→ safe updates when authorized
+→ security
+→ performance / Core Web Vitals
+→ SEO / Search Console
+→ analytics / conversions
+→ forms / email delivery
+→ broken links / redirects
+→ IDX / MLS / RESO when present
+→ WP-Cron reliability
+→ Browser QA / lead QA
+→ client monthly report
 ```
 
-```text
-Use DevMesh.
-Update this WordPress site safely using staging/rollback evidence and retest IDX search and lead forms.
-```
+## New v1.0 skills
 
-```text
-Use DevMesh.
-Inspect this site with WP-CLI, but do not make destructive changes without authorization.
-```
+- `website-operations-specialist` — Client Site Autopilot and broad Website Specialist orchestration
+- `hosting-dns-ssl-doctor` — nameservers, DNS, SSL/TLS, HTTPS, redirects, CDN/proxy and origin diagnosis
+- `wordpress-migration-specialist` — hosting/domain/staging migrations with rollback and Browser QA
+- `backup-restore-drill` — backup completeness plus safe restore verification
+- `seo-search-console-specialist` — technical SEO, crawl/index and Search Console evidence
+- `real-estate-seo-specialist` — IDX/listing/community URL architecture and thin/duplicate controls
+- `core-web-vitals-diagnoser` — measured LCP/INP/CLS diagnosis
+- `analytics-conversion-qa` — event and downstream conversion verification
+- `email-deliverability-doctor` — SMTP/SPF/DKIM/DMARC/form/CRM delivery-chain diagnosis
+- `broken-link-redirect-manager` — 404/link integrity and safe redirects
+- `plugin-theme-risk-intelligence` — plugin/theme criticality, compatibility and removal risk
+- `wp-cron-reliability-doctor` — missed/duplicate/stuck WordPress scheduled jobs
+- `reso-schema-drift-detector` — RESO/OData metadata/resource/field/lookup drift detection
+- `reso-provider-capability-inspector` — provider capability evidence vs licensed data-use rights
+- `client-monthly-website-report` — evidence-based client-facing operational reports
+- `website-emergency-recovery` — outage triage from DNS/SSL through hosting/runtime/WordPress and verified recovery
 
-## Real Estate IDX / MLS
+See [`docs/WEBSITE_OPERATIONS.md`](docs/WEBSITE_OPERATIONS.md).
+
+## WordPress Real Estate Specialist
+
+The v0.9 stack remains available:
+
+- `wordpress-real-estate-specialist`
+- `wordpress-site-doctor`
+- `wordpress-plugin-conflict-detective`
+- `wordpress-safe-update-manager`
+- `wp-cli-operator`
+- `wordpress-rest-api-integrator`
+- `idx-provider-detector`
+- `wordpress-idx-bridge`
+- `idx-search-qa`
+- `listing-freshness-monitor`
+- `idx-compliance-monitor`
+- `idx-vow-mode-detector`
+- `wordpress-performance-doctor`
+- `wordpress-security-specialist`
+- `wordpress-lead-flow-qa`
+- `wordpress-client-handover`
+
+## Real Estate IDX / MLS / RESO
 
 DevMesh distinguishes IDX, VOW, participant feeds, syndication, and internal uses. RESO provides standards rather than MLS listing credentials. The applicable MLS/provider license remains authoritative for permitted fields, refresh requirements, attribution/disclaimers, and display restrictions.
 
-A typical WordPress IDX workflow is:
+The real-estate stack includes `real-estate-idx-mls`, `reso-web-api`, `listing-sync-search`, `idx-compliance-review`, plus v1.0 `reso-schema-drift-detector` and `reso-provider-capability-inspector`.
 
-```text
-WordPress Site Doctor
-→ IDX provider detection
-→ IDX vs VOW classification
-→ RESO/provider metadata and license review
-→ WordPress ↔ MLS bridge
-→ listing sync/freshness when replication is licensed
-→ property search/filter/map/detail implementation
-→ security/performance/accessibility
-→ IDX search Browser QA
-→ compliance review/monitoring
-→ lead-flow QA
-→ DevMesh Judge
-→ client handover
-```
-
-DevMesh will not claim local IDX compliance if the current applicable MLS/provider rules were not reviewed; that evidence remains `BLOCKED`.
+DevMesh will not claim local IDX compliance if current applicable MLS/provider rules were not reviewed; that evidence remains `BLOCKED`.
 
 See [`docs/REAL_ESTATE_IDX_MLS.md`](docs/REAL_ESTATE_IDX_MLS.md) and [`docs/WORDPRESS_REAL_ESTATE.md`](docs/WORDPRESS_REAL_ESTATE.md).
 
+## Emergency recovery
+
+```text
+DevMesh Emergency:
+The WordPress website is down.
+
+Diagnose DNS, SSL, CDN/proxy, hosting, PHP, database,
+WordPress, plugins, theme, cache and recent changes.
+Stabilize safely and prove recovery on affected journeys.
+```
+
+A homepage returning HTTP 200 alone is not considered full recovery.
+
 ## Mission Control
 
-Mission Control still provides dynamic task graphs, real parallel delegation when supported, confidence-aware diagnosis, adversarial review, change-impact mapping, eval/replay, architecture simulation, resource budgets, Incident Commander, and the evidence-first DevMesh Judge.
+Mission Control provides dynamic task graphs, real parallel delegation when supported, confidence-aware diagnosis, adversarial review, change-impact mapping, eval/replay, architecture simulation, resource budgets, Incident Commander, and the evidence-first DevMesh Judge.
 
 ```text
 DevMesh Mission Control:
@@ -131,7 +150,7 @@ Quick/Standard/Deep control engineering depth. Eco/Balanced/Max control orchestr
 
 ## ChatGPT Adapter
 
-The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, WP-CLI, WordPress admin, Playwright, sub-agents, MLS credentials, CRM/email visibility, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
+The ChatGPT adapter lives at `adapters/chatgpt/devmesh-chatgpt/`. It does not assume normal ChatGPT has a shell, localhost, Git CLI, WP-CLI, WordPress admin, hosting/DNS dashboards, Search Console, analytics, SMTP/CRM visibility, backup systems, Playwright, sub-agents, MLS credentials, or deployment credentials. Missing evidence remains `BLOCKED`/`NOT RUN`.
 
 Build locally:
 
@@ -139,7 +158,7 @@ Build locally:
 python scripts/build_chatgpt_adapter.py
 ```
 
-Output: `dist/devmesh-chatgpt-v0.9.0.zip`.
+Output: `dist/devmesh-chatgpt-v1.0.0.zip`.
 
 ## Codex Adapter
 
@@ -162,7 +181,7 @@ Start a new Codex thread/session after reinstall.
 
 ## Evidence states
 
-DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. WordPress health/update, browser, CI, production, lead-delivery, parallel-agent, independent-judge and IDX-compliance claims require corresponding evidence.
+DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. Hosting, restore, SEO/index, analytics, email delivery, WordPress, browser, CI, production, lead-delivery, parallel-agent, independent-judge and IDX-compliance claims require corresponding evidence.
 
 ## Public distribution status
 
@@ -170,8 +189,6 @@ DevMesh uses `PASS`, `FAIL`, `FIXED`, `BLOCKED`, `NOT RUN`, and `N/A`. WordPress
 - GitHub Release ZIP: automated
 - Manual ChatGPT Skill upload: available on eligible ChatGPT accounts/surfaces
 - OpenAI Plugin Directory listing: submission package prepared; publication still requires publisher verification, OpenAI review, approval, and Publish
-
-Developer: **John Mark Bataller**
 
 ## Development validation
 
@@ -187,8 +204,8 @@ python tests/test_plugin_submission_pack.py
 
 | Platform | Status |
 |---|---|
-| Codex | **v0.9 supported** |
-| ChatGPT | **v0.9 portable Agent Skills adapter** |
+| Codex | **v1.0 supported** |
+| ChatGPT | **v1.0 portable Agent Skills adapter** |
 | Claude Code | Planned adapter |
 | Gemini CLI | Planned adapter |
 | Cursor | Planned adapter |
