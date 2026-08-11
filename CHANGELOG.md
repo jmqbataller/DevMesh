@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0 - 2026-08-11
+
+DevMesh v1.3 adds **Design-to-Code Studio** as an explicit screenshot/mockup/Figma/export/reference-driven website implementation specialization.
+
+- Added `design-to-code-studio` for visual-reference intake through implementation, rendered comparison, bounded repair, QA, and delivery.
+- Added `visual-reference-analyzer` with explicit `OBSERVED`, `INFERRED`, and `UNKNOWN` evidence labels.
+- Added `design-token-extractor` for maintainable semantic typography/color/spacing/layout/control tokens without false precision.
+- Added `responsive-layout-inference` for deliberate unseen desktop/tablet/mobile behavior instead of pretending one screenshot defines every viewport.
+- Added `visual-fidelity-judge` for authoritative-reference vs rendered-implementation comparison, with no fabricated fidelity percentages and a maximum of three visual repair rounds.
+- Design-to-Code composes `website-product-builder`, full-stack, WordPress, IDX/MLS, and other specialist playbooks only where the product requires them.
+- Updated routing, ChatGPT adapter, docs, Plugin Directory materials, release metadata, and validation for **111 composable skills**.
+
 ## 1.2.0 - 2026-08-11
 
 DevMesh v1.2 adds **Website Product Builder** as an explicit greenfield website-development specialization.
