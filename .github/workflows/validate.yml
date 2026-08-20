@@ -24,38 +24,49 @@ jobs:
         run: |
           VERSION="$(python -c 'import json; print(json.load(open("plugins/devmesh/.codex-plugin/plugin.json"))["version"])')"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "bundle=dist/devmesh-chatgpt-v$VERSION.zip" >> "$GITHUB_OUTPUT"
+          echo "chatgpt_bundle=dist/devmesh-chatgpt-v$VERSION.zip" >> "$GITHUB_OUTPUT"
+          echo "gpts_bundle=dist/devmesh-gpts-kit-v$VERSION.zip" >> "$GITHUB_OUTPUT"
       - name: Validate plugin and feature contracts
         run: |
           python tests/validate_devmesh.py
           python tests/test_routing_contract.py
           python tests/test_feature_contracts.py
           python tests/test_chatgpt_adapter.py
+          python tests/test_gpts_adapter.py
           python tests/test_plugin_submission_pack.py
       - name: Build ChatGPT distribution bundle
-        run: python scripts/build_chatgpt_adapter.py --output "${{ steps.version.outputs.bundle }}"
+        run: python scripts/build_chatgpt_adapter.py --output "${{ steps.version.outputs.chatgpt_bundle }}"
+      - name: Build GPT Builder distribution bundle
+        run: python scripts/build_gpts_kit.py --output "${{ steps.version.outputs.gpts_bundle }}"
       - name: Upload ChatGPT distribution artifact
         uses: actions/upload-artifact@v4
         with:
           name: devmesh-chatgpt-v${{ steps.version.outputs.version }}
-          path: ${{ steps.version.outputs.bundle }}
+          path: ${{ steps.version.outputs.chatgpt_bundle }}
           if-no-files-found: error
-      - name: Publish GitHub Release bundle
+      - name: Upload GPT Builder distribution artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: devmesh-gpts-kit-v${{ steps.version.outputs.version }}
+          path: ${{ steps.version.outputs.gpts_bundle }}
+          if-no-files-found: error
+      - name: Publish GitHub Release bundles
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.version.outputs.version }}
-          BUNDLE: ${{ steps.version.outputs.bundle }}
+          CHATGPT_BUNDLE: ${{ steps.version.outputs.chatgpt_bundle }}
+          GPTS_BUNDLE: ${{ steps.version.outputs.gpts_bundle }}
         run: |
           TAG="v$VERSION"
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$TAG" "$BUNDLE" --clobber --repo "$GITHUB_REPOSITORY"
+            gh release upload "$TAG" "$CHATGPT_BUNDLE" "$GPTS_BUNDLE" --clobber --repo "$GITHUB_REPOSITORY"
             gh release edit "$TAG" \
               --repo "$GITHUB_REPOSITORY" \
               --title "DevMesh $TAG" \
               --notes-file docs/plugin-submission/RELEASE_NOTES.md
           else
-            gh release create "$TAG" "$BUNDLE" \
+            gh release create "$TAG" "$CHATGPT_BUNDLE" "$GPTS_BUNDLE" \
               --repo "$GITHUB_REPOSITORY" \
               --target "$GITHUB_SHA" \
               --title "DevMesh $TAG" \
